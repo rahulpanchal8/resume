@@ -1,0 +1,90 @@
+/* ================================================
+   RESPONSIVE DESIGN
+   ================================================ */
+
+/* Mobile-first base — most styles in style.css */
+
+/* Small devices (landscape phones, 480px+) */
+@media (min-width: 480px) {
+  .hero-name {
+    font-size: 2rem;
+  }
+}
+
+/* Medium devices (tablets, 640px+) */
+@media (min-width: 640px) {
+  main {
+    gap: 3.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Large devices (desktops, 768px+) */
+@media (min-width: 768px) {
+  .hero-row {
+    gap: 2rem;
+  }
+
+  .hero-avatar {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .accordion-logo,
+  .edu-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .accordion-content {
+    margin-left: 3.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Extra large (desktops, 1024px+) */
+@media (min-width: 1024px) {
+  .page-wrapper {
+    padding-top: 6rem;
+  }
+
+  .hero-name {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+  }
+}
+
+/* ================================================
+   PRINT STYLES
+   ================================================ */
+@media print {
+  .navbar-wrapper,
+  .top-flicker-band {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .page-wrapper {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .project-card video {
+    display: none;
+  }
+}
