@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@/components/ui/separator";
@@ -10,6 +15,75 @@ import {
 import { DATA } from "@/data/resume";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [isProjectsInView, setIsProjectsInView] = useState(false);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setIsProjectsInView(false);
+      return;
+    }
+
+    const projectsSection = document.getElementById("projects");
+    if (!projectsSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsProjectsInView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px", // Trigger when projects section occupies middle viewport
+        threshold: 0,
+      }
+    );
+
+    observer.observe(projectsSection);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/" && pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
+    if (name === "Projects" && pathname === "/") {
+      e.preventDefault();
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        const top = projectsSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }
+  };
+
+  const getNavbarItemClass = (href: string) => {
+    const isActive =
+      (href === "/" && pathname === "/" && !isProjectsInView) ||
+      (href === "/blog" && pathname.startsWith("/blog"));
+
+    return cn(
+      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-200 border border-border backdrop-blur-3xl",
+      isActive
+        ? "text-foreground bg-muted scale-110 shadow-sm"
+        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+    );
+  };
+
+  const getSocialItemClass = (name: string) => {
+    const isActive = name === "Projects" && pathname === "/" && isProjectsInView;
+
+    return cn(
+      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-200 border border-border backdrop-blur-3xl",
+      isActive
+        ? "text-foreground bg-muted scale-110 shadow-sm"
+        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+    );
+  };
+
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
       <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-fit mx-auto flex gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5">
@@ -20,10 +94,11 @@ export default function Navbar() {
               <TooltipTrigger asChild>
                 <a
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
                 >
-                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
+                  <DockIcon className={getNavbarItemClass(item.href)}>
                     <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
                   </DockIcon>
                 </a>
@@ -53,10 +128,11 @@ export default function Navbar() {
                 <TooltipTrigger asChild>
                   <a
                     href={social.url}
+                    onClick={(e) => handleSocialClick(e, name)}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                   >
-                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
+                    <DockIcon className={getSocialItemClass(name)}>
                       <IconComponent className="size-full rounded-sm overflow-hidden object-contain" />
                     </DockIcon>
                   </a>
@@ -66,7 +142,7 @@ export default function Navbar() {
                   sideOffset={8}
                   className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
                 >
-                  <p>{name}</p>
+                  <p>{social.name}</p>
                   <TooltipArrow className="fill-primary" />
                 </TooltipContent>
               </Tooltip>

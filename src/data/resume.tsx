@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, BriefcaseIcon } from "lucide-react";
 
 export const DATA = {
   name: "Rahul Panchal",
@@ -36,10 +36,10 @@ export const DATA = {
     email: "rahull3@live.com",
     tel: "+919016178418",
     social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/rahulpanchal8",
-        icon: Icons.github,
+      Projects: {
+        name: "My Projects",
+        url: "/#projects",
+        icon: BriefcaseIcon,
         navbar: true,
       },
       LinkedIn: {

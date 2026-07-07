@@ -120,6 +120,10 @@
     @apply bg-background text-foreground;
   }
 
+  section {
+    scroll-margin-top: 5rem;
+  }
+
   /* Shiki dual theme support */
   .shiki,
   .shiki span {
