@@ -18,6 +18,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isProjectsInView, setIsProjectsInView] = useState(false);
 
+  // ScrollSpy: highlight My Projects dock item when projects section is in viewport
   useEffect(() => {
     if (pathname !== "/") {
       setIsProjectsInView(false);
@@ -33,7 +34,7 @@ export default function Navbar() {
       },
       {
         root: null,
-        rootMargin: "-20% 0px -60% 0px", // Trigger when projects section occupies middle viewport
+        rootMargin: "-20% 0px -60% 0px",
         threshold: 0,
       }
     );
@@ -42,21 +43,51 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, [pathname]);
 
+  // Deep-link: on initial page load with /#projects, scroll to section after render
+  useEffect(() => {
+    if (pathname !== "/") return;
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#projects") return;
+
+    // Disable browser's default scroll restoration so we control the position
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    // Start at top, then smoothly animate down after DOM is ready
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => {
+      const section = document.getElementById("projects");
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty deps — run once on mount only
+
+  // Home dock click: smooth scroll to top and strip the hash fragment
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/" && pathname === "/") {
       e.preventDefault();
+      history.pushState("", document.title, window.location.pathname + window.location.search);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
+  // My Projects dock click: push /#projects into URL, then smooth scroll with offset
   const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
-    if (name === "Projects" && pathname === "/") {
-      e.preventDefault();
-      const projectsSection = document.getElementById("projects");
-      if (projectsSection) {
-        const top = projectsSection.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: "smooth" });
+    if (name === "Projects") {
+      if (pathname === "/") {
+        e.preventDefault();
+        history.pushState(null, "", "/#projects");
+        const section = document.getElementById("projects");
+        if (section) {
+          const top = section.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
       }
+      // If not on the home page, the href="/#projects" takes over naturally
     }
   };
 
