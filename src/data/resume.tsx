@@ -1,5 +1,6 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon, BriefcaseIcon } from "lucide-react";
+import type { IconProps } from "@/components/icons";
 
 export const DATA = {
   name: "Rahul Panchal",
@@ -39,7 +40,7 @@ export const DATA = {
       Projects: {
         name: "My Projects",
         url: "/#projects",
-        icon: BriefcaseIcon,
+        icon: (props: IconProps) => <BriefcaseIcon {...props} />,
         navbar: true,
       },
       LinkedIn: {
