@@ -24,61 +24,67 @@ export default function Navbar() {
       return;
     }
 
-    const scrollToSection = (id: string) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    const OFFSET = 80; // px to account for the floating dock
+
+    const smoothScrollTo = (el: HTMLElement) => {
+      const top = el.getBoundingClientRect().top + window.scrollY - OFFSET;
       window.scrollTo({ top, behavior: "smooth" });
     };
 
-    // ── Deep-link: if page opened as /#projects, scroll there after DOM settles ──
+    // ── Deep-link: page loaded with /#projects → scroll there after DOM settles ──
     let deepLinkTimer: ReturnType<typeof setTimeout> | null = null;
     if (window.location.hash === "#projects") {
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       window.scrollTo(0, 0);
-      deepLinkTimer = setTimeout(() => scrollToSection("projects"), 300);
+      deepLinkTimer = setTimeout(() => {
+        const el = document.getElementById("projects");
+        if (el) smoothScrollTo(el);
+      }, 300);
     }
 
-    // ── ScrollSpy + URL sync ───────────────────────────────────────────────────
-    const projectsSection = document.getElementById("projects");
+    // ── ScrollSpy + bidirectional URL sync ────────────────────────────────────
+    const section = document.getElementById("projects");
     let observer: IntersectionObserver | null = null;
 
-    if (projectsSection) {
-      let prevInView: boolean | null = null; // null = not yet observed
+    if (section) {
+      // Use a string guard so both directions (enter & leave) are handled cleanly
+      let activeSection: "home" | "projects" | null = null;
 
       observer = new IntersectionObserver(
         ([entry]) => {
-          const inView = entry.isIntersecting;
-          if (inView === prevInView) return; // no change — skip replaceState
-          prevInView = inView;
-
-          setIsProjectsInView(inView);
-
-          // replaceState keeps URL in sync without adding browser history entries
-          if (inView) {
+          if (entry.isIntersecting) {
+            // Section entered viewport — activate My Projects
+            if (activeSection === "projects") return; // no change
+            activeSection = "projects";
+            setIsProjectsInView(true);
             window.history.replaceState(null, "", "/#projects");
           } else {
-            window.history.replaceState(
-              "",
-              document.title,
-              window.location.pathname + window.location.search
-            );
+            // Section left viewport — restore Home
+            if (activeSection === "home") return; // no change
+            activeSection = "home";
+            setIsProjectsInView(false);
+            // Use "/" explicitly to guarantee the fragment is stripped
+            window.history.replaceState("", document.title, "/");
           }
         },
         {
           root: null,
-          rootMargin: "-20% 0px -60% 0px",
+          // Trigger when the section occupies any part of the central 50% of
+          // the viewport. The symmetric margins ensure the observer fires
+          // reliably in BOTH scroll directions (up and down).
+          rootMargin: "-25% 0px -25% 0px",
           threshold: 0,
         }
       );
 
-      observer.observe(projectsSection);
+      observer.observe(section);
     }
 
-    // ── Back / Forward button support ──────────────────────────────────────────
+    // ── Back / Forward button ──────────────────────────────────────────────────
     const onPopState = () => {
       if (window.location.hash === "#projects") {
-        scrollToSection("projects");
+        const el = document.getElementById("projects");
+        if (el) smoothScrollTo(el);
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
@@ -92,29 +98,27 @@ export default function Navbar() {
     };
   }, [pathname]);
 
-  // Home dock click: smooth scroll to top, strip fragment with pushState
+  // Home dock click: scroll to top and explicitly push "/" to strip any fragment
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/" && pathname === "/") {
       e.preventDefault();
-      window.history.pushState("", document.title, window.location.pathname + window.location.search);
+      window.history.pushState("", document.title, "/");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   // My Projects dock click: push /#projects then smooth-scroll with offset
   const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
-    if (name === "Projects") {
-      if (pathname === "/") {
-        e.preventDefault();
-        window.history.pushState(null, "", "/#projects");
-        const el = document.getElementById("projects");
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
+    if (name === "Projects" && pathname === "/") {
+      e.preventDefault();
+      window.history.pushState(null, "", "/#projects");
+      const el = document.getElementById("projects");
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
       }
-      // On other pages href="/#projects" navigates naturally
     }
+    // On other pages, href="/#projects" navigates naturally
   };
 
   const getNavbarItemClass = (href: string) => {

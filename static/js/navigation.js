@@ -4,6 +4,8 @@
 
 import { toggleTheme } from './theme.js';
 
+const SCROLL_OFFSET = 80; // px — accounts for the floating dock
+
 /**
  * Highlight the active navbar item based on current URL path.
  */
@@ -16,7 +18,7 @@ function setActiveNavItem() {
     } else {
       el.classList.remove('active');
     }
-  });
+}  );
 }
 
 /**
@@ -25,46 +27,48 @@ function setActiveNavItem() {
 function initThemeToggle() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
-  btn.addEventListener('click', () => {
-    toggleTheme();
-  });
+  btn.addEventListener('click', () => toggleTheme());
 }
 
 /**
  * Smooth-scroll to the projects section with a fixed offset.
- * Also pushes /#projects into the browser history so the URL is bookmarkable.
+ * Uses pushState so the URL fragment is bookmarkable and back/forward work.
  */
 function scrollToProjects() {
   const section = document.getElementById('projects');
   if (!section) return;
-  history.pushState(null, '', '/#projects');
-  const top = section.getBoundingClientRect().top + window.scrollY - 80;
+  window.history.pushState(null, '', '/#projects');
+  const top = section.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
   window.scrollTo({ top, behavior: 'smooth' });
 }
 
 /**
- * Handle the case where the page is loaded with /#projects already in the URL.
- * Scrolls the user to the section after the page finishes rendering.
+ * Smooth-scroll to the top and strip the #projects fragment.
+ * Uses pushState so back/forward button can navigate back to /#projects.
+ */
+function scrollToHome() {
+  window.history.pushState('', document.title, '/');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/**
+ * Handle direct page load with /#projects in the URL.
+ * Prevents the browser jump, shows the page from the top, then
+ * smoothly animates down to the projects section.
  */
 function handleDeepLink() {
   if (window.location.hash !== '#projects') return;
 
-  // Disable default browser scroll restoration so we control the scroll position
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  // Start from the top, then smoothly animate to the section
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
-  setTimeout(() => {
-    scrollToProjects();
-  }, 300);
+  setTimeout(() => scrollToProjects(), 300);
 }
 
 /**
- * Initialise smooth scroll for same-page anchor links with offset correction.
+ * Initialise smooth-scroll click handlers for dock and anchor links.
  */
 function initSmoothScroll() {
-  // My Projects anchor — push hash and scroll with offset
+  // My Projects dock / anchor → scroll to section + push hash
   document.querySelectorAll('a[href="#projects"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
@@ -72,38 +76,42 @@ function initSmoothScroll() {
     });
   });
 
-  // All other same-page anchor links
+  // All other same-page anchors
   document.querySelectorAll('a[href^="#"]:not([href="#projects"])').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     });
   });
 
-  // Home dock icon — smooth scroll to top and strip any hash fragment
+  // Home dock icon → scroll to top and strip any fragment
   const homeLink = document.querySelector('.dock-icon[data-path="/"]');
   if (homeLink) {
     homeLink.addEventListener('click', (e) => {
       const path = window.location.pathname;
       if (path === '/' || path.endsWith('index.html') || path === '') {
         e.preventDefault();
-        if (window.location.hash) {
-          history.pushState('', document.title, window.location.pathname + window.location.search);
-        }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollToHome();
       }
     });
   }
 }
 
 /**
- * ScrollSpy: sync the URL fragment and My Projects dock active state with scroll.
- * Uses replaceState (no history noise) while scrolling; pushState only on explicit
- * dock clicks (so back/forward button works as expected).
+ * ScrollSpy: bidirectionally sync the URL fragment and dock active state with
+ * the user's scroll position.
+ *
+ * Uses replaceState while scrolling (no history noise).
+ * Uses pushState only on explicit dock clicks so back/forward still works.
+ *
+ * The symmetric rootMargin ("-25% 0px -25% 0px") ensures the IntersectionObserver
+ * fires reliably when the section enters OR exits the viewport — in both scroll
+ * directions. The previous "-20% 0px -60% 0px" margin only covered 20% of the
+ * viewport, causing upward-scroll exit events to be missed.
  */
 function initScrollSpy() {
   const projectsSection = document.getElementById('projects');
@@ -112,43 +120,46 @@ function initScrollSpy() {
 
   if (!projectsSection) return;
 
-  // Track previous state to avoid unnecessary replaceState calls
-  let prevInView = null; // null = not yet observed
+  // String guard: tracks the currently active section to avoid redundant updates
+  let activeSection = null; // null = not yet determined
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const inView = entry.isIntersecting;
-      if (inView === prevInView) return; // no change — skip
-      prevInView = inView;
+      if (entry.isIntersecting) {
+        // Projects section entered the viewport → activate My Projects
+        if (activeSection === 'projects') return; // no change
+        activeSection = 'projects';
 
-      if (inView) {
         if (projectsLink) projectsLink.classList.add('active');
         if (homeLink) homeLink.classList.remove('active');
-        // Update URL to /#projects without creating a history entry
         window.history.replaceState(null, '', '/#projects');
       } else {
+        // Projects section left the viewport → restore Home
+        if (activeSection === 'home') return; // no change
+        activeSection = 'home';
+
         if (projectsLink) projectsLink.classList.remove('active');
         setActiveNavItem();
-        // Restore clean URL without the fragment
-        window.history.replaceState(
-          '',
-          document.title,
-          window.location.pathname + window.location.search
-        );
+        // Explicitly push "/" to guarantee the fragment is stripped
+        window.history.replaceState('', document.title, '/');
       }
     });
   }, {
     root: null,
-    rootMargin: '-20% 0px -60% 0px',
+    rootMargin: '-25% 0px -25% 0px', // symmetric — fires on both entry and exit
     threshold: 0
   });
 
   observer.observe(projectsSection);
 
-  // Back / Forward button: scroll to the correct section when history changes
+  // Back / Forward button support
   window.addEventListener('popstate', () => {
     if (window.location.hash === '#projects') {
-      scrollToProjects();
+      const section = document.getElementById('projects');
+      if (section) {
+        const top = section.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
