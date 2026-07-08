@@ -97,7 +97,7 @@ export default function WorkSection() {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="p-0 pl-11 md:pl-13 text-sm text-muted-foreground">
+          <AccordionContent className="p-0 pl-0 sm:pl-11 md:pl-13 text-sm text-muted-foreground">
             {/* Domain / Industry information (plain text, no bullet, same style as description) */}
             <div className="text-sm text-muted-foreground leading-relaxed mt-2">
               {work.domain}

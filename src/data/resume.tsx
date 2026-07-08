@@ -9,9 +9,9 @@ export const DATA = {
   location: "Bangalore, India",
   locationLink: "https://www.google.com/maps/place/Bangalore",
   description:
-    "Product Designer | UX-UI Designer | AI Product Design — 13+ years creating intuitive, user-centered designs.",
+    "Product Designer | UX-UI Designer | AI Product Design",
   summary:
-    "Experienced designer with 13 years of creating intuitive, **user-centered designs**. Proficient in design tools: Figma | Sketch | Adobe Suite | Illustrator. Working knowledge of AI tools: Cursor, Vercel, Antigravity, Claude etc. Expertise in **wireframing, prototyping, and high-fidelity UI design**. Strong understanding of user research, user flows, and usability principles. Cross-team collaboration experience with product, developers, and marketers. Knowledgeable in front-end and **AI-driven workflows** for design feasibility.",
+    "Experienced designer with 13 years of creating intuitive, **user-centered designs**. Proficient in design tools: Figma | Sketch | Adobe Suite | Illustrator. Working knowledge of AI tools: Cursor, Vercel, Antigravity, Claude etc.\n\nExpertise in **wireframing, prototyping, and high-fidelity UI design** with a strong understanding of user research, user flows, and usability principles. Experienced in cross-team collaboration with product, developers, and marketers, and knowledgeable in front-end and **AI-driven workflows** for design feasibility.",
   avatarUrl: "/me.png",
   skills: [
     { name: "Figma" },

@@ -37,9 +37,6 @@ export default function Page() {
       </section>
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
-          </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
               <Markdown>
@@ -70,18 +67,20 @@ export default function Page() {
                 key={education.school}
                 delay={BLUR_FADE_DELAY * 8 + index * 0.05}
               >
-                <div className="flex flex-col gap-1 w-full text-left">
-                  {/* Degree / Program Name */}
-                  <div className="font-semibold text-base text-foreground">
-                    {education.degree}
+                <div className="flex items-center justify-between w-full text-left">
+                  <div className="flex-1 min-w-0 flex flex-col gap-1">
+                    {/* Degree / Program Name */}
+                    <div className="font-semibold text-base text-foreground">
+                      {education.degree}
+                    </div>
+                    {/* Institute / School Name */}
+                    <div className="font-sans text-sm text-muted-foreground">
+                      {education.school}
+                    </div>
                   </div>
-                  {/* Institute / School Name */}
-                  <div className="font-sans text-sm text-muted-foreground">
-                    {education.school}
-                  </div>
-                  {/* Year and location details */}
-                  <div className="font-sans text-sm text-muted-foreground/80">
-                    {education.start} - {education.end} {education.location ? `• ${education.location}` : ""}
+                  {/* Completion Year */}
+                  <div className="text-sm tabular-nums text-muted-foreground text-right flex-none">
+                    {education.end}
                   </div>
                 </div>
               </BlurFade>
