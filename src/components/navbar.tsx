@@ -18,70 +18,46 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isProjectsInView, setIsProjectsInView] = useState(false);
 
-  // ── Deep-link: if page opened with /#projects, smooth scroll there on mount ──
-  useEffect(() => {
-    if (pathname !== "/") return;
-    if (window.location.hash !== "#projects") return;
-
-    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
-
-    const timer = setTimeout(() => {
-      const el = document.getElementById("projects");
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    }, 300);
-
-    return () => clearTimeout(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // run once on initial mount only
-
-  // ── ScrollSpy: visual dock active state only — no URL changes ─────────────
   useEffect(() => {
     if (pathname !== "/") {
       setIsProjectsInView(false);
       return;
     }
 
-    const section = document.getElementById("projects");
-    if (!section) return;
+    const projectsSection = document.getElementById("projects");
+    if (!projectsSection) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setIsProjectsInView(entry.isIntersecting),
+      ([entry]) => {
+        setIsProjectsInView(entry.isIntersecting);
+      },
       {
         root: null,
-        rootMargin: "-20% 0px -20% 0px",
+        rootMargin: "-20% 0px -60% 0px", // Trigger when projects section occupies middle viewport
         threshold: 0,
       }
     );
 
-    observer.observe(section);
+    observer.observe(projectsSection);
     return () => observer.disconnect();
   }, [pathname]);
 
-  // Home dock click: scroll to top and strip any fragment from the URL
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/" && pathname === "/") {
       e.preventDefault();
-      window.history.pushState("", document.title, "/");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  // My Projects dock click: push /#projects to URL, smooth scroll to section
   const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
     if (name === "Projects" && pathname === "/") {
       e.preventDefault();
-      window.history.pushState(null, "", "/#projects");
-      const el = document.getElementById("projects");
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        const top = projectsSection.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top, behavior: "smooth" });
       }
     }
-    // On other pages, href="/#projects" navigates naturally — no interception needed
   };
 
   const getNavbarItemClass = (href: string) => {
