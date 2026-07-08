@@ -53,8 +53,8 @@ export default function WorkSection() {
           className="w-full border-b-0 grid gap-2"
         >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
-            <div className="flex items-center gap-x-3 justify-between w-full text-left">
-              <div className="flex items-center gap-x-3 flex-1 min-w-0">
+            <div className="flex items-center justify-between w-full text-left">
+              <div className="flex items-center gap-x-0 sm:gap-x-3 flex-1 min-w-0">
                 <LogoImage src={work.logoUrl} alt={work.company} />
                 <div className="flex-1 min-w-0 gap-1 flex flex-col">
                   {/* Job Title (16px) with toggle icon beside it */}
