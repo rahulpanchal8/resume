@@ -371,7 +371,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
 }
 
@@ -422,13 +422,16 @@ section {
 
 .work-title {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--foreground);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .work-domain {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-style: italic;
   color: var(--muted-foreground);
   opacity: 0.85;
@@ -438,11 +441,24 @@ section {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
   color: var(--muted-foreground);
   text-align: right;
   flex-shrink: 0;
+}
+
+.mobile-date {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .desktop-date {
+    display: none;
+  }
+  .mobile-date {
+    display: inline;
+  }
 }
 
 .accordion-content {
