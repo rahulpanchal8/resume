@@ -101,24 +101,40 @@ function initSmoothScroll() {
 }
 
 /**
- * ScrollSpy: highlight the My Projects dock item whenever the projects
- * section enters the active zone of the viewport.
+ * ScrollSpy: sync the URL fragment and My Projects dock active state with scroll.
+ * Uses replaceState (no history noise) while scrolling; pushState only on explicit
+ * dock clicks (so back/forward button works as expected).
  */
 function initScrollSpy() {
   const projectsSection = document.getElementById('projects');
   const projectsLink = document.querySelector('.dock-icon[href="#projects"]');
   const homeLink = document.querySelector('.dock-icon[data-path="/"]');
 
-  if (!projectsSection || !projectsLink) return;
+  if (!projectsSection) return;
+
+  // Track previous state to avoid unnecessary replaceState calls
+  let prevInView = null; // null = not yet observed
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        projectsLink.classList.add('active');
+      const inView = entry.isIntersecting;
+      if (inView === prevInView) return; // no change — skip
+      prevInView = inView;
+
+      if (inView) {
+        if (projectsLink) projectsLink.classList.add('active');
         if (homeLink) homeLink.classList.remove('active');
+        // Update URL to /#projects without creating a history entry
+        window.history.replaceState(null, '', '/#projects');
       } else {
-        projectsLink.classList.remove('active');
+        if (projectsLink) projectsLink.classList.remove('active');
         setActiveNavItem();
+        // Restore clean URL without the fragment
+        window.history.replaceState(
+          '',
+          document.title,
+          window.location.pathname + window.location.search
+        );
       }
     });
   }, {
@@ -128,6 +144,15 @@ function initScrollSpy() {
   });
 
   observer.observe(projectsSection);
+
+  // Back / Forward button: scroll to the correct section when history changes
+  window.addEventListener('popstate', () => {
+    if (window.location.hash === '#projects') {
+      scrollToProjects();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 }
 
 /**
@@ -136,7 +161,7 @@ function initScrollSpy() {
 export function initNavigation() {
   setActiveNavItem();
   initThemeToggle();
-  handleDeepLink();   // must run before initSmoothScroll so click handlers aren't duplicated
+  handleDeepLink();
   initSmoothScroll();
   initScrollSpy();
 }

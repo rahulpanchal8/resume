@@ -18,76 +18,102 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isProjectsInView, setIsProjectsInView] = useState(false);
 
-  // ScrollSpy: highlight My Projects dock item when projects section is in viewport
   useEffect(() => {
     if (pathname !== "/") {
       setIsProjectsInView(false);
       return;
     }
 
+    const scrollToSection = (id: string) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
+    };
+
+    // ── Deep-link: if page opened as /#projects, scroll there after DOM settles ──
+    let deepLinkTimer: ReturnType<typeof setTimeout> | null = null;
+    if (window.location.hash === "#projects") {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      deepLinkTimer = setTimeout(() => scrollToSection("projects"), 300);
+    }
+
+    // ── ScrollSpy + URL sync ───────────────────────────────────────────────────
     const projectsSection = document.getElementById("projects");
-    if (!projectsSection) return;
+    let observer: IntersectionObserver | null = null;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsProjectsInView(entry.isIntersecting);
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: 0,
+    if (projectsSection) {
+      let prevInView: boolean | null = null; // null = not yet observed
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          const inView = entry.isIntersecting;
+          if (inView === prevInView) return; // no change — skip replaceState
+          prevInView = inView;
+
+          setIsProjectsInView(inView);
+
+          // replaceState keeps URL in sync without adding browser history entries
+          if (inView) {
+            window.history.replaceState(null, "", "/#projects");
+          } else {
+            window.history.replaceState(
+              "",
+              document.title,
+              window.location.pathname + window.location.search
+            );
+          }
+        },
+        {
+          root: null,
+          rootMargin: "-20% 0px -60% 0px",
+          threshold: 0,
+        }
+      );
+
+      observer.observe(projectsSection);
+    }
+
+    // ── Back / Forward button support ──────────────────────────────────────────
+    const onPopState = () => {
+      if (window.location.hash === "#projects") {
+        scrollToSection("projects");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-    );
+    };
+    window.addEventListener("popstate", onPopState);
 
-    observer.observe(projectsSection);
-    return () => observer.disconnect();
+    return () => {
+      if (deepLinkTimer) clearTimeout(deepLinkTimer);
+      observer?.disconnect();
+      window.removeEventListener("popstate", onPopState);
+    };
   }, [pathname]);
 
-  // Deep-link: on initial page load with /#projects, scroll to section after render
-  useEffect(() => {
-    if (pathname !== "/") return;
-    if (typeof window === "undefined") return;
-    if (window.location.hash !== "#projects") return;
-
-    // Disable browser's default scroll restoration so we control the position
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-    // Start at top, then smoothly animate down after DOM is ready
-    window.scrollTo(0, 0);
-    const timer = setTimeout(() => {
-      const section = document.getElementById("projects");
-      if (section) {
-        const top = section.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    }, 300);
-    return () => clearTimeout(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty deps — run once on mount only
-
-  // Home dock click: smooth scroll to top and strip the hash fragment
+  // Home dock click: smooth scroll to top, strip fragment with pushState
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/" && pathname === "/") {
       e.preventDefault();
-      history.pushState("", document.title, window.location.pathname + window.location.search);
+      window.history.pushState("", document.title, window.location.pathname + window.location.search);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  // My Projects dock click: push /#projects into URL, then smooth scroll with offset
+  // My Projects dock click: push /#projects then smooth-scroll with offset
   const handleSocialClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
     if (name === "Projects") {
       if (pathname === "/") {
         e.preventDefault();
-        history.pushState(null, "", "/#projects");
-        const section = document.getElementById("projects");
-        if (section) {
-          const top = section.getBoundingClientRect().top + window.scrollY - 80;
+        window.history.pushState(null, "", "/#projects");
+        const el = document.getElementById("projects");
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
           window.scrollTo({ top, behavior: "smooth" });
         }
       }
-      // If not on the home page, the href="/#projects" takes over naturally
+      // On other pages href="/#projects" navigates naturally
     }
   };
 
