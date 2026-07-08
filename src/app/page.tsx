@@ -70,30 +70,18 @@ export default function Page() {
                 key={education.school}
                 delay={BLUR_FADE_DELAY * 8 + index * 0.05}
               >
-                <div className="flex items-center gap-x-3 justify-between">
-                  <div className="flex items-center gap-x-3 flex-1 min-w-0">
-                    {education.logoUrl ? (
-                      <img
-                        src={education.logoUrl}
-                        alt={education.school}
-                        className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
-                      />
-                    ) : (
-                      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
-                    )}
-                    <div className="flex-1 min-w-0 flex flex-col gap-0.5">
-                      <div className="font-semibold leading-none text-base text-foreground">
-                        {education.school}
-                      </div>
-                      <div className="font-sans text-sm text-muted-foreground">
-                        {education.degree}
-                      </div>
-                    </div>
+                <div className="flex flex-col gap-1 w-full text-left">
+                  {/* Degree / Program Name */}
+                  <div className="font-semibold text-base text-foreground">
+                    {education.degree}
                   </div>
-                  <div className="flex items-center gap-1 text-sm tabular-nums text-muted-foreground text-right flex-none">
-                    <span>
-                      {education.start} - {education.end}
-                    </span>
+                  {/* Institute / School Name */}
+                  <div className="font-sans text-sm text-muted-foreground">
+                    {education.school}
+                  </div>
+                  {/* Year and location details */}
+                  <div className="font-sans text-sm text-muted-foreground/80">
+                    {education.start} - {education.end} {education.location ? `• ${education.location}` : ""}
                   </div>
                 </div>
               </BlurFade>

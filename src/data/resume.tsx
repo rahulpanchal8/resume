@@ -177,6 +177,7 @@ export const DATA = {
       logoUrl: "",
       start: "2016",
       end: "2016",
+      location: "Vadodara, Gujarat, India",
     },
     {
       school: "Gujarat University",
@@ -185,6 +186,7 @@ export const DATA = {
       logoUrl: "",
       start: "2007",
       end: "2010",
+      location: "Gujarat, India",
     },
     {
       school: "Image Institute of Digital Technology",
@@ -193,6 +195,7 @@ export const DATA = {
       logoUrl: "",
       start: "2009",
       end: "2010",
+      location: "Vadodara, Gujarat, India",
     },
   ],
   projects: [

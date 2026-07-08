@@ -16,7 +16,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+      <div className="hidden sm:block size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
     );
   }
 
@@ -24,7 +24,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+      className="hidden sm:block size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
       onError={() => setImageError(true)}
     />
   );
@@ -82,10 +82,6 @@ export default function WorkSection() {
                   <div className="font-sans text-sm text-muted-foreground">
                     {work.company} &bull; {work.location}
                   </div>
-                  {/* Industry / Domain (14px) */}
-                  <div className="font-sans text-sm text-muted-foreground/80 italic">
-                    {work.domain}
-                  </div>
                 </div>
               </div>
               {/* Duration (14px) */}
@@ -102,6 +98,10 @@ export default function WorkSection() {
             </div>
           </AccordionTrigger>
           <AccordionContent className="p-0 pl-11 md:pl-13 text-sm text-muted-foreground">
+            {/* Domain / Industry information (plain text, no bullet, same style as description) */}
+            <div className="text-sm text-muted-foreground leading-relaxed mt-2">
+              {work.domain}
+            </div>
             <ul className="list-disc pl-4 space-y-1.5 mt-2">
               {work.points.map((point, idx) => (
                 <li key={idx} className="leading-relaxed">
