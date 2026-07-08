@@ -200,6 +200,24 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "PrivateCircle Markets",
+      href: "/projects/privatecircle-markets",
+      dates: "July 2021 – Present",
+      active: true,
+      description:
+        "PrivateCircle Markets is an AI-powered private market platform designed to help startups connect with investors and enable investors to discover, evaluate, and manage investment opportunities through data-driven insights.",
+      technologies: [
+        "Figma",
+        "Design Systems",
+        "Wireframing",
+        "Prototyping",
+        "AI Workflow",
+      ],
+      links: [],
+      image: "/Fold 1.png",
+      video: "",
+    },
+    {
       title: "Chat Collect",
       href: "https://chatcollect.com",
       dates: "Jan 2024 - Feb 2024",
