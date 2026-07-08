@@ -9,24 +9,28 @@ export const DATA = {
   location: "Bangalore, India",
   locationLink: "https://www.google.com/maps/place/Bangalore",
   description:
-    "Product Designer & UX-UI Designer with 13+ years of experience creating intuitive, user-centered designs.",
+    "Product Designer | UX-UI Designer | AI Product Design — 13+ years creating intuitive, user-centered designs.",
   summary:
-    "Experienced designer with 13 years of creating intuitive, **user-centered designs**. Proficient in design tools like Figma, Sketch, Adobe XD, and Illustrator. Working knowledge of AI tools such as Cursor, Vercel, and Lovable. Expertise in **wireframing, prototyping, and high-fidelity UI design** with a strong understanding of user research, user flows, and usability principles. Cross-team collaboration experience with product, developers, and marketers. Knowledgeable in front-end and AI-driven workflows for design feasibility.",
+    "Experienced designer with 13 years of creating intuitive, **user-centered designs**. Proficient in design tools: Figma | Sketch | Adobe Suite | Illustrator. Working knowledge of AI tools: Cursor, Vercel, Antigravity, Claude etc. Expertise in **wireframing, prototyping, and high-fidelity UI design**. Strong understanding of user research, user flows, and usability principles. Cross-team collaboration experience with product, developers, and marketers. Knowledgeable in front-end and **AI-driven workflows** for design feasibility.",
   avatarUrl: "/me.png",
   skills: [
     { name: "Figma" },
     { name: "Sketch" },
-    { name: "Adobe XD" },
+    { name: "Adobe Suite" },
     { name: "Illustrator" },
     { name: "Wireframing" },
     { name: "Prototyping" },
-    { name: "UI Design" },
+    { name: "High-Fidelity UI" },
     { name: "UX Research" },
     { name: "User Flows" },
     { name: "Usability Testing" },
     { name: "Design Systems" },
+    { name: "Information Architecture" },
     { name: "Cursor" },
     { name: "Vercel" },
+    { name: "Antigravity" },
+    { name: "Claude" },
+    { name: "AI-driven Workflows" },
     { name: "HTML/CSS" },
   ],
   navbar: [
@@ -34,7 +38,7 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "rahull3@live.com",
+    email: "rahul13@live.com",
     tel: "+919016178418",
     social: {
       Projects: {
@@ -63,7 +67,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:rahull3@live.com",
+        url: "mailto:rahul13@live.com",
         icon: Icons.email,
         navbar: true,
       },
@@ -81,7 +85,7 @@ export const DATA = {
       start: "July 2021",
       end: "Present",
       description:
-        "Domain: Financial data platform and app | Fundraiser & investment platform [B2B]. Led UX/UI design for PrivateCircle Markets platform. Contributed to fast product iterations with efficient, AI-assisted workflows. Designed journeys, flows, wireframes, and prototypes. Ran usability tests and improved onboarding experience. Handled design for multiple products: Markets, Networks, Research & Connect.",
+        "Fintech | Financial Data Platform | Fundraising & Investment Platform | B2B & B2C SaaS. Led UX/UI design across 5+ product platforms including Markets, Research, Connect, Networks and AskPC. Designed 100+ user flows, wireframes, prototypes and high-fidelity interfaces across complex financial data products. Delivered 50+ feature enhancements and UX improvements through continuous product iteration and stakeholder collaboration. Designed and developed AskPC, an AI-powered private market research platform, enabling users to explore company intelligence, funding data, investor insights, financial information and market analysis through conversational workflows. Reduced design iteration cycles by adopting AI-assisted workflows, rapid prototyping and improved collaboration processes. Conducted UX reviews, usability evaluations, and design validations to identify friction points and improve user experience.",
     },
     {
       company: "Vardaam Solutions",
@@ -93,19 +97,19 @@ export const DATA = {
       start: "April 2017",
       end: "May 2021",
       description:
-        "Domain: UX solution provider for dentist, surgeons, vehicle sellers [B2B]. Created wireframes and prototypes for web and mobile apps. Conducted product research and crafted intuitive user interfaces. Identified and resolved UX challenges for seamless experiences. Created UI mockups that showcase product functionality and aesthetics.",
+        "B2B SaaS Solutions | Healthcare Technology | Automotive Platforms. Designed 30+ web and mobile application experiences across healthcare, automotive and business platforms. Created user journeys, information architecture, wireframes, prototypes and high-fidelity UI designs. Conducted UX research and usability analysis to improve product experiences. Developed reusable UI patterns and design guidelines to improve consistency. Collaborated with developers and stakeholders to ensure smooth implementation and design feasibility.",
     },
     {
       company: "Odysseus Solutions",
       href: "https://www.odysseussolutions.com",
       badges: [],
       location: "Vadodara, Gujarat, India",
-      title: "Web Designer | Product Designer",
+      title: "Product Designer | Web Designer",
       logoUrl: "",
       start: "January 2016",
       end: "March 2017",
       description:
-        "Domain: Cruise booking engine | Flight & Hotel booking platform [B2B + B2C]. Designed clean and elegant E-Commerce Websites, Mobile Apps, Landing Pages, Member Areas, and Checkout Processes. Created engaging site concepts based on user flows and customer needs. Built clean and effective graphic templates and style guides.",
+        "Travel Technology | E-commerce | Booking Platforms | B2B & B2C SaaS. Designed 15+ major digital experiences including websites, mobile interfaces, landing pages, booking flows and customer portals. Designed an end-to-end cruise guest experience platform that centralized activity discovery, booking, onboard schedules, guest tracking, billing management, service requests, ordering and cruise information. Created user flows and UI experiences for cruise, flight and hotel products. Developed wireframes, mockups and reusable design components.",
     },
     {
       company: "VP InfoTech",
@@ -117,7 +121,7 @@ export const DATA = {
       start: "September 2013",
       end: "January 2016",
       description:
-        "Domain: Website, graphic design and social media marketing [B2B]. Created website and software layouts, wireframes, and mockups. Designed flyers, posters, email flyers, merchandise, logos, web banners, business cards, icons, blog layouts, brochures, magazine covers, forms, and catalogs. Managed social media marketing and postings.",
+        "Web Design | Digital Marketing | Branding. Designed 250+ digital assets including websites, software interfaces, banners, brochures, email campaigns and marketing materials. Created wireframes, UI layouts, mockups, icons, logos and visual communication assets. Collaborated with clients and internal teams to translate requirements into effective design solutions.",
     },
     {
       company: "Creative-Edge",
@@ -129,7 +133,7 @@ export const DATA = {
       start: "August 2011",
       end: "September 2013",
       description:
-        "Domain: Website, graphic design and social media marketing [B2B]. Designed website and software layouts. Created flyers, posters, logos, banners, business cards, icons, and more. Developed video presentations, flash ads, and search engine display ads. Managed and optimized social media profiles, strategy, and ads.",
+        "Web Design | Digital Marketing | Branding. Designed 40+ websites, landing pages, and digital marketing assets for business clients. Created UI layouts, banners, advertisements, presentations, logos and promotional materials. Developed visual content strategies for social media platforms and digital campaigns.",
     },
   ],
   education: [
@@ -144,7 +148,7 @@ export const DATA = {
     {
       school: "Gujarat University",
       href: "https://www.gujaratuniversity.ac.in",
-      degree: "Bachelor in Computer Application (BCA)",
+      degree: "Bachelor in Computer Application",
       logoUrl: "",
       start: "2007",
       end: "2010",
