@@ -214,7 +214,7 @@ export const DATA = {
         "AI Workflow",
       ],
       links: [],
-      image: "/Fold 1.png",
+      image: "/fold1.png",
       video: "",
     },
     {

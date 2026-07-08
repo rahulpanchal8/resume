@@ -69,7 +69,7 @@ export default function PrivateCircleMarketsPage() {
         <BlurFade delay={0.25}>
           <div className="overflow-hidden border rounded-2xl shadow-xl ring-2 ring-border/20 mt-4 bg-muted">
             <img
-              src="/Fold 1.png"
+              src="/fold1.png"
               alt="PrivateCircle Markets Product Overview"
               className="w-full h-auto object-cover"
             />
@@ -160,32 +160,32 @@ export default function PrivateCircleMarketsPage() {
               "Deal-flow discovery and tracking",
               "Investment portfolio management",
             ],
-            image: "/Fold 1.png",
+            image: "/fold1.png",
           },
           {
             title: "Investor Profiles & Matching",
             desc: "Designed investor profile experiences to help founders identify relevant investors based on investment sectors, ticket size, portfolio history, investment preferences, and location.",
-            image: "/Fold 4.png",
+            image: "/fold4.png",
           },
           {
             title: "Fundraiser Dashboard",
             desc: "Created a centralized dashboard experience for founders to manage investor connections, meeting requests, deal progress, investor conversations, and fundraising activities.",
-            image: "/Fold 6.png",
+            image: "/fold6.png",
           },
           {
             title: "Investor Dashboard",
             desc: "Designed investor workflows to manage startup discovery, saved opportunities, portfolio tracking, active connections, and meeting schedules.",
-            image: "/Fold 5.png",
+            image: "/fold5.png",
           },
           {
             title: "Investor Profiles & Deal Insights",
             desc: "Created detailed investor and company profile experiences with structured information, investment history, sectors, keywords, and deal insights.",
-            image: "/Fold 2.png",
+            image: "/fold2.png",
           },
           {
             title: "Meeting Scheduling Experience",
             desc: "Designed a complete investor-founder meeting workflow including meeting requests, time slot selection, confirmation, calendar scheduling, and completion flow.",
-            image: "/Fold 7.png",
+            image: "/fold7.png",
           },
           {
             title: "Signup & Onboarding Experience",
@@ -197,7 +197,7 @@ export default function PrivateCircleMarketsPage() {
               "Account completion journey",
               "Terms and verification screens",
             ],
-            image: "/Fold 3.png",
+            image: "/fold3.png",
           },
         ].map((section, idx) => (
           <BlurFade key={idx} delay={0.1 + idx * 0.05}>
