@@ -84,8 +84,17 @@ export const DATA = {
       logoUrl: "",
       start: "July 2021",
       end: "Present",
-      description:
-        "Fintech | Financial Data Platform | Fundraising & Investment Platform | B2B & B2C SaaS. Led UX/UI design across 5+ product platforms including Markets, Research, Connect, Networks and AskPC. Designed 100+ user flows, wireframes, prototypes and high-fidelity interfaces across complex financial data products. Delivered 50+ feature enhancements and UX improvements through continuous product iteration and stakeholder collaboration. Designed and developed AskPC, an AI-powered private market research platform, enabling users to explore company intelligence, funding data, investor insights, financial information and market analysis through conversational workflows. Reduced design iteration cycles by adopting AI-assisted workflows, rapid prototyping and improved collaboration processes. Conducted UX reviews, usability evaluations, and design validations to identify friction points and improve user experience.",
+      domain: "Fintech | Financial Data Platform | Fundraising & Investment Platform | B2B & B2C",
+      points: [
+        "Led UX/UI design across 5+ product platforms including Markets, Research, Connect, Networks and AskPC - B2B & B2C SaaS",
+        "Designed 100+ user flows, wireframes, prototypes and high-fidelity interfaces across complex financial data products",
+        "Delivered 50+ feature enhancements and UX improvements through continuous product iteration and stakeholder collaboration",
+        "Designed and developed AskPC, an AI-powered private market research platform, enabling users to explore company intelligence, funding data, investor insights, financial information and market analysis through conversational workflows",
+        "Reduced design iteration cycles by adopting AI-assisted workflows, rapid prototyping and improved collaboration processes",
+        "Conducted UX reviews, usability evaluations, and design validations to identify friction points and improve user experience",
+        "Collaborated with product, engineering and business teams to deliver scalable solutions for B2B fintech users",
+      ],
+      description: "",
     },
     {
       company: "Vardaam Solutions",
@@ -96,8 +105,15 @@ export const DATA = {
       logoUrl: "",
       start: "April 2017",
       end: "May 2021",
-      description:
-        "B2B SaaS Solutions | Healthcare Technology | Automotive Platforms. Designed 30+ web and mobile application experiences across healthcare, automotive and business platforms. Created user journeys, information architecture, wireframes, prototypes and high-fidelity UI designs. Conducted UX research and usability analysis to improve product experiences. Developed reusable UI patterns and design guidelines to improve consistency. Collaborated with developers and stakeholders to ensure smooth implementation and design feasibility.",
+      domain: "B2B SaaS Solutions | Healthcare Technology | Automotive Platforms",
+      points: [
+        "Designed 30+ web and mobile application experiences across healthcare, automotive and business platforms",
+        "Created user journeys, information architecture, wireframes, prototypes and high-fidelity UI designs",
+        "Conducted UX research and usability analysis to improve product experiences",
+        "Developed reusable UI patterns and design guidelines to improve consistency",
+        "Collaborated with developers and stakeholders to ensure smooth implementation and design feasibility",
+      ],
+      description: "",
     },
     {
       company: "Odysseus Solutions",
@@ -108,8 +124,15 @@ export const DATA = {
       logoUrl: "",
       start: "January 2016",
       end: "March 2017",
-      description:
-        "Travel Technology | E-commerce | Booking Platforms | B2B & B2C SaaS. Designed 15+ major digital experiences including websites, mobile interfaces, landing pages, booking flows and customer portals. Designed an end-to-end cruise guest experience platform that centralized activity discovery, booking, onboard schedules, guest tracking, billing management, service requests, ordering and cruise information. Created user flows and UI experiences for cruise, flight and hotel products. Developed wireframes, mockups and reusable design components.",
+      domain: "Travel Technology | E-commerce | Booking Platforms | B2B & B2C SaaS",
+      points: [
+        "Designed 15+ major digital experiences including websites, mobile interfaces, landing pages, booking flows and customer portals",
+        "Designed an end-to-end cruise guest experience platform that centralized activity discovery, booking, onboard schedules, guest tracking, billing management, service requests, ordering and cruise information",
+        "Created user flows and UI experiences for cruise, flight and hotel products",
+        "Developed wireframes, mockups and reusable design components",
+        "Improved user journeys across search, booking and checkout experiences",
+      ],
+      description: "",
     },
     {
       company: "VP InfoTech",
@@ -120,8 +143,13 @@ export const DATA = {
       logoUrl: "",
       start: "September 2013",
       end: "January 2016",
-      description:
-        "Web Design | Digital Marketing | Branding. Designed 250+ digital assets including websites, software interfaces, banners, brochures, email campaigns and marketing materials. Created wireframes, UI layouts, mockups, icons, logos and visual communication assets. Collaborated with clients and internal teams to translate requirements into effective design solutions.",
+      domain: "Web Design | Digital Marketing | Branding",
+      points: [
+        "Designed 250+ digital assets including websites, software interfaces, banners, brochures, email campaigns and marketing materials",
+        "Created wireframes, UI layouts, mockups, icons, logos and visual communication assets",
+        "Collaborated with clients and internal teams to translate requirements into effective design solutions",
+      ],
+      description: "",
     },
     {
       company: "Creative-Edge",
@@ -132,8 +160,13 @@ export const DATA = {
       logoUrl: "",
       start: "August 2011",
       end: "September 2013",
-      description:
-        "Web Design | Digital Marketing | Branding. Designed 40+ websites, landing pages, and digital marketing assets for business clients. Created UI layouts, banners, advertisements, presentations, logos and promotional materials. Developed visual content strategies for social media platforms and digital campaigns.",
+      domain: "Web Design | Digital Marketing | Branding",
+      points: [
+        "Designed 40+ websites, landing pages, and digital marketing assets for business clients",
+        "Created UI layouts, banners, advertisements, presentations, logos and promotional materials",
+        "Developed visual content strategies for social media platforms and digital campaigns",
+      ],
+      description: "",
     },
   ],
   education: [

@@ -32,7 +32,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
 export default function WorkSection() {
   return (
-    <Accordion type="single" collapsible className="w-full grid gap-6">
+    <Accordion type="single" collapsible defaultValue="PrivateCircle" className="w-full grid gap-6">
       {DATA.work.map((work) => (
         <AccordionItem
           key={work.company}
@@ -43,29 +43,18 @@ export default function WorkSection() {
             <div className="flex items-center gap-x-3 justify-between w-full text-left">
               <div className="flex items-center gap-x-3 flex-1 min-w-0">
                 <LogoImage src={work.logoUrl} alt={work.company} />
-                <div className="flex-1 min-w-0 gap-0.5 flex flex-col">
-                  <div className="font-semibold leading-none flex items-center gap-2">
-                    {work.company}
-                    <span className="relative inline-flex items-center w-3.5 h-3.5">
-                      <ChevronRight
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-300 ease-out",
-                          "translate-x-0 opacity-0",
-                          "group-hover:translate-x-1 group-hover:opacity-100",
-                          "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0"
-                        )}
-                      />
-                      <ChevronDown
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-200",
-                          "opacity-0 rotate-0",
-                          "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
-                        )}
-                      />
-                    </span>
-                  </div>
-                  <div className="font-sans text-sm text-muted-foreground">
+                <div className="flex-1 min-w-0 gap-1 flex flex-col">
+                  {/* Job Title */}
+                  <div className="font-semibold text-sm text-foreground">
                     {work.title}
+                  </div>
+                  {/* Company Name + Location */}
+                  <div className="font-sans text-xs text-muted-foreground">
+                    {work.company} &bull; {work.location}
+                  </div>
+                  {/* Industry / Domain */}
+                  <div className="font-sans text-xs text-muted-foreground/80 italic">
+                    {work.domain}
                   </div>
                 </div>
               </div>
@@ -73,11 +62,34 @@ export default function WorkSection() {
                 <span>
                   {work.start} - {work.end ?? "Present"}
                 </span>
+                <span className="relative inline-flex items-center w-3.5 h-3.5 ml-1">
+                  <ChevronRight
+                    className={cn(
+                      "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-300 ease-out",
+                      "translate-x-0 opacity-0",
+                      "group-hover:translate-x-1 group-hover:opacity-100",
+                      "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0"
+                    )}
+                  />
+                  <ChevronDown
+                    className={cn(
+                      "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-200",
+                      "opacity-0 rotate-0",
+                      "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
+                    )}
+                  />
+                </span>
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            {work.description}
+          <AccordionContent className="p-0 pl-11 md:pl-13 text-xs md:text-sm text-muted-foreground">
+            <ul className="list-disc pl-4 space-y-1.5 mt-2">
+              {work.points.map((point, idx) => (
+                <li key={idx} className="leading-relaxed">
+                  {point}
+                </li>
+              ))}
+            </ul>
           </AccordionContent>
         </AccordionItem>
       ))}
