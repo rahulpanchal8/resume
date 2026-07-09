@@ -33,7 +33,7 @@
       padding: 3rem 1.5rem 6rem;
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 3.5rem;
     }
     
     .back-link {
@@ -154,10 +154,10 @@
     }
     
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--foreground);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
     
     .grid-3-col {
@@ -168,31 +168,15 @@
     
     @media (min-width: 768px) {
       .grid-3-col {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 2fr;
       }
     }
 
     .overview-text p {
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
       color: var(--muted-foreground);
       line-height: 1.6;
       margin-bottom: 1rem;
-    }
-
-    .target-users-box {
-      padding: 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      background: rgba(var(--muted), 0.1);
-    }
-
-    .target-users-box h4 {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      color: var(--muted-foreground);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
       margin-top: 0;
     }
 
@@ -224,17 +208,11 @@
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      .skills-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      gap: 0.75rem;
     }
 
     .skill-card {
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       border: 1px solid var(--border);
       border-radius: 0.75rem;
       background: var(--card);
@@ -251,146 +229,40 @@
     }
 
     .skill-card span {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 500;
       color: var(--foreground);
     }
 
-    /* Whiteboard Planning */
-    .whiteboard-container {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .whiteboard-header {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .whiteboard-header h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 0;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .whiteboard-header p {
-      font-size: 0.8125rem;
-      color: #64748b;
-      margin: 0;
-    }
-
-    .whiteboard-grid {
+    .brainstorm-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .whiteboard-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .whiteboard-col {
-      border: 1px dashed #cbd5e1;
-      border-radius: 1rem;
-      padding: 1.25rem;
-      background: #ffffff;
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
 
-    .whiteboard-col h4 {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #475569;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin: 0;
+    .brainstorm-image-wrap {
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: var(--muted);
     }
 
-    .sticky-note {
-      padding: 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.75rem;
-      line-height: 1.5;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    .brainstorm-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.2s;
     }
 
-    .sticky-yellow {
-      background: #fef08a;
-      border-left: 4px solid #facc15;
-      color: #713f12;
-      transform: rotate(-1deg);
-    }
-
-    .sticky-green {
-      background: #bbf7d0;
-      border-left: 4px solid #4ade80;
-      color: #14532d;
-      transform: rotate(1deg);
-    }
-
-    .sticky-blue {
-      background: #bfdbfe;
-      border-left: 4px solid #60a5fa;
-      color: #1e3a8a;
-      transform: rotate(-1.5deg);
-    }
-
-    .sticky-pink {
-      background: #fbcfe8;
-      border-left: 4px solid #f472b6;
-      color: #831843;
-      transform: rotate(1deg);
-    }
-
-    .priority-badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .priority-badge {
-      padding: 0.25rem 0.5rem;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.375rem;
-      font-size: 0.625rem;
-      font-weight: 500;
-      color: #475569;
-    }
-
-    /* Wireframes */
-    .wireframe-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .wireframe-grid {
-        grid-template-columns: 1fr 2fr;
-      }
+    .brainstorm-image-wrap:hover img {
+      transform: scale(1.03);
     }
 
     .wireframe-preview {
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 1.5rem;
-      padding: 1.5rem;
-      position: relative;
+      padding: 1rem;
     }
 
     .wireframe-preview img {
@@ -400,7 +272,6 @@
       filter: grayscale(1);
     }
 
-    /* Challenges & Solutions */
     .cards-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -416,7 +287,7 @@
     .challenge-solution-card {
       padding: 1.5rem;
       border: 1px solid var(--border);
-      border-radius: 1.5rem;
+      border-radius: 1.25rem;
       background: var(--card);
       display: flex;
       flex-direction: column;
@@ -430,11 +301,11 @@
     }
 
     .badge-c, .badge-s {
-      width: 1.75rem;
-      height: 1.75rem;
+      width: 1.5rem;
+      height: 1.5rem;
       border-radius: 9999px;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -452,7 +323,7 @@
     }
 
     .challenge-solution-card h3 {
-      font-size: 1rem;
+      font-size: 0.875rem;
       font-weight: 700;
       color: var(--foreground);
       margin: 0;
@@ -469,20 +340,14 @@
       border-top: 1px solid rgba(var(--border), 0.6);
       padding-top: 0.75rem;
       display: flex;
-      gap: 0.75rem;
-    }
-
-    /* Before & After */
-    .compare-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     .compare-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     @media (min-width: 768px) {
@@ -491,49 +356,47 @@
       }
     }
 
-    .compare-box {
-      padding: 1.25rem;
+    .compare-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .compare-image-wrap {
       border: 1px solid var(--border);
       border-radius: 1rem;
-    }
-
-    .compare-box-before {
-      background: rgba(254, 226, 226, 0.05);
-      border-color: #fee2e2;
-    }
-
-    .compare-box-after {
-      background: rgba(209, 250, 229, 0.05);
-      border-color: #d1fae5;
+      overflow: hidden;
+      position: relative;
     }
 
     .compare-tag {
-      font-size: 0.625rem;
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      padding: 0.125rem 0.375rem;
+      font-size: 0.5625rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      border-radius: 0.25rem;
+      color: #ffffff;
+    }
+
+    .compare-tag-before { background: #f43f5e; }
+    .compare-tag-after { background: #10b981; }
+
+    .compare-col img {
+      width: 100%;
+      height: auto;
       display: block;
-      margin-bottom: 0.25rem;
     }
 
-    .compare-tag-before { color: #f43f5e; }
-    .compare-tag-after { color: #10b981; }
-
-    .compare-box h4 {
-      font-size: 0.875rem;
-      font-weight: 700;
-      margin: 0 0 0.25rem;
-      color: var(--foreground);
-    }
-
-    .compare-box p {
+    .compare-desc {
       font-size: 0.75rem;
       color: var(--muted-foreground);
       line-height: 1.5;
       margin: 0;
     }
 
-    /* Metrics */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -542,7 +405,7 @@
 
     @media (min-width: 768px) {
       .kpi-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
@@ -556,14 +419,14 @@
 
     .kpi-num {
       display: block;
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: var(--primary);
       margin-bottom: 0.25rem;
     }
 
     .kpi-label {
-      font-size: 0.625rem;
+      font-size: 0.5625rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -573,10 +436,10 @@
     .metrics-desc {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
-      font-size: 0.875rem;
+      gap: 1rem;
+      font-size: 0.75rem;
       color: var(--muted-foreground);
-      line-height: 1.6;
+      line-height: 1.5;
       margin-top: 1.5rem;
     }
 
@@ -588,79 +451,72 @@
 
     .metric-bullet {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .metric-dot {
-      width: 0.5rem;
-      height: 0.5rem;
+      width: 0.375rem;
+      height: 0.375rem;
       border-radius: 9999px;
       background: #10b981;
       flex-shrink: 0;
       margin-top: 0.375rem;
     }
 
-    /* Showcase */
     .showcase-grid {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 2.5rem;
     }
 
     .gallery-item {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .gallery-image-wrap {
       border: 1px solid var(--border);
-      border-radius: 1.5rem;
+      border-radius: 1.25rem;
       overflow: hidden;
       background: var(--muted);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
     }
 
     .gallery-image-wrap img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.3s;
+      transition: transform 0.2s;
     }
 
     .gallery-image-wrap:hover img {
-      transform: scale(1.01);
-    }
-
-    .gallery-text {
-      padding: 0 0.5rem;
+      transform: scale(1.008);
     }
 
     .gallery-title {
       font-weight: 700;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       color: var(--foreground);
-      margin: 0 0 0.125rem;
+      margin: 0;
     }
 
     .gallery-caption {
       font-size: 0.75rem;
       color: var(--muted-foreground);
-      line-height: 1.5;
-      margin: 0;
+      line-height: 1.4;
+      margin: 0.125rem 0 0;
     }
 
-    /* Demo card */
     .demo-banner {
-      padding: 2rem;
+      padding: 1.5rem;
       border: 1px solid var(--border);
-      border-radius: 1.5rem;
+      border-radius: 1.25rem;
       background: #f8fafc;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 1rem;
       text-align: center;
     }
 
@@ -671,34 +527,21 @@
       }
     }
 
-    .demo-banner-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
     .demo-banner-title {
-      font-size: 1.125rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #0f172a;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
     }
 
-    @media (min-width: 768px) {
-      .demo-banner-title {
-        justify-content: flex-start;
-      }
-    }
-
     .demo-banner-desc {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       color: #64748b;
-      line-height: 1.5;
-      max-width: 500px;
-      margin: 0;
+      line-height: 1.4;
+      margin: 0.25rem 0 0;
+      max-width: 480px;
     }
   </style>
 </head>
@@ -725,13 +568,13 @@
         <h1 class="hero-title">PrivateCircle Markets</h1>
         <p class="hero-subtitle">AI-Powered Fundraising & Deal-Flow Marketplace</p>
         <p class="hero-description">
-          PrivateCircle Markets is an AI-powered private market platform designed to help startups connect with investors and enable investors to discover, evaluate, and manage investment opportunities through data-driven insights.
+          PrivateCircle Markets simplifies fundraising discovery and founder-investor matching through structured, audited corporate profiles and automated calendar schedules.
         </p>
         
         <div class="metadata-grid">
           <div class="metadata-item">
             <span class="metadata-label">Role</span>
-            <span class="metadata-value">Product Design | UX/UI Design</span>
+            <span class="metadata-value">Product Design | UX/UI</span>
           </div>
           <div class="metadata-item">
             <span class="metadata-label">Industry</span>
@@ -743,7 +586,7 @@
           </div>
           <div class="metadata-item">
             <span class="metadata-label">Users</span>
-            <span class="metadata-value">Founders, Investors, HNIs</span>
+            <span class="metadata-value">Founders, HNIs, VCs</span>
           </div>
         </div>
 
@@ -752,154 +595,106 @@
         </div>
 
         <div class="hero-image-wrap mt-4">
-          <img src="../../fold1.png" alt="PrivateCircle Markets Overview" />
+          <img src="../../markets-final1.png" alt="PrivateCircle Markets Dashboard" />
         </div>
       </div>
 
       <!-- Overview Section -->
       <div class="section-divider grid-3-col blur-fade visible">
-        <div class="overview-text">
-          <h2 class="section-title">Product Overview</h2>
-          <p>
-            <strong>Business Context:</strong> Private equity and startup fundraising are notoriously fragmented. Unlike public exchanges, information is locked behind closed doors, relationships determine deal-flow, and manual paperwork delays critical timelines. Investors spend dozens of hours doing manual verification and searching through scattered company records.
-          </p>
-          <p>
-            <strong>Problem Statement:</strong> Startup founders struggle to target qualified investors who match their exact industry vertical and ticket criteria. Conversely, high-net-worth investors (HNIs) and VCs suffer from extreme decision fatigue caused by unfiltered pitches and manual meeting coordination processes.
-          </p>
-          <p>
-            <strong>Product Vision:</strong> To establish an end-to-end fundraising marketplace where founders easily present audited company profiles, while investors dynamically discover match suggestions and coordinate meetings directly in a central, trusted platform.
-          </p>
-        </div>
-        <div class="target-users-box">
-          <h4>Target Users</h4>
-          <ul class="target-users-list">
+        <div>
+          <h2 class="section-title">Overview</h2>
+          <ul class="target-users-list" style="margin-top: 1rem;">
+            <li style="font-size: 0.6875rem; font-weight: 700; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Target Users</li>
             <li><span class="bullet-dot"></span> High-Net-Worth Individuals (HNIs)</li>
             <li><span class="bullet-dot"></span> Venture Capitalists & PE Directors</li>
             <li><span class="bullet-dot"></span> Startup Founders & Capital Advisors</li>
-            <li><span class="bullet-dot"></span> Intermediary Investment Bankers</li>
           </ul>
+        </div>
+        <div class="overview-text">
+          <p>
+            <strong>Business Context:</strong> Private equity and startup fundraising are notoriously fragmented. Relationships determine deal-flow, information is siloed, and manual paperwork delays critical timelines. Investors spend dozens of hours doing manual verification and searching through scattered company records.
+          </p>
+          <p>
+            <strong>Problem Statement:</strong> Startup founders struggle to target qualified investors who match their exact vertical and ticket criteria, while investors suffer from decision fatigue caused by unfiltered pitches and manual meeting coordination processes.
+          </p>
+          <p>
+            <strong>Objectives:</strong> To establish an end-to-end fundraising marketplace where founders present audited company profiles, while investors dynamically discover match suggestions and coordinate meetings directly in a central, trusted platform.
+          </p>
         </div>
       </div>
 
       <!-- My Role & Responsibilities -->
-      <div class="section-divider blur-fade visible">
-        <h2 class="section-title">My Role & Responsibilities</h2>
-        <p style="font-size: 0.9375rem; color: var(--muted-foreground); line-height: 1.6; margin-bottom: 1.5rem; max-width: 600px;">
-          As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts and user flows.
-        </p>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Product Strategy</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>UX Research</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Information IA</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>User Flows</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Wireframing</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Interaction UI</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Design System</span>
-          </div>
-          <div class="skill-card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>QA Validation</span>
-          </div>
+      <div class="section-divider grid-3-col blur-fade visible">
+        <div>
+          <h2 class="section-title">Role & Responsibilities</h2>
         </div>
-      </div>
-
-      <!-- Brainstorming Whiteboard -->
-      <div class="section-divider blur-fade visible">
-        <div class="whiteboard-container">
-          <div class="whiteboard-header">
-            <h3>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.25rem; height:1.25rem; color:var(--primary);"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
-              Brainstorming & Planning Canvas
-            </h3>
-            <p>A recreation of our product mapping workspace. We aligned pain points and journeys before sketching widgets.</p>
-          </div>
-
-          <div class="whiteboard-grid">
-            <div class="whiteboard-col">
-              <h4>Inputs & Pain Points</h4>
-              <div class="sticky-note sticky-yellow">
-                <strong>Investor Pain Point:</strong>
-                "HNIs are overwhelmed by scattered pitch documents. They need a modular dashboard they can scan in 2 minutes."
-              </div>
-              <div class="sticky-note sticky-green">
-                <strong>Business Metric:</strong>
-                "Get users to explore company details online rather than downloading offline PDFs."
-              </div>
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
+            As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts, user flows, and interaction patterns.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Product Strategy</span>
             </div>
-
-            <div class="whiteboard-col">
-              <h4>Journey Maps</h4>
-              <div class="sticky-note sticky-blue">
-                <strong>Investor Path:</strong>
-                Search Feed ➔ Smart Filters ➔ Direct Connection Request ➔ Automated Time Slots ➔ Cal Booking.
-              </div>
-              <div class="sticky-note sticky-pink">
-                <strong>Founder Path:</strong>
-                Onboarding KYC ➔ Profile Cards ➔ Accept Connection Alerts.
-              </div>
+            <div class="skill-card">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>UX Research & IA</span>
             </div>
-
-            <div class="whiteboard-col">
-              <h4>Feature Priority</h4>
-              <div class="priority-badge-group">
-                <span class="priority-badge">AI Match Rating (High)</span>
-                <span class="priority-badge">Automated Scheduling (P0)</span>
-                <span class="priority-badge">Intermediary flow (H2)</span>
-                <span class="priority-badge">Saved lists (P1)</span>
-              </div>
-              <p style="font-size: 0.6875rem; color: #64748b; margin: 0; line-height: 1.4;">
-                Conclusion: Integrate connection logs, active meetings, and suggestions on a unified tabbed dashboard viewport.
-              </p>
+            <div class="skill-card">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Wireframing UI</span>
+            </div>
+            <div class="skill-card">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Design System QA</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Wireframes -->
-      <div class="section-divider blur-fade visible">
-        <h2 class="section-title">Wireframes & Early Exploration</h2>
-        <div class="wireframe-grid">
-          <div style="display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
-            <h3 style="font-size: 1.125rem; font-weight: 700; color: var(--foreground); margin: 0;">Exploring Layout Alternatives</h3>
-            <p style="font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
-              Initially, we designed tabular rows. However, usability tests showed users couldn't distinguish between VC funds and individual angels.
-            </p>
-            <p style="font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
-              We pivoted to a grid card interface with a floating popover card for matching factors, keeping users on the same page.
-            </p>
+      <!-- Brainstorming -->
+      <div class="section-divider grid-3-col blur-fade visible">
+        <div>
+          <h2 class="section-title">Brainstorming</h2>
+          <p style="font-size: 0.75rem; color: var(--muted-foreground); line-height: 1.5; margin: 0.5rem 0 0;">
+            Analyzing user pain points and mapping workflows. We aligned discovery lanes, matching logic, and slot coordination parameters.
+          </p>
+        </div>
+        <div class="brainstorm-grid">
+          <div class="brainstorm-image-wrap">
+            <img src="../../markets-brainstorm0.jpg" alt="Whiteboard Session 1" />
           </div>
-          <div class="wireframe-preview">
-            <img src="../../fold7.png" alt="Wireframe Prototype exploration" />
+          <div class="brainstorm-image-wrap">
+            <img src="../../markets-brainstorm1.jpg" alt="Whiteboard Session 2" />
           </div>
+          <div class="brainstorm-image-wrap">
+            <img src="../../markets-brainstorm3.png" alt="Whiteboard Session 3" />
+          </div>
+          <div class="brainstorm-image-wrap">
+            <img src="../../markets-brainstorm4.jpg" alt="Whiteboard Session 4" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Wireframing / Prototype -->
+      <div class="section-divider grid-3-col blur-fade visible">
+        <div>
+          <h2 class="section-title">Wireframes & Prototype</h2>
+          <p style="font-size: 0.75rem; color: var(--muted-foreground); line-height: 1.5; margin: 0.5rem 0 0;">
+            Visualizing grid cards and modular navigation layouts. Early wireframes focused on validating match rating alerts before high-fidelity visual production.
+          </p>
+        </div>
+        <div class="wireframe-preview">
+          <img src="../../markets-prototype2.png" alt="Wireframe Map Exploration" />
         </div>
       </div>
 
       <!-- Challenges & Solutions -->
       <div class="section-divider blur-fade visible">
-        <h2 class="section-title">UX Challenges & Solutions</h2>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">UX Challenges & Solutions</h2>
         <div class="cards-grid">
           
-          <!-- Card 1 -->
           <div class="challenge-solution-card">
             <div class="card-row-top">
               <span class="badge-c">C</span>
@@ -910,13 +705,12 @@
             </p>
             <div class="solution-line">
               <span class="badge-s">S</span>
-              <p style="color: var(--foreground); font-weight: 600;">
-                Introduced progressive disclosure with interactive badges displaying criteria match rates instantly.
+              <p style="color: var(--foreground); font-weight: 600; font-size: 0.75rem;">
+                Introduced progressive disclosure with interactive badges displaying match criteria statistics instantly on the list card.
               </p>
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="challenge-solution-card">
             <div class="card-row-top">
               <span class="badge-c">C</span>
@@ -927,8 +721,8 @@
             </p>
             <div class="solution-line">
               <span class="badge-s">S</span>
-              <p style="color: var(--foreground); font-weight: 600;">
-                Created a tabbed system grouping Connect requests, Active connections, and Meetings in a unified view.
+              <p style="color: var(--foreground); font-weight: 600; font-size: 0.75rem;">
+                Created a tabbed system grouping Connect requests, active matches, and schedule logs in a unified view.
               </p>
             </div>
           </div>
@@ -936,43 +730,54 @@
         </div>
       </div>
 
-      <!-- Before & After -->
+      <!-- Before & After UI UX -->
       <div class="section-divider blur-fade visible">
-        <h2 class="section-title" style="text-align: center;">Before & After UX Improvements</h2>
-        <div class="compare-list">
-          
-          <!-- Row 1 -->
-          <div class="compare-row">
-            <div class="compare-box compare-box-before">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Before & After UI/UX</h2>
+        
+        <div class="compare-row">
+          <div class="compare-col">
+            <div class="compare-image-wrap">
               <span class="compare-tag compare-tag-before">Before</span>
-              <h4>Static financial data tables</h4>
-              <p>Financial details were presented in flat text blocks. Users performed manual comparisons.</p>
+              <img src="../../markets-before1.png" alt="Before: Static company lists" />
             </div>
-            <div class="compare-box compare-box-after">
-              <span class="compare-tag compare-tag-after">After</span>
-              <h4>Interactive dashboards with hierarchy</h4>
-              <p>Commitments are mapped in visual progress bars paired with matching algorithms.</p>
-            </div>
+            <p class="compare-desc">
+              <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
+            </p>
           </div>
+          <div class="compare-col">
+            <div class="compare-image-wrap">
+              <span class="compare-tag compare-tag-after">After</span>
+              <img src="../../markets-final2.png" alt="After: Unified investor match details" />
+            </div>
+            <p class="compare-desc">
+              <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
+            </p>
+          </div>
+        </div>
 
-          <!-- Row 2 -->
-          <div class="compare-row">
-            <div class="compare-box compare-box-before">
+        <div class="compare-row">
+          <div class="compare-col">
+            <div class="compare-image-wrap">
               <span class="compare-tag compare-tag-before">Before</span>
-              <h4>Complex investor search</h4>
-              <p>Finding profiles required inputting precise query matches, resulting in high empty search states.</p>
+              <img src="../../markets-before2.png" alt="Before: Complex search forms" />
             </div>
-            <div class="compare-box compare-box-after">
-              <span class="compare-tag compare-tag-after">After</span>
-              <h4>Filtered discovery experience</h4>
-              <p>Introduced relational node-mapping, letting investors browse connections visually.</p>
-            </div>
+            <p class="compare-desc">
+              <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
+            </p>
           </div>
-
+          <div class="compare-col">
+            <div class="compare-image-wrap">
+              <span class="compare-tag compare-tag-after">After</span>
+              <img src="../../markets-final3.png" alt="After: Discovery scroll carousels" />
+            </div>
+            <p class="compare-desc">
+              <strong>After:</strong> Horizontal scroll lanes grouping categories (Super lists, AI-suggestions) and clear, structured cards.
+            </p>
+          </div>
         </div>
       </div>
 
-      <!-- Design Impact -->
+      <!-- Impact / Matrix -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Design Impact</h2>
         
@@ -987,15 +792,11 @@
           </div>
           <div class="kpi-card">
             <span class="kpi-num">5+</span>
-            <span class="kpi-label">Platforms</span>
+            <span class="kpi-label">Platform versions</span>
           </div>
           <div class="kpi-card">
-            <span class="kpi-num" style="font-size: 1.125rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">B2B+B2C</span>
-            <span class="kpi-label">SaaS Model</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-num">13+</span>
-            <span class="kpi-label">Years Exp.</span>
+            <span class="kpi-num" style="font-size: 1.125rem; margin-top: 0.35rem; margin-bottom: 0.35rem;">B2B SaaS</span>
+            <span class="kpi-label">Enterprise Model</span>
           </div>
         </div>
 
@@ -1019,46 +820,63 @@
         </div>
       </div>
 
-      <!-- Product Showcase Gallery -->
+      <!-- Final UI / Gallery -->
       <div class="section-divider blur-fade visible">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Product Showcase</h2>
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Final UI Gallery</h2>
         
         <div class="showcase-grid">
-          
           <div class="gallery-item">
             <div class="gallery-image-wrap">
-              <img src="../../fold1.png" alt="Investor Dashboard Layout" />
+              <img src="../../markets-final1.png" alt="HNI Investor Home Dashboard" />
             </div>
-            <div class="gallery-text">
-              <h4 class="gallery-title">Unified HNI Investor Dashboard</h4>
-              <p class="gallery-caption">Unifies Connect requests, active matches, and schedule logs in a clean grid layout.</p>
-            </div>
+            <p class="gallery-caption"><strong>Investor Dashboard:</strong> Houses active connection logs, portfolio tracking, and matching parameters.</p>
           </div>
 
           <div class="gallery-item">
             <div class="gallery-image-wrap">
-              <img src="../../fold2.png" alt="Match Criteria and detail profiles" />
+              <img src="../../markets-final2.png" alt="Criteria Match popover details" />
             </div>
-            <div class="gallery-text">
-              <h4 class="gallery-title">Match Criteria & Quick Connect popover</h4>
-              <p class="gallery-caption">Displays match metrics, ticket parameters, and primary CTAs when hovering over specific records.</p>
-            </div>
+            <p class="gallery-caption"><strong>Interactive Match popover:</strong> Shows detailed match checkmarks and connect CTAs.</p>
           </div>
 
           <div class="gallery-item">
             <div class="gallery-image-wrap">
-              <img src="../../fold6.png" alt="Fundraising Startup Discovery" />
+              <img src="../../markets-final3.png" alt="Discovery list carousels" />
             </div>
-            <div class="gallery-text">
-              <h4 class="gallery-title">Fundraising Startup Discovery Feed</h4>
-              <p class="gallery-caption">Horizontal scroll carousels classifying live commitments, recommendations, and saved cards.</p>
-            </div>
+            <p class="gallery-caption"><strong>Fundraising Lists:</strong> Segmented scroll lists for super lists and AI-driven suggestions.</p>
           </div>
 
+          <div class="gallery-item">
+            <div class="gallery-image-wrap">
+              <img src="../../markets-final4.png" alt="Investor Profiles lists" />
+            </div>
+            <p class="gallery-caption"><strong>Investor grid:</strong> Organized folders separating individual super angels and institutional venture funds.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image-wrap">
+              <img src="../../markets-final5.png" alt="Explore Network node mapping visualizer" />
+            </div>
+            <p class="gallery-caption"><strong>Explore Network Feed:</strong> Interactive network visualization graph paired with live corporate news streams.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image-wrap">
+              <img src="../../markets-final6.png" alt="Mobile layouts" />
+            </div>
+            <p class="gallery-caption"><strong>Mobile Responsive Dashboard:</strong> Visual stacks and custom bottom dock navigation shortcuts optimized for compact screens.</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-image-wrap">
+              <img src="../../markets-final7.png" alt="Integrated calendar coordinates" />
+            </div>
+            <p class="gallery-caption"><strong>Automated Booking Flow:</strong> Unified time slot selection and calendar scheduling layout.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Interactive Product Demo -->
+      <!-- Prototype Preview -->
       <div class="section-divider blur-fade visible">
         <div class="demo-banner">
           <div class="demo-banner-text">
@@ -1067,23 +885,10 @@
               Interactive Product Demo
             </h3>
             <p class="demo-banner-desc">
-              Experience the visual workflow of PrivateCircle Markets. We configured a mock dashboard showing news logs, connect states, and carousels.
+              Experience the visual interface of PrivateCircle Markets. We configured a mock dashboard showing news logs, connect states, and carousels.
             </p>
           </div>
           <a href="../../markets-demo/index.html" class="outcome-btn" style="margin: 0; background: var(--foreground); color: var(--background); shrink-0;">Preview Live Demo ➔</a>
-        </div>
-      </div>
-
-      <!-- Reflection -->
-      <div class="section-divider blur-fade visible">
-        <h2 class="section-title">Reflection & Learnings</h2>
-        <div class="metrics-desc" style="margin-top: 0; font-size: 0.8125rem;">
-          <p>
-            <strong>Fintech UX Complexity:</strong> Designing products in the private market space requires balancing dense financial structures with clean readability. Progressive disclosure and unified component libraries allowed investors to consume details incrementally without friction.
-          </p>
-          <p>
-            <strong>Cross-functional engineering:</strong> Designing the match engine and booking logs highlighted that UI layouts must account for dynamic string lengths, missing states, and latency fallback indicators cleanly.
-          </p>
         </div>
       </div>
 
