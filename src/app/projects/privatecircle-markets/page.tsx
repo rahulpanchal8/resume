@@ -2,10 +2,8 @@ import Link from "next/link";
 import { 
   ArrowLeft, 
   CheckCircle2, 
-  Target, 
   Briefcase, 
   Award, 
-  TrendingUp, 
   Lightbulb, 
   Eye, 
   Sparkles
@@ -90,7 +88,7 @@ export default function PrivateCircleMarketsPage() {
         <BlurFade delay={0.25}>
           <div className="overflow-hidden border rounded-2xl shadow-md bg-muted mt-4">
             <img
-              src="/markets-final1.png"
+              src="/assets/images/Final1.png"
               alt="PrivateCircle Markets Dashboard"
               className="w-full h-auto object-cover"
             />
@@ -158,16 +156,16 @@ export default function PrivateCircleMarketsPage() {
           <div className="md:w-2/3 flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-                <img src="/markets-brainstorm0.jpg" alt="Brainstorming Session 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                <img src="/assets/images/brainstorm0.jpg" alt="Brainstorming Session 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-                <img src="/markets-brainstorm1.jpg" alt="Brainstorming Session 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                <img src="/assets/images/brainstorm1.jpg" alt="Brainstorming Session 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-                <img src="/markets-brainstorm3.png" alt="Brainstorming Session 3" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                <img src="/assets/images/brainstorm3.png" alt="Brainstorming Session 3" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-                <img src="/markets-brainstorm4.jpg" alt="Brainstorming Session 4" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                <img src="/assets/images/brainstorm4.jpg" alt="Brainstorming Session 4" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
               </div>
             </div>
           </div>
@@ -183,12 +181,12 @@ export default function PrivateCircleMarketsPage() {
               Wireframes & Prototype
             </h2>
             <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-              Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity mockup renders.
+              Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
             </p>
           </div>
           <div className="md:w-2/3">
             <div className="overflow-hidden border rounded-xl bg-slate-50 p-4">
-              <img src="/markets-prototype2.png" alt="Prototype Wireframes Map" className="w-full h-auto object-cover rounded-lg filter grayscale shadow-xs" />
+              <img src="/assets/images/Prototype2.png" alt="Prototype Wireframes Map" className="w-full h-auto object-cover rounded-lg filter grayscale shadow-xs" />
             </div>
           </div>
         </div>
@@ -248,7 +246,7 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-3">
                 <div className="overflow-hidden border border-rose-100 rounded-xl shadow-xs relative">
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/markets-before1.png" alt="Static company lists" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/before1.png" alt="Static company lists" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1">
                   <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
@@ -257,7 +255,7 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-3">
                 <div className="overflow-hidden border border-emerald-100 rounded-xl shadow-xs relative">
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/markets-final2.png" alt="Unified investor matches layout" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Final2.png" alt="Unified investor matches layout" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1">
                   <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
@@ -270,7 +268,7 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-3">
                 <div className="overflow-hidden border border-rose-100 rounded-xl shadow-xs relative">
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/markets-before2.png" alt="Complex investor search forms" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Before2.png" alt="Complex investor search forms" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1">
                   <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
@@ -279,7 +277,7 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-3">
                 <div className="overflow-hidden border border-emerald-100 rounded-xl shadow-xs relative">
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/markets-final3.png" alt="Card Discovery Layout" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Final3.png" alt="Card Discovery Layout" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1">
                   <strong>After:</strong> Horizontal scroll lanes grouping categories (Super lists, AI-suggestions) and clear, structured cards.
@@ -351,7 +349,7 @@ export default function PrivateCircleMarketsPage() {
             {/* Gallery 1 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
               <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/markets-final1.png" alt="Unified Investor Dashboard Layout" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <img src="/assets/images/Final1.png" alt="Unified Investor Dashboard Layout" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>HNI Investor Home Dashboard:</strong> Combines connect logs, active connection lists, meetings, and target match widgets.
@@ -362,7 +360,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 group cursor-pointer">
                 <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/markets-final2.png" alt="Match criteria popover" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                  <img src="/assets/images/Final2.png" alt="Match criteria popover" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Criteria Match details:</strong> High-level checkmarks showing which parameters meet investor preferences.
@@ -371,7 +369,7 @@ export default function PrivateCircleMarketsPage() {
 
               <div className="flex flex-col gap-2 group cursor-pointer">
                 <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/markets-final3.png" alt="Startup Fundraising Discovery Lists" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                  <img src="/assets/images/Final3.png" alt="Startup Fundraising Discovery Lists" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Startup Discovery lanes:</strong> Categorized horizontal lists separating super lists and VC/PE investments.
@@ -382,7 +380,7 @@ export default function PrivateCircleMarketsPage() {
             {/* Gallery 4 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
               <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/markets-final4.png" alt="Investor Connection Profiles" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <img src="/assets/images/Final4.png" alt="Investor Connection Profiles" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>Investor profile grids:</strong> Categorized grids showing detailed institutional funds and VC managers.
@@ -393,7 +391,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 group cursor-pointer">
                 <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/markets-final5.png" alt="Explore Network with node visualizer" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                  <img src="/assets/images/Final5.png" alt="Explore Network with node visualizer" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Explore Network Feed:</strong> Interactive canvas mapping relationship nodes next to corporate news feeds.
@@ -402,7 +400,7 @@ export default function PrivateCircleMarketsPage() {
 
               <div className="flex flex-col gap-2 group cursor-pointer">
                 <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/markets-final6.png" alt="Mobile Dashboard Layouts" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                  <img src="/assets/images/Final6.png" alt="Mobile Dashboard Layouts" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Mobile Viewport Optimizations:</strong> Responsive column stacks and persistent bottom navigation shortcuts.
@@ -413,7 +411,7 @@ export default function PrivateCircleMarketsPage() {
             {/* Gallery 7 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
               <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/markets-final7.png" alt="Automated Slot Coordination and booking calendar" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <img src="/assets/images/Final7.png" alt="Automated Slot Coordination and booking calendar" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>Automated Booking slots:</strong> Simplifies investor-founder coordinate flows with integrated calendars.
@@ -423,7 +421,7 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Interactive Product Demo Banner */}
+      {/* Prototype Preview */}
       <BlurFade delay={0.7}>
         <div className="p-6 border rounded-2xl bg-slate-50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="flex flex-col gap-1.5 text-center md:text-left">
@@ -432,7 +430,7 @@ export default function PrivateCircleMarketsPage() {
               Interactive Product Demo
             </h3>
             <p className="text-xs text-muted-foreground leading-relaxed max-w-xl">
-              Experience the visual interface of PrivateCircle Markets. We built a mock investor dashboard showing active connections, carousels, network canvas widgets, and news updates.
+              Experience the visual interface of PrivateCircle Markets. We configured a mock dashboard showing news logs, connect states, and carousels.
             </p>
           </div>
           <Link
