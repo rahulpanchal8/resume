@@ -16,27 +16,45 @@ import {
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 
-// Define the groups of images for the lightbox navigation
+// Define the groups of images for the lightbox navigation with mapped section titles
 const IMAGE_GROUPS = {
-  brainstorming: [
-    { src: "/assets/images/brainstorm0.jpg", alt: "Whiteboard Session 1" },
-    { src: "/assets/images/brainstorm1.jpg", alt: "Whiteboard Session 2" },
-    { src: "/assets/images/brainstorm3.png", alt: "Whiteboard Session 3" },
-    { src: "/assets/images/brainstorm4.jpg", alt: "Whiteboard Session 4" }
-  ],
-  wireframes: [
-    { src: "/assets/images/Prototype2.png", alt: "Prototype Flow Map", title: "Prototype Flow Map", desc: "Conceptual wireframe user journey mapping out investor dashboard flows and startup profiles." },
-    { src: "/assets/images/before1.png", alt: "Low Fidelity Screen Concept", title: "Low Fidelity Screen Concept", desc: "Early layout mockups validating criteria-matching visual cards." }
-  ],
-  gallery: [
-    { src: "/assets/images/Final1.png", alt: "HNI Investor Home Dashboard", title: "Investor Dashboard", desc: "Houses active connection logs, portfolio tracking, and matching parameters." },
-    { src: "/assets/images/Final2.png", alt: "Criteria Match popover details", title: "Interactive Match popover", desc: "Shows detailed match checkmarks and connect CTAs." },
-    { src: "/assets/images/Final3.png", alt: "Discovery list carousels", title: "Fundraising Lists", desc: "Segmented scroll lists for super lists and AI-driven suggestions." },
-    { src: "/assets/images/Final4.png", alt: "Investor Profiles lists", title: "Investor grid", desc: "Organized folders separating individual super angels and institutional venture funds." },
-    { src: "/assets/images/Final5.png", alt: "Explore Network with node visualizer", title: "Explore Network Feed", desc: "Interactive network visualization graph paired with live corporate news streams." },
-    { src: "/assets/images/Final6.png", alt: "Mobile Dashboard Layouts", title: "Mobile Responsive Dashboard", desc: "Visual stacks and custom bottom dock navigation shortcuts optimized for compact screens." },
-    { src: "/assets/images/Final7.png", alt: "Automated Slot Coordination and booking calendar", title: "Automated Booking Flow", desc: "Unified time slot selection and calendar scheduling layout." }
-  ]
+  brainstorming: {
+    title: "Brainstorming",
+    images: [
+      { src: "/assets/images/brainstorm0.jpg", alt: "Whiteboard Session 1" },
+      { src: "/assets/images/brainstorm1.jpg", alt: "Whiteboard Session 2" },
+      { src: "/assets/images/brainstorm3.png", alt: "Whiteboard Session 3" },
+      { src: "/assets/images/brainstorm4.jpg", alt: "Whiteboard Session 4" }
+    ]
+  },
+  wireframes: {
+    title: "Wireframes & Prototype",
+    images: [
+      { src: "/assets/images/Prototype2.png", alt: "Prototype Flow Map" },
+      { src: "/assets/images/before1.png", alt: "Low Fidelity Screen Concept" }
+    ]
+  },
+  beforeAfter: {
+    title: "Before & After UX",
+    images: [
+      { src: "/assets/images/before1.png", alt: "Before: Static company lists" },
+      { src: "/assets/images/Final2.png", alt: "After: Unified investor matches layout" },
+      { src: "/assets/images/Before2.png", alt: "Before: Complex investor search forms" },
+      { src: "/assets/images/Final3.png", alt: "After: Card Discovery Layout" }
+    ]
+  },
+  gallery: {
+    title: "Final UI Gallery",
+    images: [
+      { src: "/assets/images/Final1.png", alt: "HNI Investor Home Dashboard" },
+      { src: "/assets/images/Final2.png", alt: "Criteria Match details" },
+      { src: "/assets/images/Final3.png", alt: "Startup Discovery lanes" },
+      { src: "/assets/images/Final4.png", alt: "Investor Connection Profiles" },
+      { src: "/assets/images/Final5.png", alt: "Explore Network node mapping visualizer" },
+      { src: "/assets/images/Final6.png", alt: "Mobile Dashboard Layouts" },
+      { src: "/assets/images/Final7.png", alt: "Automated Slot Coordination and booking calendar" }
+    ]
+  }
 };
 
 type GroupName = keyof typeof IMAGE_GROUPS;
@@ -49,7 +67,6 @@ export default function PrivateCircleMarketsPage() {
 
   // Opens lightbox for a specific image group and index
   const openLightbox = (group: GroupName, index: number) => {
-    // Lock scroll position
     document.body.style.overflow = "hidden";
     setActiveGroup(group);
     setActiveIndex(index);
@@ -66,13 +83,13 @@ export default function PrivateCircleMarketsPage() {
   const navigateNext = useCallback(() => {
     if (!activeGroup) return;
     setIsZoomed(false);
-    setActiveIndex((prev) => (prev + 1) % IMAGE_GROUPS[activeGroup].length);
+    setActiveIndex((prev) => (prev + 1) % IMAGE_GROUPS[activeGroup].images.length);
   }, [activeGroup]);
 
   const navigatePrev = useCallback(() => {
     if (!activeGroup) return;
     setIsZoomed(false);
-    setActiveIndex((prev) => (prev - 1 + IMAGE_GROUPS[activeGroup].length) % IMAGE_GROUPS[activeGroup].length);
+    setActiveIndex((prev) => (prev - 1 + IMAGE_GROUPS[activeGroup].images.length) % IMAGE_GROUPS[activeGroup].images.length);
   }, [activeGroup]);
 
   // Handle keyboard events (ESC to close, Left/Right arrow keys to navigate)
@@ -97,11 +114,9 @@ export default function PrivateCircleMarketsPage() {
     const currentTouch = e.targetTouches[0].clientX;
     const diff = touchStart - currentTouch;
     if (diff > 50) {
-      // Swipe left -> Next
       navigateNext();
       setTouchStart(null);
     } else if (diff < -50) {
-      // Swipe right -> Prev
       navigatePrev();
       setTouchStart(null);
     }
@@ -140,7 +155,7 @@ export default function PrivateCircleMarketsPage() {
           </div>
         </BlurFade>
 
-        {/* Large Featured Product Preview - Reduced border radius to rounded-xl */}
+        {/* Large Featured Product Preview - Opens Final UI Gallery */}
         <BlurFade delay={0.15}>
           <div 
             onClick={() => openLightbox("gallery", 0)}
@@ -186,7 +201,7 @@ export default function PrivateCircleMarketsPage() {
         </BlurFade>
       </div>
 
-      {/* Overview Section - Merged and concise summary (100-120 words) */}
+      {/* Overview Section */}
       <BlurFade delay={0.25}>
         <div className="flex flex-col gap-2 max-w-3xl pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Overview</h2>
@@ -217,7 +232,7 @@ export default function PrivateCircleMarketsPage() {
               { skill: "Wireframing" },
               { skill: "UI Design" },
               { skill: "Design Systems" },
-              { skill: "Prototyping" }, // Renamed from High-Fidelity Prototyping
+              { skill: "Prototyping" },
               { skill: "Design QA" }
             ].map((item, idx) => (
               <div 
@@ -232,7 +247,7 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Brainstorming Section - Same width/height aspect ratio grid */}
+      {/* Brainstorming Section */}
       <BlurFade delay={0.35}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Brainstorming</h2>
@@ -240,7 +255,7 @@ export default function PrivateCircleMarketsPage() {
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
           </p>
           <div className="grid grid-cols-2 gap-4 mt-2">
-            {IMAGE_GROUPS.brainstorming.map((img, idx) => (
+            {IMAGE_GROUPS.brainstorming.images.map((img, idx) => (
               <div 
                 key={idx}
                 onClick={() => openLightbox("brainstorming", idx)}
@@ -253,7 +268,7 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Wireframes & Prototype Section - Spanning full width one below another, Final Gallery style */}
+      {/* Wireframes & Prototype Section - Captions removed, stacked vertically */}
       <BlurFade delay={0.4}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Wireframes & Prototype</h2>
@@ -261,25 +276,21 @@ export default function PrivateCircleMarketsPage() {
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
           </p>
           
-          <div className="flex flex-col gap-8 mt-2">
-            {IMAGE_GROUPS.wireframes.map((img, idx) => (
-              <div key={idx} className="flex flex-col gap-2 group">
-                <div 
-                  onClick={() => openLightbox("wireframes", idx)}
-                  className="overflow-hidden border rounded-lg bg-slate-50 cursor-zoom-in"
-                >
-                  <img src={img.src} alt={img.alt} className="w-full h-auto object-cover filter grayscale" />
-                </div>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
-                  <strong>{img.title}:</strong> {img.desc}
-                </p>
+          <div className="flex flex-col gap-6 mt-2">
+            {IMAGE_GROUPS.wireframes.images.map((img, idx) => (
+              <div 
+                key={idx}
+                onClick={() => openLightbox("wireframes", idx)}
+                className="overflow-hidden border rounded-lg bg-slate-50 cursor-zoom-in"
+              >
+                <img src={img.src} alt={img.alt} className="w-full h-auto object-cover filter grayscale" />
               </div>
             ))}
           </div>
         </div>
       </BlurFade>
 
-      {/* Challenges & Solutions Section - Stacked vertically */}
+      {/* Challenges & Solutions Section */}
       <BlurFade delay={0.45}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
@@ -351,7 +362,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("wireframes", 1)} // before1 is at index 1 in wireframes
+                  onClick={() => openLightbox("beforeAfter", 0)} // before1.png is index 0
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
@@ -363,7 +374,7 @@ export default function PrivateCircleMarketsPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("gallery", 1)} // Final2 is index 1
+                  onClick={() => openLightbox("beforeAfter", 1)} // Final2.png is index 1
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
@@ -379,7 +390,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("wireframes", 1)} // using before2 as placeholder, let's keep Before2.png
+                  onClick={() => openLightbox("beforeAfter", 2)} // Before2.png is index 2
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
@@ -391,7 +402,7 @@ export default function PrivateCircleMarketsPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("gallery", 2)} // Final3 is index 2
+                  onClick={() => openLightbox("beforeAfter", 3)} // Final3.png is index 3
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
@@ -464,7 +475,7 @@ export default function PrivateCircleMarketsPage() {
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center">Final UI Gallery</h2>
           
           <div className="flex flex-col gap-10 mt-2">
-            {IMAGE_GROUPS.gallery.map((img, idx) => (
+            {IMAGE_GROUPS.gallery.images.map((img, idx) => (
               <div key={idx} className="flex flex-col gap-2 group">
                 <div 
                   onClick={() => openLightbox("gallery", idx)}
@@ -473,7 +484,7 @@ export default function PrivateCircleMarketsPage() {
                   <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
-                  <strong>{img.title}:</strong> {img.desc}
+                  <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
                 </p>
               </div>
             ))}
@@ -507,12 +518,23 @@ export default function PrivateCircleMarketsPage() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Modal Header */}
+          {/* Modal Header containing Section Title and Counter */}
           <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white z-50">
-            <span className="text-sm font-mono tracking-wider opacity-85">
-              {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].length}
-            </span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+              <span className="text-sm font-bold tracking-tight text-white/90">
+                {IMAGE_GROUPS[activeGroup].title}
+              </span>
+              <span className="text-xs font-mono opacity-60 hidden sm:inline">|</span>
+              <span className="text-xs font-mono tracking-wider opacity-75">
+                {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].images.length}
+              </span>
+            </div>
+            
             <div className="flex items-center gap-4">
+              {/* Extra indicator for mobile counter */}
+              <span className="text-xs font-mono tracking-wider opacity-75 sm:hidden">
+                {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].images.length}
+              </span>
               <button 
                 onClick={() => setIsZoomed(!isZoomed)}
                 className="p-2 hover:bg-white/10 rounded-lg transition-colors"
@@ -539,7 +561,7 @@ export default function PrivateCircleMarketsPage() {
             <ChevronLeft className="size-6" />
           </button>
 
-          {/* Image Canvas with Click to Toggle Zoom & Drag scroll when zoomed */}
+          {/* Image Canvas with Click to Toggle Zoom & Close on canvas click */}
           <div 
             className="w-full h-full flex items-center justify-center p-4 overflow-auto cursor-zoom-out"
             onClick={(e) => {
@@ -547,8 +569,8 @@ export default function PrivateCircleMarketsPage() {
             }}
           >
             <img
-              src={IMAGE_GROUPS[activeGroup][activeIndex].src}
-              alt={IMAGE_GROUPS[activeGroup][activeIndex].alt}
+              src={IMAGE_GROUPS[activeGroup].images[activeIndex].src}
+              alt={IMAGE_GROUPS[activeGroup].images[activeIndex].alt}
               onClick={() => setIsZoomed(!isZoomed)}
               className={`max-h-[85vh] max-w-[90vw] object-contain transition-all duration-300 ${
                 isZoomed 

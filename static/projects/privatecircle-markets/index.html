@@ -89,6 +89,13 @@
       margin-top: -0.5rem;
     }
     
+    .hero-description {
+      font-size: 1rem;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      max-width: 750px;
+    }
+    
     /* Metadata Grid with 0.75rem labels and 0.875rem values */
     .meta-cards-grid {
       display: grid;
@@ -108,7 +115,7 @@
     }
     
     .meta-card-label {
-      font-size: 0.75rem; /* Label size */
+      font-size: 0.75rem;
       font-weight: 700;
       color: #94a3b8;
       text-transform: uppercase;
@@ -116,7 +123,7 @@
     }
     
     .meta-card-value {
-      font-size: 0.875rem; /* Value size */
+      font-size: 0.875rem;
       font-weight: 600;
       color: var(--foreground);
     }
@@ -137,13 +144,14 @@
       display: block;
     }
     
+    /* Reduced section top padding & margins */
     .section-divider {
       border-top: 1px solid rgba(var(--border), 0.6);
       padding-top: 1.75rem;
       margin-top: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem; /* Reduced to 0.5rem spacing */
+      gap: 0.5rem;
     }
     
     .section-title {
@@ -237,11 +245,11 @@
       display: block;
     }
 
-    /* Wireframes Layout vertically stacked */
+    /* Wireframes Layout vertically stacked without captions */
     .wireframes-grid {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 1.5rem;
       margin-top: 0.5rem;
     }
 
@@ -251,18 +259,10 @@
       border-radius: 0.5rem;
       overflow: hidden;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .wireframe-image-container {
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
       cursor: zoom-in;
     }
 
-    .wireframe-image-container img {
+    .wireframe-preview-card img {
       width: 100%;
       height: auto;
       display: block;
@@ -526,7 +526,7 @@
       justify-content: space-between;
       align-items: center;
       color: #fff;
-      font-family: monospace;
+      font-family: var(--font-sans), monospace;
       font-size: 14px;
       z-index: 10000;
     }
@@ -740,7 +740,7 @@
               <div class="skill-card-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
               </div>
-              <span>Prototyping</span> <!-- Renamed from High-Fidelity Prototyping to Prototyping -->
+              <span>Prototyping</span>
             </div>
 
             <div class="skill-card">
@@ -778,7 +778,7 @@
         </div>
       </div>
 
-      <!-- Wireframes & Prototype - Images stacked, matching gallery style, zero padding -->
+      <!-- Wireframes & Prototype - Images stacked, captions removed -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Wireframes & Prototype</h2>
         <div class="overview-text">
@@ -790,20 +790,18 @@
               <div class="wireframe-image-container">
                 <img src="../../assets/images/Prototype2.png" alt="Prototype Wireframes Map" />
               </div>
-              <p class="gallery-caption" style="padding: 0 0.5rem 0.5rem;"><strong>Prototype Flow Map:</strong> Conceptual wireframe user journey mapping out investor dashboard flows and startup profiles.</p>
             </div>
             
             <div class="wireframe-preview-card">
               <div class="wireframe-image-container">
                 <img src="../../assets/images/before1.png" alt="Low Fidelity Screen Concept" />
               </div>
-              <p class="gallery-caption" style="padding: 0 0.5rem 0.5rem;"><strong>Low Fidelity Screen Concept:</strong> Early layout mockups validating criteria-matching visual cards.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Challenges & Solutions - Stacked vertically -->
+      <!-- Challenges & Solutions -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Challenges & Solutions</h2>
         <div class="challenges-solutions-grid">
@@ -879,7 +877,7 @@
           <div class="compare-col">
             <div class="compare-image-wrap">
               <span class="compare-tag compare-tag-after">After</span>
-              <img src="../../assets/images/Final2.png" alt="After: Unified investor match details" />
+              <img src="../../assets/images/Final2.png" alt="After: Unified investor matches layout" />
             </div>
             <p class="compare-desc">
               <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
@@ -1058,10 +1056,14 @@
     </div>
   </nav>
 
-  <!-- Dynamic Lightbox Modal Structure -->
+  <!-- Lightbox Modal -->
   <div id="lightbox-modal" class="lightbox-modal">
     <div class="lightbox-header">
-      <span id="lightbox-position">1 / 1</span>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span id="lightbox-title" style="font-weight: bold; color: #fff; font-size: 14px;"></span>
+        <span style="color: rgba(255,255,255,0.3); font-size: 12px;">|</span>
+        <span id="lightbox-position" style="color: rgba(255,255,255,0.7); font-size: 12px;"></span>
+      </div>
       <div style="display: flex; gap: 0.5rem;">
         <button id="lightbox-zoom-btn" class="lightbox-btn" title="Toggle Zoom">🔍</button>
         <button id="lightbox-close-btn" class="lightbox-btn" title="Close (ESC)">✕</button>
@@ -1077,12 +1079,13 @@
 
   <script src="../../js/app.js"></script>
 
-  <!-- Lightbox Script integration -->
+  <!-- Lightbox Script integration with Section Title mapping -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const modal = document.getElementById("lightbox-modal");
       const modalImg = document.getElementById("lightbox-img");
       const positionText = document.getElementById("lightbox-position");
+      const titleText = document.getElementById("lightbox-title");
       const closeBtn = document.getElementById("lightbox-close-btn");
       const prevBtn = document.getElementById("lightbox-prev-btn");
       const nextBtn = document.getElementById("lightbox-next-btn");
@@ -1095,10 +1098,15 @@
       let startX = 0;
       let lastScrollPosition = 0;
 
-      // Group images inside the main layout
-      // Group 1: Brainstorming (.brainstorm-grid img)
-      // Group 2: Wireframes (.wireframes-grid img)
-      // Group 3: Before & After & Gallery (combined final gallery / compare containers)
+      // Map container selector to dynamic Section Title
+      function getSectionTitle(imgElement) {
+        if (imgElement.closest(".brainstorm-grid")) return "Brainstorming";
+        if (imgElement.closest(".wireframes-grid")) return "Wireframes & Prototype";
+        if (imgElement.closest(".compare-row")) return "Before & After UX";
+        if (imgElement.closest(".showcase-grid")) return "Final UI Gallery";
+        return "Final UI Gallery"; // fallback or Hero Preview
+      }
+
       function getGroupImages(imgElement) {
         let parentContainer = imgElement.closest(".brainstorm-grid, .wireframes-grid, .showcase-grid, .compare-row");
         if (!parentContainer) {
@@ -1110,7 +1118,7 @@
 
       // Add click listener to all study images
       const studyImages = document.querySelectorAll(
-        ".hero-image-wrap img, .brainstorm-image-wrap img, .wireframe-image-container img, .compare-image-wrap img, .gallery-image-wrap img"
+        ".hero-image-wrap img, .brainstorm-image-wrap img, .wireframe-preview-card img, .compare-image-wrap img, .gallery-image-wrap img"
       );
 
       studyImages.forEach(img => {
@@ -1120,13 +1128,15 @@
           currentIndex = currentImages.indexOf(img);
           if (currentIndex === -1) currentIndex = 0;
 
-          openLightbox();
+          const title = getSectionTitle(img);
+          openLightbox(title);
         });
       });
 
-      function openLightbox() {
+      function openLightbox(sectionTitle) {
         document.body.style.overflow = "hidden";
         modal.style.display = "flex";
+        titleText.textContent = sectionTitle;
         isZoomed = false;
         modalImg.classList.remove("zoomed");
         updateImage();
