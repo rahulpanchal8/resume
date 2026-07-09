@@ -6,21 +6,12 @@ import {
   Award, 
   Lightbulb, 
   Eye, 
-  Activity, 
-  Monitor, 
-  Users, 
-  User, 
-  ShieldCheck, 
-  Compass, 
-  Layers, 
   Target, 
-  Shuffle, 
+  Users, 
   Layers2, 
-  Cpu, 
+  Sparkles, 
   Code, 
-  Heart,
-  TrendingUp,
-  Sparkles
+  Monitor
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 
@@ -31,7 +22,7 @@ export const metadata = {
 
 export default function PrivateCircleMarketsPage() {
   return (
-    <div className="w-full flex flex-col gap-20 sm:gap-28 pb-24">
+    <div className="w-full flex flex-col gap-16 sm:gap-24 pb-24">
       {/* Back Link */}
       <BlurFade delay={0.05}>
         <Link
@@ -61,7 +52,7 @@ export default function PrivateCircleMarketsPage() {
 
         {/* Large Featured Product Preview */}
         <BlurFade delay={0.15}>
-          <div className="overflow-hidden border rounded-3xl shadow-xl bg-muted ring-4 ring-border/5">
+          <div className="overflow-hidden border rounded-3xl shadow-lg bg-muted">
             <img
               src="/assets/images/Final1.png"
               alt="PrivateCircle Markets Dashboard Preview"
@@ -79,180 +70,139 @@ export default function PrivateCircleMarketsPage() {
           </div>
         </BlurFade>
 
-        {/* Redesigned Modern Metadata Cards */}
+        {/* Minimal Metadata Cards (No icons, no hover translates/shadows) */}
         <BlurFade delay={0.22}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
             
             {/* Card 1: Role */}
-            <div className="p-5 border rounded-2xl bg-white shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-blue-50/80 flex items-center justify-center text-blue-600 shrink-0">
-                <User className="size-5" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Role</span>
-                <span className="text-xs font-semibold text-slate-800">Product Design | UX/UI</span>
-              </div>
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Role</span>
+              <span className="text-xs font-semibold text-slate-800">Product Design | UX/UI</span>
             </div>
 
             {/* Card 2: Industry */}
-            <div className="p-5 border rounded-2xl bg-white shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-emerald-50/80 flex items-center justify-center text-emerald-600 shrink-0">
-                <Activity className="size-5" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Industry</span>
-                <span className="text-xs font-semibold text-slate-800">Fintech | Private Markets</span>
-              </div>
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Industry</span>
+              <span className="text-xs font-semibold text-slate-800">Fintech | Private Markets</span>
             </div>
 
             {/* Card 3: Platform */}
-            <div className="p-5 border rounded-2xl bg-white shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-purple-50/80 flex items-center justify-center text-purple-600 shrink-0">
-                <Monitor className="size-5" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Platform</span>
-                <span className="text-xs font-semibold text-slate-800">Web Application</span>
-              </div>
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Platform</span>
+              <span className="text-xs font-semibold text-slate-800">Web Application</span>
             </div>
 
             {/* Card 4: Users */}
-            <div className="p-5 border rounded-2xl bg-white shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 flex items-start gap-4">
-              <div className="size-10 rounded-xl bg-amber-50/80 flex items-center justify-center text-amber-600 shrink-0">
-                <Users className="size-5" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Users</span>
-                <span className="text-xs font-semibold text-slate-800">Founders, HNIs, VCs</span>
-              </div>
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Users</span>
+              <span className="text-xs font-semibold text-slate-800">Founders, HNIs, VCs</span>
             </div>
 
           </div>
         </BlurFade>
       </div>
 
-      {/* Overview Section */}
+      {/* Overview Section - Reduced to short summary of 2 paragraphs (~120 words) */}
       <BlurFade delay={0.25}>
         <div className="flex flex-col gap-4 max-w-3xl">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Overview</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Business Context & Problem Statement</span>
-          </div>
-          <div className="flex flex-col gap-4 text-muted-foreground leading-relaxed text-sm mt-2">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Overview</h2>
+          <div className="flex flex-col gap-4 text-muted-foreground leading-relaxed text-sm">
             <p>
-              <strong>Business Context:</strong> Private equity and startup fundraising are notoriously fragmented. Relationships determine deal-flow, information is siloed, and manual paperwork delays critical timelines. Investors spend dozens of hours doing manual verification and searching through scattered company records.
+              PrivateCircle Markets connects startup founders directly with private market investors, Venture Capitalists, and HNIs. The traditional fundraising process is highly fragmented, relying on manual relationship discovery and offline reports that create massive information silos and delay decision-making.
             </p>
             <p>
-              <strong>Problem Statement:</strong> Startup founders struggle to target qualified investors who match their exact vertical and ticket criteria, while investors suffer from decision fatigue caused by unfiltered pitches and manual meeting coordination processes.
-            </p>
-            <p>
-              <strong>Objectives:</strong> To establish an end-to-end fundraising marketplace where founders present audited company profiles, while investors dynamically discover match suggestions and coordinate meetings directly in a central, trusted platform.
+              To solve these problems, the platform provides audited corporate profiles and integrated tools. Startup founders can target matching investment parameters directly, while investors can discover investment opportunities and schedule meetings in one central location.
             </p>
           </div>
         </div>
       </BlurFade>
 
-      {/* Roles & Responsibilities Section */}
+      {/* Roles & Responsibilities Section - 3 column grid, reduced height skill cards, 8 skills */}
       <BlurFade delay={0.3}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-              <Briefcase className="size-5 text-primary" />
-              Roles & Responsibilities
-            </h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Core UX/UI Strategy & Design Ownership</span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mt-1">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+            <Briefcase className="size-5 text-primary" />
+            Roles & Responsibilities
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
             As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts, user flows, and interaction patterns.
           </p>
 
-          {/* Re-designed Skill Cards for Variety */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          {/* 3 Column Grid with minimal styling, reduced height cards (padding 0.4rem, gap 0.5rem) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
             {[
-              { skill: "Product Strategy", icon: <Target className="size-4 text-indigo-500" /> },
-              { skill: "UX Research", icon: <Users className="size-4 text-emerald-500" /> },
-              { skill: "Information Architecture", icon: <Layers className="size-4 text-blue-500" /> },
-              { skill: "User Flows", icon: <Shuffle className="size-4 text-amber-500" /> },
-              { skill: "Wireframing", icon: <Layers2 className="size-4 text-rose-500" /> },
-              { skill: "Interaction Design", icon: <Cpu className="size-4 text-indigo-500" /> },
-              { skill: "UI Design", icon: <Sparkles className="size-4 text-teal-500" /> },
-              { skill: "Design Systems", icon: <Code className="size-4 text-slate-500" /> },
-              { skill: "Prototyping", icon: <Monitor className="size-4 text-emerald-500" /> },
-              { skill: "Developer Handoff", icon: <ShieldCheck className="size-4 text-amber-500" /> },
-              { skill: "Design QA", icon: <CheckCircle2 className="size-4 text-emerald-500" /> },
-              { skill: "Cross-functional Collab", icon: <Heart className="size-4 text-rose-500" /> }
+              { skill: "Product Strategy", icon: <Target className="size-3.5 text-indigo-500" /> },
+              { skill: "UX Research", icon: <Users className="size-3.5 text-emerald-500" /> },
+              { skill: "User Flows", icon: <Users className="size-3.5 text-amber-500" /> },
+              { skill: "Wireframing", icon: <Layers2 className="size-3.5 text-rose-500" /> },
+              { skill: "UI Design", icon: <Sparkles className="size-3.5 text-teal-500" /> },
+              { skill: "Design Systems", icon: <Code className="size-3.5 text-slate-500" /> },
+              { skill: "High-Fidelity Prototyping", icon: <Monitor className="size-3.5 text-emerald-500" /> },
+              { skill: "Design QA", icon: <CheckCircle2 className="size-3.5 text-emerald-500" /> }
             ].map((item, idx) => (
               <div 
                 key={idx} 
-                className="p-4 border border-slate-100 rounded-xl bg-slate-50/40 hover:bg-white hover:border-slate-300 hover:shadow-xs transition-all duration-300 flex items-center gap-3 group cursor-default"
+                className="p-1.5 border border-slate-100 rounded-lg bg-slate-50/40 flex items-center gap-2 transition-colors duration-200 cursor-default"
+                style={{ padding: "0.4rem", gap: "0.5rem" }}
               >
-                <div className="size-8 rounded-lg bg-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                <div className="size-7 rounded-md bg-white flex items-center justify-center shadow-2xs">
                   {item.icon}
                 </div>
-                <span className="text-xs font-semibold text-slate-700">{item.skill}</span>
+                <span className="text-xs font-semibold text-slate-700 leading-none">{item.skill}</span>
               </div>
             ))}
           </div>
         </div>
       </BlurFade>
 
-      {/* Brainstorming Section */}
+      {/* Brainstorming Section - Subtitle removed */}
       <BlurFade delay={0.35}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-              <Lightbulb className="size-5 text-primary" />
-              Brainstorming
-            </h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Whiteboard Planning & Journey Mapping</span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mt-1">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+            <Lightbulb className="size-5 text-primary" />
+            Brainstorming
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
           </p>
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-2 gap-4 mt-2">
             <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-              <img src="/assets/images/brainstorm0.jpg" alt="Whiteboard Session 1" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+              <img src="/assets/images/brainstorm0.jpg" alt="Whiteboard Session 1" className="w-full h-auto object-cover" />
             </div>
             <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-              <img src="/assets/images/brainstorm1.jpg" alt="Whiteboard Session 2" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+              <img src="/assets/images/brainstorm1.jpg" alt="Whiteboard Session 2" className="w-full h-auto object-cover" />
             </div>
             <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-              <img src="/assets/images/brainstorm3.png" alt="Whiteboard Session 3" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+              <img src="/assets/images/brainstorm3.png" alt="Whiteboard Session 3" className="w-full h-auto object-cover" />
             </div>
             <div className="overflow-hidden border rounded-xl bg-muted shadow-xs">
-              <img src="/assets/images/brainstorm4.jpg" alt="Whiteboard Session 4" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+              <img src="/assets/images/brainstorm4.jpg" alt="Whiteboard Session 4" className="w-full h-auto object-cover" />
             </div>
           </div>
         </div>
       </BlurFade>
 
-      {/* Wireframes & Prototype Section */}
+      {/* Wireframes & Prototype Section - Subtitle removed */}
       <BlurFade delay={0.4}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-              <Eye className="size-5 text-primary" />
-              Wireframes & Prototype
-            </h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Layout Exploration & Grids Validation</span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mt-1">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+            <Eye className="size-5 text-primary" />
+            Wireframes & Prototype
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
           </p>
-          <div className="overflow-hidden border rounded-xl bg-slate-50 p-4 mt-4">
+          <div className="overflow-hidden border rounded-xl bg-slate-50 p-4 mt-2">
             <img src="/assets/images/Prototype2.png" alt="Prototype Wireframes Map" className="w-full h-auto object-cover rounded-lg filter grayscale shadow-xs" />
           </div>
         </div>
       </BlurFade>
 
-      {/* Challenges Section */}
+      {/* Challenges Section - Subtitle removed */}
       <BlurFade delay={0.45}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Challenges</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Key UX Friction Points & Complexities</span>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 mt-4">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Challenges</h2>
+          <div className="grid md:grid-cols-2 gap-6 mt-2">
             <div className="p-6 border rounded-2xl bg-white shadow-xs flex flex-col gap-3">
               <div className="flex items-center gap-2">
                 <span className="size-6 rounded-full bg-rose-50 flex items-center justify-center font-bold text-xs text-rose-600">1</span>
@@ -276,14 +226,11 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Solutions Section */}
+      {/* Solutions Section - Subtitle removed */}
       <BlurFade delay={0.5}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Solutions</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">UX Architecture Resolutions</span>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 mt-4">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Solutions</h2>
+          <div className="grid md:grid-cols-2 gap-6 mt-2">
             <div className="p-6 border rounded-2xl bg-white shadow-xs flex flex-col gap-3 border-emerald-100">
               <div className="flex items-center gap-2">
                 <span className="size-6 rounded-full bg-emerald-50 flex items-center justify-center font-bold text-xs text-emerald-600">1</span>
@@ -307,15 +254,12 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Before & After UX Section */}
+      {/* Before & After UX Section - Subtitle removed */}
       <BlurFade delay={0.55}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">Before & After UX</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider text-center">Visual Progression & Usability Enhancements</span>
-          </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">Before & After UX</h2>
           
-          <div className="flex flex-col gap-12 mt-4">
+          <div className="flex flex-col gap-12 mt-2">
             {/* Compare Group 1 */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-3">
@@ -363,18 +307,15 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Impact Section */}
+      {/* Impact Section - Subtitle removed */}
       <BlurFade delay={0.6}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-              <Award className="size-5 text-primary" />
-              Impact
-            </h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Metrics & observed business outcomes</span>
-          </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+            <Award className="size-5 text-primary" />
+            Impact
+          </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
             <div className="p-5 border rounded-2xl bg-muted/20 text-center">
               <span className="block text-2xl font-extrabold text-primary mb-1">100+</span>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">User flows designed</span>
@@ -418,19 +359,16 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Final UI Gallery Section */}
+      {/* Final UI Gallery Section - Subtitle removed */}
       <BlurFade delay={0.65}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">Final UI Gallery</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider text-center">Audited High-Fidelity Product Walkthrough</span>
-          </div>
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground text-center">Final UI Gallery</h2>
           
-          <div className="flex flex-col gap-12 mt-4">
+          <div className="flex flex-col gap-12 mt-2">
             {/* Gallery 1 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
-              <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/assets/images/Final1.png" alt="Unified Investor Dashboard Layout" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+              <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                <img src="/assets/images/Final1.png" alt="Unified Investor Dashboard Layout" className="w-full h-auto object-cover" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>HNI Investor Home Dashboard:</strong> Combines connect logs, active connection lists, meetings, and target match widgets.
@@ -440,8 +378,8 @@ export default function PrivateCircleMarketsPage() {
             {/* Gallery Grid */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 group cursor-pointer">
-                <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/assets/images/Final2.png" alt="Match criteria popover" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                  <img src="/assets/images/Final2.png" alt="Match criteria popover" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Criteria Match details:</strong> High-level checkmarks showing which parameters meet investor preferences.
@@ -449,8 +387,8 @@ export default function PrivateCircleMarketsPage() {
               </div>
 
               <div className="flex flex-col gap-2 group cursor-pointer">
-                <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/assets/images/Final3.png" alt="Startup Fundraising Discovery Lists" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                  <img src="/assets/images/Final3.png" alt="Startup Fundraising Discovery Lists" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Startup Discovery lanes:</strong> Categorized horizontal lists separating super lists and VC/PE investments.
@@ -460,8 +398,8 @@ export default function PrivateCircleMarketsPage() {
 
             {/* Gallery 4 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
-              <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/assets/images/Final4.png" alt="Investor Connection Profiles" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+              <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                <img src="/assets/images/Final4.png" alt="Investor Connection Profiles" className="w-full h-auto object-cover" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>Investor profile grids:</strong> Categorized grids showing detailed institutional funds and VC managers.
@@ -471,8 +409,8 @@ export default function PrivateCircleMarketsPage() {
             {/* Gallery Grid 5 & 6 */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2 group cursor-pointer">
-                <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/assets/images/Final5.png" alt="Explore Network with node visualizer" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                  <img src="/assets/images/Final5.png" alt="Explore Network with node visualizer" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Explore Network Feed:</strong> Interactive canvas mapping relationship nodes next to corporate news feeds.
@@ -480,8 +418,8 @@ export default function PrivateCircleMarketsPage() {
               </div>
 
               <div className="flex flex-col gap-2 group cursor-pointer">
-                <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                  <img src="/assets/images/Final6.png" alt="Mobile Dashboard Layouts" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+                <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                  <img src="/assets/images/Final6.png" alt="Mobile Dashboard Layouts" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>Mobile Viewport Optimizations:</strong> Responsive column stacks and persistent bottom navigation shortcuts.
@@ -491,8 +429,8 @@ export default function PrivateCircleMarketsPage() {
 
             {/* Gallery 7 */}
             <div className="flex flex-col gap-2 group cursor-pointer">
-              <div className="overflow-hidden border rounded-2xl shadow-xs hover:shadow-md transition-all bg-muted">
-                <img src="/assets/images/Final7.png" alt="Automated Slot Coordination and booking calendar" className="w-full h-auto object-cover hover:scale-[1.01] transition-transform duration-300" />
+              <div className="overflow-hidden border rounded-2xl shadow-xs bg-muted">
+                <img src="/assets/images/Final7.png" alt="Automated Slot Coordination and booking calendar" className="w-full h-auto object-cover" />
               </div>
               <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
                 <strong>Automated Booking slots:</strong> Simplifies investor-founder coordinate flows with integrated calendars.
@@ -502,35 +440,29 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Interactive Demo Section */}
+      {/* Interactive Demo Section - Subtitle removed */}
       <BlurFade delay={0.7}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-              <Sparkles className="size-5 text-blue-500 animate-spin" />
-              Interactive Demo
-            </h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Prototype Design Execution</span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mt-1">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
+            <Sparkles className="size-5 text-blue-500 animate-spin" />
+            Interactive Demo
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
             A simplified interactive investor prototype was built to validate navigation paths and screen layouts. This prototype helped test and verify dashboard widgets, horizontal carousels, and search filter responsiveness across different devices.
           </p>
         </div>
       </BlurFade>
 
-      {/* Reflection Section */}
+      {/* Reflection Section - Subtitle removed */}
       <BlurFade delay={0.75}>
-        <div className="flex flex-col gap-6 py-8 border-t border-border/60">
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Reflection</h2>
-            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Key Learnings & Business Impact Alignments</span>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 text-muted-foreground leading-relaxed text-xs sm:text-sm mt-4">
+        <div className="flex flex-col gap-4 py-8 border-t border-border/60">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Reflection</h2>
+          <div className="grid md:grid-cols-2 gap-8 text-muted-foreground leading-relaxed text-xs sm:text-sm mt-2">
             <p>
               <strong>Fintech UX Complexity:</strong> Designing products in the private market space requires balancing dense financial structures with clean readability. Progressive disclosure and unified component libraries allowed investors to consume details incrementally without friction.
             </p>
             <p>
-              <strong>Cross-functional engineering:</strong> Designing the match engine and booking logs highlighted that UI layouts must account for dynamic string lengths, missing states, and latency fallback indicators cleanly.
+              <strong>Cross-functional Engineering:</strong> Designing the match engine and booking logs highlighted that UI layouts must account for dynamic string lengths, missing states, and latency fallback indicators cleanly.
             </p>
           </div>
         </div>
