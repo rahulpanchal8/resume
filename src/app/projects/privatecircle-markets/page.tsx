@@ -5,8 +5,7 @@ import {
   Briefcase, 
   Award, 
   Lightbulb, 
-  Eye, 
-  Sparkles
+  Eye
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 
@@ -70,17 +69,6 @@ export default function PrivateCircleMarketsPage() {
               <span className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Users</span>
               <span className="text-sm font-medium text-foreground">Founders, HNIs, VCs</span>
             </div>
-          </div>
-        </BlurFade>
-
-        <BlurFade delay={0.22}>
-          <div className="flex flex-wrap gap-3 mt-2">
-            <Link
-              href="/markets-demo"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow"
-            >
-              Preview Product Demo
-            </Link>
           </div>
         </BlurFade>
 
@@ -222,7 +210,7 @@ export default function PrivateCircleMarketsPage() {
                 <h3 className="font-bold text-sm text-slate-800">Managing large amounts of financial information</h3>
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed pl-9">
-                Displaying capital allocations, cap tables, historical fund sizes, and sectors created high visual noise and cognitive overload.
+                Displaying capital allocations, cap tables, historical fund sizes, and sectors created significant visual noise and cognitive overload.
               </p>
               <div className="border-t border-slate-100 pt-3 flex items-start gap-2.5 mt-2">
                 <span className="size-6 rounded-full bg-emerald-50 flex items-center justify-center font-bold text-xs text-emerald-600 shrink-0">S</span>
@@ -421,27 +409,6 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Prototype Preview */}
-      <BlurFade delay={0.7}>
-        <div className="p-6 border rounded-2xl bg-slate-50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
-          <div className="flex flex-col gap-1.5 text-center md:text-left">
-            <h3 className="font-bold text-base text-slate-800 flex items-center justify-center md:justify-start gap-2">
-              <Sparkles className="size-5 text-blue-500 animate-spin" />
-              Interactive Product Demo
-            </h3>
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-xl">
-              Experience the visual interface of PrivateCircle Markets. We configured a mock dashboard showing news logs, connect states, and carousels.
-            </p>
-          </div>
-          <Link
-            href="/markets-demo"
-            className="inline-flex h-9 items-center justify-center rounded-xl bg-primary px-5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow shrink-0"
-          >
-            Preview Live Demo ➔
-          </Link>
-        </div>
-      </BlurFade>
-
       {/* Final Outcome */}
       <BlurFade delay={0.75}>
         <div className="p-8 border rounded-3xl bg-primary text-primary-foreground text-center flex flex-col gap-4 mt-4 shadow-xl">
@@ -449,16 +416,10 @@ export default function PrivateCircleMarketsPage() {
           <p className="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto opacity-95">
             PrivateCircle Markets evolved into a comprehensive private market ecosystem enabling founders and investors to discover opportunities, build connections, manage fundraising activities, and make informed investment decisions through structured data and intelligent workflows.
           </p>
-          <div className="mt-4 flex justify-center gap-3">
-            <Link
-              href="/markets-demo"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
-            >
-              Preview Product Demo
-            </Link>
+          <div className="mt-4 flex justify-center">
             <Link
               href="/#projects"
-              className="inline-flex h-10 items-center justify-center rounded-xl border border-background/20 bg-transparent px-6 text-sm font-semibold text-primary-foreground hover:bg-white/10 transition-colors"
+              className="inline-flex h-10 items-center justify-center rounded-xl bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
             >
               Back to Portfolio
             </Link>

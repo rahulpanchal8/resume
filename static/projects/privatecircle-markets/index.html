@@ -506,43 +506,6 @@
       line-height: 1.4;
       margin: 0.125rem 0 0;
     }
-
-    .demo-banner {
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 1.25rem;
-      background: #f8fafc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      text-align: center;
-    }
-
-    @media (min-width: 768px) {
-      .demo-banner {
-        flex-direction: row;
-        text-align: left;
-      }
-    }
-
-    .demo-banner-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .demo-banner-desc {
-      font-size: 0.75rem;
-      color: #64748b;
-      line-height: 1.4;
-      margin: 0.25rem 0 0;
-      max-width: 480px;
-    }
   </style>
 </head>
 <body>
@@ -588,10 +551,6 @@
             <span class="metadata-label">Users</span>
             <span class="metadata-value">Founders, HNIs, VCs</span>
           </div>
-        </div>
-
-        <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
-          <a href="../../markets-demo/index.html" class="outcome-btn" style="margin: 0; background: var(--foreground); color: var(--background);">Preview Product Demo</a>
         </div>
 
         <div class="hero-image-wrap mt-4">
@@ -876,32 +835,13 @@
         </div>
       </div>
 
-      <!-- Prototype Preview -->
-      <div class="section-divider blur-fade visible">
-        <div class="demo-banner">
-          <div class="demo-banner-text">
-            <h3 class="demo-banner-title">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 1.25rem; height: 1.25rem; color: #3b82f6;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              Interactive Product Demo
-            </h3>
-            <p class="demo-banner-desc">
-              Experience the visual interface of PrivateCircle Markets. We configured a mock dashboard showing news logs, connect states, and carousels.
-            </p>
-          </div>
-          <a href="../../markets-demo/index.html" class="outcome-btn" style="margin: 0; background: var(--foreground); color: var(--background); shrink-0;">Preview Live Demo ➔</a>
-        </div>
-      </div>
-
       <!-- Final Outcome -->
       <div class="outcome-box blur-fade visible">
         <h2 class="outcome-title">Final Outcome</h2>
         <p class="outcome-text">
           PrivateCircle Markets evolved into a comprehensive private market ecosystem enabling founders and investors to discover opportunities, build connections, manage fundraising activities, and make informed investment decisions through structured data and intelligent workflows.
         </p>
-        <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-          <a href="../../markets-demo/index.html" class="outcome-btn" style="margin: 0; background: var(--background); color: var(--foreground);">Preview Product Demo</a>
-          <a href="../../index.html#projects" class="outcome-btn" style="margin: 0; background: rgba(255,255,255,0.1); color: var(--primary-foreground); border: 1px solid rgba(255,255,255,0.2);">Back to Portfolio</a>
-        </div>
+        <a href="../../index.html#projects" class="outcome-btn">Back to Portfolio</a>
       </div>
 
     </main>
