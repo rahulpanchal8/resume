@@ -65,6 +65,17 @@ export default function PrivateCircleMarketsPage() {
           </div>
         </BlurFade>
 
+        <BlurFade delay={0.22}>
+          <div className="flex flex-wrap gap-3 mt-2">
+            <Link
+              href="/markets-demo"
+              className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow"
+            >
+              Preview Product Demo
+            </Link>
+          </div>
+        </BlurFade>
+
         {/* Hero Product Image */}
         <BlurFade delay={0.25}>
           <div className="overflow-hidden border rounded-2xl shadow-xl ring-2 ring-border/20 mt-4 bg-muted">
@@ -294,10 +305,16 @@ export default function PrivateCircleMarketsPage() {
           <p className="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto opacity-95">
             PrivateCircle Markets evolved into a comprehensive private market ecosystem enabling founders and investors to discover opportunities, build connections, manage fundraising activities, and make informed investment decisions through structured data and intelligent workflows.
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex justify-center gap-3">
+            <Link
+              href="/markets-demo"
+              className="inline-flex h-10 items-center justify-center rounded-xl bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
+            >
+              Preview Product Demo
+            </Link>
             <Link
               href="/#projects"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
+              className="inline-flex h-10 items-center justify-center rounded-xl border border-background/20 bg-transparent px-6 text-sm font-semibold text-primary-foreground hover:bg-white/10 transition-colors"
             >
               Back to Portfolio
             </Link>
