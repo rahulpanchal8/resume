@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrivateCircle Markets Demo Dashboard | Rahul Panchal</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      const t = localStorage.getItem('theme') || 'light';
+      if (t === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <style>
+    :root { 
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --background-demo: #f8fafc;
+    }
+
+    body {
+      background-color: var(--background-demo);
+      color: #334155;
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .demo-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 45;
+      min-height: 100vh;
+      background-color: var(--background-demo);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .case-study-back {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .case-study-back:hover {
+      color: #475569;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+    }
+
+    .logo-text span {
+      color: #2563eb;
+    }
+
+    .logo-sub {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-header {
+      height: 2.25rem;
+      border-radius: 0.75rem;
+      border: 1px solid #e2e8f0;
+      padding: 0 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      background-color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: background-color 0.2s;
+    }
+
+    .btn-header:hover {
+      background-color: #f8fafc;
+    }
+
+    .btn-header svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    .demo-main {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 2rem 1.5rem 7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* Top Grid */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 576px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 992px) {
+      .summary-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .summary-card {
+      background-color: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-radius: 1.5rem;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      box-sizing: border-box;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .card-view-all {
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .card-view-all:hover {
+      text-decoration: underline;
+    }
+
+    .card-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0.75rem 0;
+      gap: 0.25rem;
+    }
+
+    .card-illustration {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 9999px;
+      background-color: rgba(239, 246, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-illustration svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    .card-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .btn-card {
+      width: 100%;
+      height: 2.25rem;
+      border-radius: 0.75rem;
+      border: none;
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-card:hover {
+      background-color: #dbeafe;
+    }
+
+    /* Section Styles */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    .section-subtitle {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      color: #059669;
+      background-color: #ecfdf5;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.375rem;
+      text-transform: uppercase;
+    }
+
+    .badge-live::before {
+      content: "";
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 9999px;
+      background-color: #10b981;
+    }
+
+    .white-box {
+      background-color: #ffffff;
+      border: 1px solid #f1f5f9;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .super-list-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .select-filter {
+      height: 2rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e2e8f0;
+      padding: 0 0.75rem;
+      font-size: 0.625rem;
+      font-weight: 600;
+      background-color: #ffffff;
+      color: #475569;
+      cursor: pointer;
+    }
+
+    /* Carousels */
+    .carousel-container {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 4px;
+    }
+    .carousel-container::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    .startup-card {
+      min-width: 155px;
+      max-width: 155px;
+      box-sizing: border-box;
+      border: 1px solid #f8fafc;
+      background-color: #ffffff;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .startup-card {
+        min-width: 170px;
+        max-width: 170px;
+      }
+    }
+
+    .startup-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-star {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 0.875rem;
+      height: 0.875rem;
+      fill: #fbbf24;
+      color: #fbbf24;
+    }
+
+    .card-logo {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .card-startup-title {
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: #1e293b;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-startup-desc {
+      font-size: 0.6875rem;
+      color: #94a3b8;
+      margin: 0.125rem 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+    }
+
+    .blue-box {
+      background-color: rgba(239, 246, 255, 0.25);
+      border: 1px solid #dbeafe;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .suggest-sub {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .suggest-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .suggest-title {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    .suggest-view-all {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .suggest-view-all:hover {
+      text-decoration: underline;
+    }
+
+    /* CTA Grid */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .cta-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .cta-card {
+      background-color: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .cta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .cta-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    .cta-title span {
+      color: #2563eb;
+    }
+
+    .cta-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .cta-arrow {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background-color: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      flex-shrink: 0;
+    }
+
+    .cta-arrow svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* Bottom Columns */
+    .bottom-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      .bottom-columns {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .col-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .col-title {
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: #1e293b;
+      margin: 0;
+    }
+
+    .col-subtitle {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 0.125rem;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 2.5rem;
+      box-sizing: border-box;
+      border-radius: 0.75rem;
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      padding: 0 1rem 0 2.25rem;
+      font-size: 0.8125rem;
+      color: #334155;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.875rem;
+      height: 0.875rem;
+      color: #94a3b8;
+    }
+
+    .network-container {
+      border: 1px solid #f1f5f9;
+      background-color: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 250px;
+    }
+
+    .network-canvas {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      display: block;
+    }
+
+    /* News */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .news-card {
+      padding: 1rem;
+      border: 1px solid #f1f5f9;
+      background-color: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .news-card:hover {
+      border-color: #bfdbfe;
+    }
+
+    .news-headline {
+      font-weight: 700;
+      font-size: 0.8125rem;
+      color: #1e293b;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .news-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.625rem;
+      color: #94a3b8;
+      margin-top: 0.25rem;
+    }
+
+    .news-source {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    /* Fixed Bottom Nav */
+    .fixed-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #f1f5f9;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.02), 0 -2px 4px -1px rgba(0, 0, 0, 0.01);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .nav-item:hover {
+      color: #475569;
+    }
+
+    .nav-item.active {
+      color: #2563eb;
+      transform: scale(1.05);
+      font-weight: 700;
+    }
+
+    .nav-item svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .nav-label {
+      font-size: 0.5625rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* Toast */
+    .toast-box {
+      position: fixed;
+      top: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 60;
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.625rem 1.25rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-wrapper">
+    
+    <!-- Toast Message -->
+    <div id="toast" class="toast-box"></div>
+
+    <!-- Header -->
+    <header class="demo-header">
+      <div class="logo-container">
+        <a href="../privatecircle-markets/index.html" class="case-study-back">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back
+        </a>
+        <div style="display: flex; align-items: baseline; gap: 0.25rem;">
+          <div class="logo-text">private<span>circle</span></div>
+          <div class="logo-sub">markets</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-header" onclick="showToast('Dashboard list has been refreshed')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          Saved
+        </button>
+        <button class="btn-header" onclick="showToast('Skipped records are stored in settings')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          Skipped
+        </button>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="demo-main">
+
+      <!-- Summary Grid -->
+      <section class="summary-grid">
+        
+        <!-- Card 1 -->
+        <div class="summary-card">
+          <div class="card-top">
+            <span class="card-label">Connect requests</span>
+            <button class="card-view-all" onclick="showToast('Redirecting to Connect requests')">View all ➔</button>
+          </div>
+          <div class="card-center">
+            <div class="card-illustration">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            </div>
+            <h4 class="card-title">No pending requests</h4>
+            <p class="card-desc">Connect with founders & set a meeting</p>
+          </div>
+          <button class="btn-card" onclick="showToast('Opening founder connection flow')">Send request</button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="summary-card">
+          <div class="card-top">
+            <span class="card-label">Active connections</span>
+            <button class="card-view-all" onclick="showToast('Redirecting to Active connections')">View all ➔</button>
+          </div>
+          <div class="card-center">
+            <div class="card-illustration">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            </div>
+            <h4 class="card-title">Live deals found</h4>
+            <p class="card-desc">Connect with founders & set a meeting</p>
+          </div>
+          <button class="btn-card" onclick="showToast('Opening match listings')">View matches</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="summary-card">
+          <div class="card-top">
+            <span class="card-label">My portfolio</span>
+            <button class="card-view-all" onclick="showToast('Redirecting to Portfolio holdings')">View all ➔</button>
+          </div>
+          <div class="card-center">
+            <div class="card-illustration">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+            </div>
+            <h4 class="card-title">No holdings</h4>
+            <p class="card-desc">Update portfolio to get personalised deals</p>
+          </div>
+          <button class="btn-card" onclick="showToast('Opening portfolio edit wizard')">Update portfolio</button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="summary-card">
+          <div class="card-top">
+            <span class="card-label">Meetings</span>
+            <button class="card-view-all" onclick="showToast('Redirecting to Meetings console')">View all ➔</button>
+          </div>
+          <div class="card-center">
+            <div class="card-illustration">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h4 class="card-title">No meetings</h4>
+            <p class="card-desc">Currently, There are no meetings</p>
+          </div>
+          <button class="btn-card" onclick="showToast('Opening calendar scheduler')">Set meeting</button>
+        </div>
+
+      </section>
+
+      <!-- Actively Raising -->
+      <section class="white-box">
+        <div class="super-list-header">
+          <h2 class="section-title" style="font-size: 1rem;">Actively Raising</h2>
+          <span class="section-subtitle">Explore startups raising now</span>
+          <span class="badge-live" style="margin-left: 0.5rem;">Live</span>
+          <div style="margin-left: auto; display: flex; gap: 0.375rem;">
+            <select class="select-filter"><option>All filters</option></select>
+            <select class="select-filter"><option>Sort by: Relevance</option></select>
+          </div>
+        </div>
+
+        <div class="carousel-container" id="carousel-actively">
+          <div class="startup-card" onclick="showToast('Viewing NextEra Publishing details')">
+            <div class="card-logo bg-teal-500">N</div>
+            <h5 class="card-startup-title">NextEra Publishing</h5>
+            <p class="card-startup-desc">Publishing & Media</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing CrystalGrid Energy details')">
+            <svg class="card-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div class="card-logo bg-rose-500">C</div>
+            <h5 class="card-startup-title">CrystalGrid Energy</h5>
+            <p class="card-startup-desc">Power & Utilities</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing AgriNext Systems details')">
+            <div class="card-logo bg-emerald-600">A</div>
+            <h5 class="card-startup-title">AgriNext Systems</h5>
+            <p class="card-startup-desc">Agriculture</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing SkyPort Drones details')">
+            <svg class="card-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div class="card-logo bg-indigo-500">S</div>
+            <h5 class="card-startup-title">SkyPort Drones</h5>
+            <p class="card-startup-desc">Drones & Technology</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing HyperLoop Transit details')">
+            <div class="card-logo bg-purple-500">H</div>
+            <h5 class="card-startup-title">HyperLoop Transit</h5>
+            <p class="card-startup-desc">Transportation & Log.</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing MetaVista Gaming details')">
+            <div class="card-logo bg-amber-500">M</div>
+            <h5 class="card-startup-title">MetaVista Gaming</h5>
+            <p class="card-startup-desc">Gaming & Entertain.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Based on commitment -->
+      <section style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="section-header">
+          <h3 class="section-title" style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Based on commitment</h3>
+          <span class="badge-live">Live</span>
+        </div>
+
+        <div class="carousel-container" id="carousel-commitment">
+          <div class="startup-card" onclick="showToast('Viewing Davis - Toy details')">
+            <div class="card-logo bg-slate-700">D</div>
+            <h5 class="card-startup-title">Davis - Toy</h5>
+            <p class="card-startup-desc">Healthcare</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing BlueHaven Analytics details')">
+            <div class="card-logo bg-sky-500">B</div>
+            <h5 class="card-startup-title">BlueHaven Analytics</h5>
+            <p class="card-startup-desc">Data & Analytics</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing ZenithWear Apparel details')">
+            <div class="card-logo bg-orange-500">Z</div>
+            <h5 class="card-startup-title">ZenithWear Apparel</h5>
+            <p class="card-startup-desc">Fashion & Retail</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing NimbusPay details')">
+            <div class="card-logo bg-indigo-600">N</div>
+            <h5 class="card-startup-title">NimbusPay</h5>
+            <p class="card-startup-desc">Fintech</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing Solaris Dynamics details')">
+            <div class="card-logo bg-cyan-500">S</div>
+            <h5 class="card-startup-title">Solaris Dynamics</h5>
+            <p class="card-startup-desc">Renewable Energy</p>
+          </div>
+          <div class="startup-card" onclick="showToast('Viewing Skyline Ventures details')">
+            <div class="card-logo bg-violet-500">S</div>
+            <h5 class="card-startup-title">Skyline Ventures</h5>
+            <p class="card-startup-desc">Investment & PE</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Suggestion box wrapper -->
+      <section class="blue-box">
+        <div>
+          <h2 class="section-title">PC Suggestions</h2>
+          <p class="section-subtitle" style="margin-top: 0.25rem;">Our AI based matches for you</p>
+        </div>
+
+        <!-- Personalised -->
+        <div class="suggest-sub">
+          <div class="suggest-header">
+            <h4 class="suggest-title">Personalised for you</h4>
+            <button class="suggest-view-all" onclick="showToast('Opening all Personalized matches')">View all ➔</button>
+          </div>
+          <div class="carousel-container">
+            <div class="startup-card" onclick="showToast('Viewing NetWeb Technology details')">
+              <div class="card-logo bg-green-600">N</div>
+              <h5 class="card-startup-title">NetWeb Technology</h5>
+              <p class="card-startup-desc">Healthcare</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing StarLink Events details')">
+              <div class="card-logo bg-violet-600">S</div>
+              <h5 class="card-startup-title">StarLink Events</h5>
+              <p class="card-startup-desc">Real Estate</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing QuantumCore AI details')">
+              <div class="card-logo bg-teal-600">Q</div>
+              <h5 class="card-startup-title">QuantumCore AI</h5>
+              <p class="card-startup-desc">Artificial Intelligence</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing Neopay Technology details')">
+              <div class="card-logo bg-indigo-600">N</div>
+              <h5 class="card-startup-title">Neopay Technology</h5>
+              <p class="card-startup-desc">Fintech</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing EverGlide Motors details')">
+              <div class="card-logo bg-pink-600">E</div>
+              <h5 class="card-startup-title">EverGlide Motors</h5>
+              <p class="card-startup-desc">Automotive</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing BrightPath Learning details')">
+              <div class="card-logo bg-amber-600">B</div>
+              <h5 class="card-startup-title">BrightPath Learning</h5>
+              <p class="card-startup-desc">Education</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Super Angels -->
+        <div class="suggest-sub">
+          <div class="suggest-header">
+            <h4 class="suggest-title">Invested by Super Angels</h4>
+            <button class="suggest-view-all" onclick="showToast('Opening Super Angel investment lists')">View all ➔</button>
+          </div>
+          <div class="carousel-container">
+            <div class="startup-card" onclick="showToast('Viewing Summit Edge details')">
+              <div class="card-logo bg-slate-800">S</div>
+              <h5 class="card-startup-title">Summit Edge Consult.</h5>
+              <p class="card-startup-desc">Business Consulting</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing NetWeb Technology details')">
+              <div class="card-logo bg-green-600">N</div>
+              <h5 class="card-startup-title">NetWeb Technology</h5>
+              <p class="card-startup-desc">Healthcare</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing CloudForge Solutions details')">
+              <div class="card-logo bg-blue-600">C</div>
+              <h5 class="card-startup-title">CloudForge Solutions</h5>
+              <p class="card-startup-desc">SaaS & Cloud</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing AquaPulse details')">
+              <div class="card-logo bg-purple-600">A</div>
+              <h5 class="card-startup-title">AquaPulse Beverages</h5>
+              <p class="card-startup-desc">Food & Beverage</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing UrbanNest Living details')">
+              <div class="card-logo bg-zinc-700">U</div>
+              <h5 class="card-startup-title">UrbanNest Living</h5>
+              <p class="card-startup-desc">Real Estate</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing MediSync details')">
+              <div class="card-logo bg-cyan-600">M</div>
+              <h5 class="card-startup-title">MediSync</h5>
+              <p class="card-startup-desc">Healthcare</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VC/PE -->
+        <div class="suggest-sub">
+          <div class="suggest-header">
+            <h4 class="suggest-title">Invested by VC/PE</h4>
+            <button class="suggest-view-all" onclick="showToast('Opening VC/PE matching listings')">View all ➔</button>
+          </div>
+          <div class="carousel-container">
+            <div class="startup-card" onclick="showToast('Viewing WaveLink Maritime details')">
+              <div class="card-logo bg-cyan-500">W</div>
+              <h5 class="card-startup-title">WaveLink Maritime</h5>
+              <p class="card-startup-desc">Shipping & Logistics</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing Pixel Craft details')">
+              <div class="card-logo bg-amber-500">P</div>
+              <h5 class="card-startup-title">Pixel Craft Studios</h5>
+              <p class="card-startup-desc">Media & Entertain.</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing VantageShield details')">
+              <div class="card-logo bg-emerald-500">V</div>
+              <h5 class="card-startup-title">VantageShield Sec.</h5>
+              <p class="card-startup-desc">Cybersecurity</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing OrthoHaul details')">
+              <div class="card-logo bg-rose-500">O</div>
+              <h5 class="card-startup-title">OrthoHaul Transport</h5>
+              <p class="card-startup-desc">Transportation</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing IronClad Robotics details')">
+              <div class="card-logo bg-indigo-500">I</div>
+              <h5 class="card-startup-title">IronClad Robotics</h5>
+              <p class="card-startup-desc">Manufacturing</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing AeroWave Systems details')">
+              <div class="card-logo bg-purple-500">A</div>
+              <h5 class="card-startup-title">AeroWave Systems</h5>
+              <p class="card-startup-desc">Aerospace</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- User Lists -->
+      <section class="white-box">
+        <div class="suggest-header">
+          <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+            <h2 class="section-title">User Lists</h2>
+            <span class="section-subtitle">Profiles saved by you</span>
+          </div>
+        </div>
+
+        <div class="suggest-sub">
+          <div class="suggest-header">
+            <h4 class="suggest-title">Saved</h4>
+            <button class="suggest-view-all" onclick="showToast('Opening complete Saved list')">View all ➔</button>
+          </div>
+          <div class="carousel-container">
+            <div class="startup-card" onclick="showToast('Viewing NeuroLink Labs details')">
+              <div class="card-logo bg-red-500">N</div>
+              <h5 class="card-startup-title">NeuroLink Labs</h5>
+              <p class="card-startup-desc">Biotechnology</p>
+              <div class="card-footer"><span class="badge-live">Live</span></div>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing HarborView Finance details')">
+              <div class="card-logo bg-orange-500">H</div>
+              <h5 class="card-startup-title">HarborView Finance</h5>
+              <p class="card-startup-desc">Banking & Financial</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing EcoTrack Solutions details')">
+              <div class="card-logo bg-emerald-500">E</div>
+              <h5 class="card-startup-title">EcoTrack Solutions</h5>
+              <p class="card-startup-desc">Environmental Tech</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing PulsePoint details')">
+              <div class="card-logo bg-teal-500">P</div>
+              <h5 class="card-startup-title">PulsePoint Diagnos.</h5>
+              <p class="card-startup-desc">Medical Devices</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing CobaltWorks details')">
+              <div class="card-logo bg-indigo-500">C</div>
+              <h5 class="card-startup-title">CobaltWorks Eng.</h5>
+              <p class="card-startup-desc">Industrial Eng.</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing FreshNest details')">
+              <div class="card-logo bg-amber-500">F</div>
+              <h5 class="card-startup-title">FreshNest Kitchens</h5>
+              <p class="card-startup-desc">Food Tech</p>
+            </div>
+            <div class="startup-card" onclick="showToast('Viewing TerraNova details')">
+              <div class="card-logo bg-lime-500">T</div>
+              <h5 class="card-startup-title">TerraNova</h5>
+              <p class="card-startup-desc">Agriculture</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Cards -->
+      <section class="cta-grid">
+        <div class="cta-card" onclick="showToast('Navigating to fund investment dashboard')">
+          <div class="cta-text">
+            <h3 class="cta-title">Looking to invest in <span>funds?</span></h3>
+            <p class="cta-desc">Investment opportunities in various funds.</p>
+          </div>
+          <div class="cta-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+
+        <div class="cta-card" onclick="showToast('Opening syndicate contributions')">
+          <div class="cta-text">
+            <h3 class="cta-title">Create a <span>syndicate</span> or join one!</h3>
+            <p class="cta-desc">10+ syndicates are actively contributing.</p>
+          </div>
+          <div class="cta-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Columns -->
+      <section class="bottom-columns">
+        
+        <!-- Explore Network -->
+        <div class="col-card">
+          <div>
+            <h3 class="col-title">Explore Network</h3>
+            <p class="col-subtitle">Explore companies, investors and directors you want to reach</p>
+          </div>
+
+          <div class="search-wrap">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input 
+              type="text" 
+              placeholder="Search here" 
+              class="search-input" 
+              oninput="showToast('Filtering network connections for: ' + this.value)"
+            />
+          </div>
+
+          <div class="network-container">
+            <canvas id="network-canvas" class="network-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- News -->
+        <div class="col-card">
+          <div>
+            <h3 class="col-title">News</h3>
+            <p class="col-subtitle">Latest visually happened in private market</p>
+          </div>
+
+          <div class="news-list">
+            <div class="news-card" onclick="showToast('Opening news details: Infosys acquires Versent')">
+              <h4 class="news-headline">Infosys Acquires 75% Stake in Telstra's Versent Group</h4>
+              <div class="news-footer">
+                <span>11 Oct 2023 • Times of India • Infosys</span>
+                <span class="news-source">Times of India ➔</span>
+              </div>
+            </div>
+
+            <div class="news-card" onclick="showToast('Opening news details: Mahindra acquires land parcel')">
+              <h4 class="news-headline">Mahindra looks to acquire 350-acre land parcel in Nagpur</h4>
+              <div class="news-footer">
+                <span>10 Oct 2023 • Economic Times • Mahindra</span>
+                <span class="news-source">Economic Times ➔</span>
+              </div>
+            </div>
+
+            <div class="news-card" onclick="showToast('Opening news: Reliance Jio offers bundled Netflix')">
+              <h4 class="news-headline">Reliance Jio plans that offer Netflix, Amazon Prime, Disney+ Hotstar</h4>
+              <div class="news-footer">
+                <span>9 Oct 2023 • Equity Bulls • Reliance Industries Limited</span>
+                <span class="news-source">Equity Bulls ➔</span>
+              </div>
+            </div>
+
+            <div class="news-card" onclick="showToast('Opening news details: RSB Retail files DRHP')">
+              <h4 class="news-headline">RSB Retail India files DRHP with Sebi for IPO, plans to raise Rs 500 crore</h4>
+              <div class="news-footer">
+                <span>8 Oct 2023 • Moneycontrol • RSB Retail</span>
+                <span class="news-source">Moneycontrol ➔</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Bottom Sticky Mobile Navbar -->
+    <nav class="fixed-bottom-nav">
+      <button class="nav-item active" onclick="navTo('Home', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" onclick="navTo('Deals', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span class="nav-label">Deals</span>
+      </button>
+      <button class="nav-item" onclick="navTo('Meetings', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="nav-label">Meetings</span>
+      </button>
+      <button class="nav-item" onclick="navTo('Syndicates', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span class="nav-label">Syndicates</span>
+      </button>
+      <button class="nav-item" onclick="navTo('Notifications', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="nav-label">Notifications</span>
+      </button>
+      <button class="nav-item" onclick="navTo('Account', this)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="nav-label">Account</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <script>
+    // Toast controller
+    var toastTimeout;
+    function showToast(msg) {
+      var toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(function() {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    // Nav controller
+    function navTo(label, el) {
+      document.querySelectorAll('.nav-item').forEach(function(item) {
+        item.classList.remove('active');
+      });
+      el.classList.add('active');
+      showToast('Navigated to ' + label);
+    }
+
+    // Network Canvas Animation
+    (function() {
+      var canvas = document.getElementById('network-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var width = canvas.width = canvas.offsetWidth || 300;
+      var height = canvas.height = canvas.offsetHeight || 220;
+
+      function resize() {
+        if (canvas.parentElement) {
+          width = canvas.width = canvas.parentElement.clientWidth - 32;
+          height = canvas.height = 220;
+        }
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      var numNodes = 40;
+      var nodes = [];
+      var maxRadius = Math.min(width, height) * 0.45;
+
+      for (var i = 0; i < numNodes; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var r = Math.random() * maxRadius;
+        nodes.push({
+          x: width / 2 + Math.cos(angle) * r,
+          y: height / 2 + Math.sin(angle) * r,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 2 + 1.5
+        });
+      }
+
+      var mouseX = 0, mouseY = 0, isHovering = false;
+      canvas.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        isHovering = true;
+      });
+      canvas.addEventListener('mouseleave', function() {
+        isHovering = false;
+      });
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Circular boundary
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, maxRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
+        ctx.setLineDash([4, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Connections
+        for (var i = 0; i < numNodes; i++) {
+          for (var j = i + 1; j < numNodes; j++) {
+            var dx = nodes[i].x - nodes[j].x;
+            var dy = nodes[i].y - nodes[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 55) {
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = 'rgba(59, 130, 246, ' + (1 - dist / 55) + ')';
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Update nodes
+        nodes.forEach(function(node) {
+          node.vx += (Math.random() - 0.5) * 0.015;
+          node.vy += (Math.random() - 0.5) * 0.015;
+
+          var speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
+          if (speed > 0.6) {
+            node.vx = (node.vx / speed) * 0.6;
+            node.vy = (node.vy / speed) * 0.6;
+          }
+
+          node.x += node.vx;
+          node.y += node.vy;
+
+          var dx = node.x - width / 2;
+          var dy = node.y - height / 2;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist > maxRadius - 5) {
+            var angle = Math.atan2(dy, dx);
+            node.x = width / 2 + Math.cos(angle) * (maxRadius - 5);
+            node.vx = -node.vx * 0.8;
+            node.vy = -node.vy * 0.8;
+          }
+
+          if (isHovering) {
+            var mdx = mouseX - node.x;
+            var mdy = mouseY - node.y;
+            var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mdist < 65) {
+              node.x += mdx * 0.02;
+              node.y += mdy * 0.02;
+            }
+          }
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgb(59, 130, 246)';
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
