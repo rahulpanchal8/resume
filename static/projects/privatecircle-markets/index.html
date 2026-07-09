@@ -27,10 +27,11 @@
   <style>
     :root { --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
     
+    /* Removed padding from the wrapper as requested to delegate spacing to the global page wrapper */
     .case-study-wrapper {
       max-width: 800px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 6rem;
+      padding: 0; 
       display: flex;
       flex-direction: column;
       gap: 3.5rem;
@@ -178,7 +179,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
-      margin-top: 0.5rem;
+      margin-top: 0; /* Handled by bottom margin of intro text */
     }
     
     @media (min-width: 768px) {
@@ -226,7 +227,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
-      margin-top: 0.5rem;
+      margin-top: 0; /* Handled by bottom margin of intro text */
     }
 
     .brainstorm-image-wrap {
@@ -250,7 +251,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      margin-top: 0.5rem;
+      margin-top: 0; /* Handled by bottom margin of intro text */
     }
 
     .wireframe-preview-card {
@@ -670,7 +671,7 @@
         </div>
       </div>
 
-      <!-- Overview Section - Concise content (100-120 words) introductory paragraph merged -->
+      <!-- Overview Section -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Overview</h2>
         <div class="overview-text">
@@ -683,11 +684,11 @@
         </div>
       </div>
 
-      <!-- Roles & Responsibilities -->
+      <!-- Roles & Responsibilities - Added consistent margin gap below paragraph -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Roles & Responsibilities</h2>
         <div class="overview-text">
-          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
+          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0 0 0.75rem 0;">
             As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts, user flows, and interaction patterns.
           </p>
           
@@ -754,11 +755,11 @@
         </div>
       </div>
 
-      <!-- Brainstorming -->
+      <!-- Brainstorming - Added consistent margin gap below paragraph -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Brainstorming</h2>
         <div class="overview-text">
-          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
+          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0 0 0.75rem 0;">
             Analyzing user pain points and mapping workflows. We aligned discovery lanes, matching logic, and slot coordination parameters.
           </p>
           <div class="brainstorm-grid">
@@ -778,11 +779,11 @@
         </div>
       </div>
 
-      <!-- Wireframes & Prototype - Images stacked, captions removed -->
+      <!-- Wireframes & Prototype - Images stacked, captions removed, added margin gap below paragraph -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Wireframes & Prototype</h2>
         <div class="overview-text">
-          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0;">
+          <p style="font-size: 0.875rem; color: var(--muted-foreground); line-height: 1.6; margin: 0 0 0.75rem 0;">
             Visualizing grid cards and modular navigation layouts. Early wireframes focused on validating match rating alerts before high-fidelity visual production.
           </p>
           <div class="wireframes-grid">

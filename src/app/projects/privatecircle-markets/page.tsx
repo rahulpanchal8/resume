@@ -127,7 +127,7 @@ export default function PrivateCircleMarketsPage() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-12 sm:gap-16 pb-20">
+    <div className="w-full flex flex-col gap-12 sm:gap-16">
       {/* Back Link */}
       <BlurFade delay={0.05}>
         <Link
@@ -216,15 +216,15 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Roles & Responsibilities Section */}
+      {/* Roles & Responsibilities Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.3}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Roles & Responsibilities</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts, user flows, and interaction patterns.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {[
               { skill: "Product Strategy" },
               { skill: "UX Research" },
@@ -247,14 +247,14 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Brainstorming Section */}
+      {/* Brainstorming Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.35}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Brainstorming</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
           </p>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="grid grid-cols-2 gap-4">
             {IMAGE_GROUPS.brainstorming.images.map((img, idx) => (
               <div 
                 key={idx}
@@ -268,15 +268,15 @@ export default function PrivateCircleMarketsPage() {
         </div>
       </BlurFade>
 
-      {/* Wireframes & Prototype Section - Captions removed, stacked vertically */}
+      {/* Wireframes & Prototype Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.4}>
         <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Wireframes & Prototype</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
           </p>
           
-          <div className="flex flex-col gap-6 mt-2">
+          <div className="flex flex-col gap-6">
             {IMAGE_GROUPS.wireframes.images.map((img, idx) => (
               <div 
                 key={idx}
@@ -362,7 +362,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 0)} // before1.png is index 0
+                  onClick={() => openLightbox("beforeAfter", 0)} 
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
@@ -374,7 +374,7 @@ export default function PrivateCircleMarketsPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 1)} // Final2.png is index 1
+                  onClick={() => openLightbox("beforeAfter", 1)} 
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
@@ -390,7 +390,7 @@ export default function PrivateCircleMarketsPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 2)} // Before2.png is index 2
+                  onClick={() => openLightbox("beforeAfter", 2)} 
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
@@ -402,7 +402,7 @@ export default function PrivateCircleMarketsPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 3)} // Final3.png is index 3
+                  onClick={() => openLightbox("beforeAfter", 3)} 
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
@@ -531,7 +531,6 @@ export default function PrivateCircleMarketsPage() {
             </div>
             
             <div className="flex items-center gap-4">
-              {/* Extra indicator for mobile counter */}
               <span className="text-xs font-mono tracking-wider opacity-75 sm:hidden">
                 {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].images.length}
               </span>
