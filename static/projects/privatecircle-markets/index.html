@@ -89,14 +89,7 @@
       margin-top: -0.5rem;
     }
     
-    .hero-description {
-      font-size: 1rem;
-      color: var(--muted-foreground);
-      line-height: 1.6;
-      max-width: 750px;
-    }
-    
-    /* Metadata grid is exactly 2 columns */
+    /* Metadata Grid with 0.75rem labels and 0.875rem values */
     .meta-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -107,7 +100,7 @@
     .meta-card {
       padding: 1rem;
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       background: var(--card);
       display: flex;
       flex-direction: column;
@@ -115,7 +108,7 @@
     }
     
     .meta-card-label {
-      font-size: 0.625rem;
+      font-size: 0.75rem; /* Label size */
       font-weight: 700;
       color: #94a3b8;
       text-transform: uppercase;
@@ -123,18 +116,19 @@
     }
     
     .meta-card-value {
-      font-size: 0.75rem;
+      font-size: 0.875rem; /* Value size */
       font-weight: 600;
       color: var(--foreground);
     }
     
     .hero-image-wrap {
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       background: var(--muted);
       margin-top: 0.5rem;
+      cursor: zoom-in;
     }
     
     .hero-image-wrap img {
@@ -143,14 +137,13 @@
       display: block;
     }
     
-    /* Reduced section top padding & margins */
     .section-divider {
       border-top: 1px solid rgba(var(--border), 0.6);
       padding-top: 1.75rem;
       margin-top: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem; /* Spacing between title and content reduced to 0.5rem */
+      gap: 0.5rem; /* Reduced to 0.5rem spacing */
     }
     
     .section-title {
@@ -172,6 +165,7 @@
       margin-top: 0;
     }
 
+    /* 3 Column Grid for Responsibilities */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -189,7 +183,7 @@
       padding: 0.4rem;
       gap: 0.5rem;
       border: 1px solid #f1f5f9;
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       background: rgba(248, 250, 252, 0.4);
       display: flex;
       align-items: center;
@@ -220,7 +214,6 @@
       line-height: 1;
     }
 
-    /* Brainstorming grid aspect ratios aligned to 16/9 */
     .brainstorm-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -230,10 +223,11 @@
 
     .brainstorm-image-wrap {
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       overflow: hidden;
       background: var(--muted);
       aspect-ratio: 16/9;
+      cursor: zoom-in;
     }
 
     .brainstorm-image-wrap img {
@@ -243,53 +237,50 @@
       display: block;
     }
 
-    /* Wireframes preview layout - Removed padding, 2 columns */
+    /* Wireframes Layout vertically stacked */
     .wireframes-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
       margin-top: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .wireframes-grid {
-        grid-template-columns: 1fr 1fr;
-      }
     }
 
     .wireframe-preview-card {
       background: #f8fafc;
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       overflow: hidden;
-      padding: 0; /* No padding inside preview containers */
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .wireframe-preview-card img {
+    .wireframe-image-container {
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      cursor: zoom-in;
+    }
+
+    .wireframe-image-container img {
       width: 100%;
       height: auto;
       display: block;
       filter: grayscale(1);
     }
 
-    /* Challenges & Solutions layouts */
+    /* Challenges & Solutions Layout stacked vertically */
     .challenges-solutions-grid {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 1.5rem;
       margin-top: 0.5rem;
     }
 
-    @media (min-width: 768px) {
-      .challenges-solutions-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
     .cs-card {
-      padding: 1.25rem;
+      padding: 1.5rem;
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       background: var(--card);
       display: flex;
       flex-direction: column;
@@ -362,9 +353,10 @@
 
     .compare-image-wrap {
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       overflow: hidden;
       position: relative;
+      cursor: zoom-in;
     }
 
     .compare-tag {
@@ -395,7 +387,7 @@
       margin: 0;
     }
 
-    /* Enhanced Visually Prominent KPI cards style */
+    /* Enhanced KPI Cards */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -412,7 +404,7 @@
     .kpi-card {
       padding: 1.5rem 1rem;
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       background: rgba(248, 250, 252, 0.6);
       text-align: center;
       display: flex;
@@ -484,9 +476,10 @@
 
     .gallery-image-wrap {
       border: 1px solid var(--border);
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       overflow: hidden;
       background: var(--muted);
+      cursor: zoom-in;
     }
 
     .gallery-image-wrap img {
@@ -502,14 +495,120 @@
       margin: 0.125rem 0 0;
     }
 
-    /* Redesigned Outcome components */
     .outcome-box {
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
       padding: 2.5rem 1.5rem;
     }
     
     .outcome-btn {
-      border-radius: 0.5rem; /* Reduced border radius */
+      border-radius: 0.5rem;
+    }
+
+    /* Modal / Lightbox styling */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .lightbox-header {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-family: monospace;
+      font-size: 14px;
+      z-index: 10000;
+    }
+
+    .lightbox-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.2s;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 10000;
+      transition: background-color 0.2s;
+    }
+
+    .lightbox-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
+    .lightbox-canvas {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow: auto;
+      cursor: zoom-out;
+    }
+
+    .lightbox-img {
+      max-height: 85vh;
+      max-width: 90vw;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .lightbox-img.zoomed {
+      transform: scale(1.5);
+      cursor: zoom-out;
+      max-height: none;
+      max-width: none;
+    }
+
+    .lightbox-tip {
+      position: absolute;
+      bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+      .lightbox-nav-btn { display: none; }
+      .lightbox-tip { display: block; }
     }
   </style>
 </head>
@@ -541,12 +640,7 @@
           <img src="../../assets/images/Final1.png" alt="PrivateCircle Markets Dashboard" />
         </div>
         
-        <!-- Hero Description stacked below image -->
-        <p class="hero-description">
-          PrivateCircle Markets is a premium investment and deal-flow discovery marketplace. The platform connects high-growth startup founders directly with private market investors, high-net-worth individuals (HNIs), and venture capital directors. By combining audited financial profiles with automated scheduling, the platform aims to reduce fundraising friction and drive efficient capital deployment.
-        </p>
-        
-        <!-- Minimal Metadata cards layout below description -->
+        <!-- Minimal Metadata cards layout below image (with 0.75rem label, 0.875rem value) -->
         <div class="meta-cards-grid">
           
           <!-- Card 1: Role -->
@@ -564,27 +658,27 @@
           <!-- Card 3: Platform -->
           <div class="meta-card">
             <span class="meta-card-label">Platform</span>
-            <span class="meta-card-value">Web Application</span>
+            <span class="meta-card-value">Website, Web and Mobile Application</span>
           </div>
 
           <!-- Card 4: Users -->
           <div class="meta-card">
             <span class="meta-card-label">Users</span>
-            <span class="meta-card-value">Founders, HNIs, VCs</span>
+            <span class="meta-card-value">Founders, HNIs, VCs, PEs, Wealth Managers, Investment Bankers</span>
           </div>
 
         </div>
       </div>
 
-      <!-- Overview Section -->
+      <!-- Overview Section - Concise content (100-120 words) introductory paragraph merged -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Overview</h2>
         <div class="overview-text">
           <p>
-            PrivateCircle Markets connects startup founders directly with private market investors, Venture Capitalists, and HNIs. The traditional fundraising process is highly fragmented, relying on manual relationship discovery and offline reports that create massive information silos and delay decision-making.
+            PrivateCircle Markets is a premium investment and deal-flow discovery marketplace connecting founders directly with capital allocators. The traditional private market fundraising ecosystem is highly fragmented, relying on manual network relationships and offline data sheets that create massive information silos.
           </p>
           <p>
-            To solve these problems, the platform provides audited corporate profiles and integrated tools. Startup founders can target matching investment parameters directly, while investors can discover investment opportunities and schedule meetings in one central location.
+            The platform solves these problems by providing structured corporate profiles and automated calendars. This allows founders to target matching criteria directly, while investors, wealth managers, and investment bankers discover opportunities and schedule meetings in one central location to drive efficient capital allocation.
           </p>
         </div>
       </div>
@@ -646,7 +740,7 @@
               <div class="skill-card-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
               </div>
-              <span>High-Fidelity Prototyping</span>
+              <span>Prototyping</span> <!-- Renamed from High-Fidelity Prototyping to Prototyping -->
             </div>
 
             <div class="skill-card">
@@ -684,7 +778,7 @@
         </div>
       </div>
 
-      <!-- Wireframes & Prototype -->
+      <!-- Wireframes & Prototype - Images stacked, matching gallery style, zero padding -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Wireframes & Prototype</h2>
         <div class="overview-text">
@@ -693,16 +787,23 @@
           </p>
           <div class="wireframes-grid">
             <div class="wireframe-preview-card">
-              <img src="../../assets/images/Prototype2.png" alt="Prototype Wireframes Map" />
+              <div class="wireframe-image-container">
+                <img src="../../assets/images/Prototype2.png" alt="Prototype Wireframes Map" />
+              </div>
+              <p class="gallery-caption" style="padding: 0 0.5rem 0.5rem;"><strong>Prototype Flow Map:</strong> Conceptual wireframe user journey mapping out investor dashboard flows and startup profiles.</p>
             </div>
+            
             <div class="wireframe-preview-card">
-              <img src="../../assets/images/before1.png" alt="Low Fidelity Screen Concept" />
+              <div class="wireframe-image-container">
+                <img src="../../assets/images/before1.png" alt="Low Fidelity Screen Concept" />
+              </div>
+              <p class="gallery-caption" style="padding: 0 0.5rem 0.5rem;"><strong>Low Fidelity Screen Concept:</strong> Early layout mockups validating criteria-matching visual cards.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Challenges & Solutions -->
+      <!-- Challenges & Solutions - Stacked vertically -->
       <div class="section-divider blur-fade visible">
         <h2 class="section-title">Challenges & Solutions</h2>
         <div class="challenges-solutions-grid">
@@ -886,7 +987,7 @@
 
           <div class="gallery-item">
             <div class="gallery-image-wrap">
-              <img src="../../assets/images/Final5.png" alt="Explore Network node mapping visualizer" />
+              <img src="../../assets/images/Final5.png" alt="Explore Network with node visualizer" />
             </div>
             <p class="gallery-caption"><strong>Explore Network Feed:</strong> Interactive network visualization graph paired with live corporate news streams.</p>
           </div>
@@ -957,6 +1058,160 @@
     </div>
   </nav>
 
+  <!-- Dynamic Lightbox Modal Structure -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-header">
+      <span id="lightbox-position">1 / 1</span>
+      <div style="display: flex; gap: 0.5rem;">
+        <button id="lightbox-zoom-btn" class="lightbox-btn" title="Toggle Zoom">🔍</button>
+        <button id="lightbox-close-btn" class="lightbox-btn" title="Close (ESC)">✕</button>
+      </div>
+    </div>
+    <button id="lightbox-prev-btn" class="lightbox-nav-btn lightbox-prev" title="Previous (Left Arrow)">◀</button>
+    <div id="lightbox-canvas" class="lightbox-canvas">
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Lightbox View" />
+    </div>
+    <button id="lightbox-next-btn" class="lightbox-nav-btn lightbox-next" title="Next (Right Arrow)">▶</button>
+    <div class="lightbox-tip">Swipe left or right to navigate</div>
+  </div>
+
   <script src="../../js/app.js"></script>
+
+  <!-- Lightbox Script integration -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const modal = document.getElementById("lightbox-modal");
+      const modalImg = document.getElementById("lightbox-img");
+      const positionText = document.getElementById("lightbox-position");
+      const closeBtn = document.getElementById("lightbox-close-btn");
+      const prevBtn = document.getElementById("lightbox-prev-btn");
+      const nextBtn = document.getElementById("lightbox-next-btn");
+      const zoomBtn = document.getElementById("lightbox-zoom-btn");
+      const canvas = document.getElementById("lightbox-canvas");
+
+      let currentImages = [];
+      let currentIndex = 0;
+      let isZoomed = false;
+      let startX = 0;
+      let lastScrollPosition = 0;
+
+      // Group images inside the main layout
+      // Group 1: Brainstorming (.brainstorm-grid img)
+      // Group 2: Wireframes (.wireframes-grid img)
+      // Group 3: Before & After & Gallery (combined final gallery / compare containers)
+      function getGroupImages(imgElement) {
+        let parentContainer = imgElement.closest(".brainstorm-grid, .wireframes-grid, .showcase-grid, .compare-row");
+        if (!parentContainer) {
+          parentContainer = imgElement.closest(".case-study-hero");
+        }
+        if (!parentContainer) return [imgElement];
+        return Array.from(parentContainer.querySelectorAll("img"));
+      }
+
+      // Add click listener to all study images
+      const studyImages = document.querySelectorAll(
+        ".hero-image-wrap img, .brainstorm-image-wrap img, .wireframe-image-container img, .compare-image-wrap img, .gallery-image-wrap img"
+      );
+
+      studyImages.forEach(img => {
+        img.addEventListener("click", function(e) {
+          lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+          currentImages = getGroupImages(img);
+          currentIndex = currentImages.indexOf(img);
+          if (currentIndex === -1) currentIndex = 0;
+
+          openLightbox();
+        });
+      });
+
+      function openLightbox() {
+        document.body.style.overflow = "hidden";
+        modal.style.display = "flex";
+        isZoomed = false;
+        modalImg.classList.remove("zoomed");
+        updateImage();
+      }
+
+      function closeLightbox() {
+        document.body.style.overflow = "";
+        modal.style.display = "none";
+        isZoomed = false;
+        modalImg.classList.remove("zoomed");
+        // Restore scroll position
+        window.scrollTo(0, lastScrollPosition);
+      }
+
+      function updateImage() {
+        if (!currentImages.length) return;
+        const activeImg = currentImages[currentIndex];
+        modalImg.src = activeImg.src;
+        modalImg.alt = activeImg.alt;
+        positionText.textContent = (currentIndex + 1) + " / " + currentImages.length;
+        isZoomed = false;
+        modalImg.classList.remove("zoomed");
+      }
+
+      function navigateNext() {
+        if (!currentImages.length) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateImage();
+      }
+
+      function navigatePrev() {
+        if (!currentImages.length) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateImage();
+      }
+
+      function toggleZoom() {
+        isZoomed = !isZoomed;
+        if (isZoomed) {
+          modalImg.classList.add("zoomed");
+        } else {
+          modalImg.classList.remove("zoomed");
+        }
+      }
+
+      // Button triggers
+      closeBtn.addEventListener("click", closeLightbox);
+      prevBtn.addEventListener("click", function(e) { e.stopPropagation(); navigatePrev(); });
+      nextBtn.addEventListener("click", function(e) { e.stopPropagation(); navigateNext(); });
+      zoomBtn.addEventListener("click", function(e) { e.stopPropagation(); toggleZoom(); });
+      modalImg.addEventListener("click", function(e) { e.stopPropagation(); toggleZoom(); });
+
+      // Click outside to close
+      canvas.addEventListener("click", function(e) {
+        if (e.target === canvas) {
+          closeLightbox();
+        }
+      });
+
+      // Keyboard support
+      window.addEventListener("keydown", function(e) {
+        if (modal.style.display === "flex") {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") navigateNext();
+          if (e.key === "ArrowLeft") navigatePrev();
+        }
+      });
+
+      // Touch gestures
+      modal.addEventListener("touchstart", function(e) {
+        startX = e.touches[0].clientX;
+      });
+
+      modal.addEventListener("touchend", function(e) {
+        if (!startX) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        if (diff > 50) {
+          navigateNext();
+        } else if (diff < -50) {
+          navigatePrev();
+        }
+        startX = 0;
+      });
+    });
+  </script>
 </body>
 </html>
