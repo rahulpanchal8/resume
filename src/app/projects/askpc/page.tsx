@@ -287,7 +287,7 @@ export default function AskPCCaseStudyPage() {
               <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">Landing Experience</span>
               <h3 className="text-xl sm:text-2xl font-bold text-foreground">AI Analyst Landing Experience</h3>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                The landing experience focuses on communicating AskPC's primary value proposition—removing research barriers and encouraging users to start questions immediately through an inviting and highly visible chat prompt.
+                The landing experience focuses on communicating AskPC&apos;s primary value proposition—removing research barriers and encouraging users to start questions immediately through an inviting and highly visible chat prompt.
               </p>
             </div>
             <div className="overflow-hidden border rounded-2xl bg-muted/30 mt-2">

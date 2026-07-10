@@ -20,8 +20,10 @@ export default function Navbar() {
 
   useEffect(() => {
     if (pathname !== "/") {
-      setIsProjectsInView(false);
-      return;
+      const timer = setTimeout(() => {
+        setIsProjectsInView(false);
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const projectsSection = document.getElementById("projects");

@@ -145,10 +145,9 @@
       display: block;
     }
     
-    /* Reduced section top padding & margins */
+    /* Section divider — no top border line */
     .section-divider {
-      border-top: 1px solid rgba(var(--border), 0.6);
-      padding-top: 1.75rem;
+      padding-top: 0;
       margin-top: 0;
       display: flex;
       flex-direction: column;
@@ -391,19 +390,19 @@
     /* Enhanced KPI Cards */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 0.5rem;
     }
 
     @media (min-width: 768px) {
       .kpi-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
     .kpi-card {
-      padding: 1.5rem 1rem;
+      padding: calc(var(--spacing) * 4);
       border: 1px solid var(--border);
       border-radius: 0.5rem;
       background: rgba(248, 250, 252, 0.6);
@@ -412,20 +411,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.25rem;
+      gap: 0.5rem;
     }
 
     .kpi-num {
       display: block;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: var(--primary);
       line-height: 1.1;
-      tracking-tight;
+      letter-spacing: -0.025em;
     }
 
     .kpi-label {
-      font-size: 0.625rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -914,20 +913,20 @@
         
         <div class="kpi-grid">
           <div class="kpi-card">
-            <span class="kpi-num">100+</span>
-            <span class="kpi-label">Flows Designed</span>
+            <span class="kpi-num">200+</span>
+            <span class="kpi-label">Companies onboarded</span>
           </div>
           <div class="kpi-card">
-            <span class="kpi-num">50+</span>
-            <span class="kpi-label">Enhancements</span>
+            <span class="kpi-num">300+</span>
+            <span class="kpi-label">Funds, HNIs &amp; Family Office</span>
           </div>
           <div class="kpi-card">
-            <span class="kpi-num">5+</span>
-            <span class="kpi-label">Versions</span>
+            <span class="kpi-num">50% Faster</span>
+            <span class="kpi-label">Deal closure process</span>
           </div>
           <div class="kpi-card">
-            <span class="kpi-num" style="font-size: 1.35rem; py-2;">B2B SaaS</span>
-            <span class="kpi-label">Enterprise</span>
+            <span class="kpi-num">80% Faster</span>
+            <span class="kpi-label">Onboarding experience</span>
           </div>
         </div>
 

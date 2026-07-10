@@ -4,10 +4,6 @@ import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { 
   ArrowLeft, 
-  Briefcase, 
-  Award, 
-  Lightbulb, 
-  Eye, 
   X, 
   ChevronLeft, 
   ChevronRight, 
@@ -203,7 +199,7 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Overview Section */}
       <BlurFade delay={0.25}>
-        <div className="flex flex-col gap-2 max-w-3xl pt-2 border-t border-border/60">
+        <div className="flex flex-col gap-2 max-w-3xl pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Overview</h2>
           <div className="flex flex-col gap-4 text-muted-foreground leading-relaxed text-sm">
             <p>
@@ -218,7 +214,7 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Roles & Responsibilities Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.3}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
+        <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Roles & Responsibilities</h2>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             As the principal designer, I led the user experience and interface design from strategic positioning down to engineering handoff. I worked directly with product managers and developers to architect the database-matching layouts, user flows, and interaction patterns.
@@ -249,7 +245,7 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Brainstorming Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.35}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
+        <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Brainstorming</h2>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
@@ -270,7 +266,7 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Wireframes & Prototype Section - Added consistent gap below paragraph */}
       <BlurFade delay={0.4}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
+        <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Wireframes & Prototype</h2>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
@@ -292,7 +288,7 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Challenges & Solutions Section */}
       <BlurFade delay={0.45}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
+        <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
           
           <div className="flex flex-col gap-6 mt-2">
@@ -354,8 +350,8 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Before & After UX Section */}
       <BlurFade delay={0.5}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center">Before & After UX</h2>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Before & After UX</h2>
           
           <div className="flex flex-col gap-8 mt-2">
             {/* Compare Group 1 */}
@@ -419,28 +415,27 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Impact Section */}
       <BlurFade delay={0.55}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Award className="size-5 text-primary" />
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
             Impact
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-            <div className="p-6 border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-1">
-              <span className="text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">100+</span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Flows Designed</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
             </div>
-            <div className="p-6 border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-1">
-              <span className="text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">50+</span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enhancements</span>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">300+</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Funds, HNIs & Family Office</span>
             </div>
-            <div className="p-6 border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-1">
-              <span className="text-4xl lg:text-5xl font-extrabold text-primary tracking-tight">5+</span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Versions</span>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">50% Faster</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Deal closure process</span>
             </div>
-            <div className="p-6 border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-1">
-              <span className="text-xl lg:text-2xl font-extrabold text-primary tracking-tight py-2.5">B2B SaaS</span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Platform</span>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
             </div>
           </div>
 
@@ -471,8 +466,8 @@ export default function PrivateCircleMarketsPage() {
 
       {/* Final UI Gallery Section */}
       <BlurFade delay={0.6}>
-        <div className="flex flex-col gap-2 pt-2 border-t border-border/60">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center">Final UI Gallery</h2>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Final UI Gallery</h2>
           
           <div className="flex flex-col gap-10 mt-2">
             {IMAGE_GROUPS.gallery.images.map((img, idx) => (
