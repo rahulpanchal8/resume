@@ -337,13 +337,13 @@
       flex-direction: column;
       gap: 0.5rem;
     }
-
     .compare-image-wrap {
       border: 1px solid var(--border);
       border-radius: 0.5rem;
       overflow: hidden;
       position: relative;
       cursor: zoom-in;
+      aspect-ratio: 16/10;
     }
 
     .compare-tag {
@@ -363,7 +363,8 @@
 
     .compare-col img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -515,10 +516,6 @@
         scrollbar-width: none !important; /* Firefox */
         -ms-overflow-style: none !important;  /* IE/Edge */
         gap: 1rem !important;
-        margin-left: -1rem !important;
-        margin-right: -1rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
       }
 
       .meta-cards-grid::-webkit-scrollbar,

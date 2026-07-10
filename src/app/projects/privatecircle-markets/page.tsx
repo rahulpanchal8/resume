@@ -168,8 +168,7 @@ export default function PrivateCircleMarketsPage() {
 
         {/* Metadata Grid Layout - 2 Columns (repeat(2, 1fr)) with exact typography */}
         <BlurFade delay={0.2}>
-          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 gap-4 mt-2">
-            
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 gap-4 mt-2">            
             {/* Card 1: Role */}
             <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
               <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Role</span>
@@ -250,7 +249,7 @@ export default function PrivateCircleMarketsPage() {
           <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
           </p>
-          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 gap-4">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 gap-4">
             {IMAGE_GROUPS.brainstorming.images.map((img, idx) => (
               <div 
                 key={idx}
@@ -272,7 +271,7 @@ export default function PrivateCircleMarketsPage() {
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
           </p>
           
-          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-col gap-6">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-col gap-4 sm:gap-6">
             {IMAGE_GROUPS.wireframes.images.map((img, idx) => (
               <div 
                 key={idx}
@@ -367,14 +366,14 @@ export default function PrivateCircleMarketsPage() {
           
           <div className="flex flex-col gap-8 mt-2">
             {/* Compare Group 1 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6">
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 0)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
+                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/assets/images/before1.webp" alt="Static company lists" className="w-full h-auto object-cover" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
+                  <img src="/assets/images/before1.webp" alt="Static company lists" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
@@ -383,10 +382,10 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 1)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
+                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/assets/images/Final2.webp" alt="Unified investor matches layout" className="w-full h-auto object-cover" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
+                  <img src="/assets/images/Final2.webp" alt="Unified investor matches layout" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
@@ -395,14 +394,14 @@ export default function PrivateCircleMarketsPage() {
             </div>
 
             {/* Compare Group 2 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6">
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 2)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
+                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/assets/images/Before2.webp" alt="Complex investor search forms" className="w-full h-auto object-cover" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
+                  <img src="/assets/images/Before2.webp" alt="Complex investor search forms" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
@@ -411,10 +410,10 @@ export default function PrivateCircleMarketsPage() {
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 3)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
+                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/assets/images/Final3.webp" alt="Card Discovery Layout" className="w-full h-auto object-cover" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
+                  <img src="/assets/images/Final3.webp" alt="Card Discovery Layout" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Horizontal scroll lanes grouping categories (Super lists, AI-suggestions) and clear, structured cards.
@@ -432,7 +431,7 @@ export default function PrivateCircleMarketsPage() {
             Impact
           </h2>
           
-          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
@@ -466,7 +465,7 @@ export default function PrivateCircleMarketsPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Final UI Gallery</h2>
           
-          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-col gap-10 mt-2">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-col gap-4 sm:gap-10 mt-2">
             {IMAGE_GROUPS.gallery.images.map((img, idx) => (
               <div key={idx} className="snap-start flex-shrink-0 w-[85%] sm:w-auto flex flex-col gap-2 group">
                 <div 

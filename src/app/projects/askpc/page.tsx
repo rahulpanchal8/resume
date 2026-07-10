@@ -1,13 +1,132 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Target, Briefcase, Award, ChevronRight, MessageSquare, ShieldAlert, Sparkles, LayoutGrid } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { 
+  ArrowLeft, 
+  ArrowRight,
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  ZoomIn, 
+  ZoomOut
+} from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
 
-export const metadata = {
-  title: "AskPC Case Study | Rahul Panchal",
-  description: "Your AI Analyst for Private Markets case study.",
+// Define the groups of images for the lightbox navigation with mapped section titles
+const IMAGE_GROUPS = {
+  brainstorming: {
+    title: "Brainstorming",
+    images: [
+      { src: "/assets/images/brainstorm0.webp", alt: "AI Assistant Workflow Mapping" },
+      { src: "/assets/images/brainstorm1.webp", alt: "User Query Exploration Flow" },
+      { src: "/assets/images/brainstorm3.webp", alt: "Prompt Interaction Patterns" },
+      { src: "/assets/images/brainstorm4.webp", alt: "Information Architecture" }
+    ]
+  },
+  wireframes: {
+    title: "Wireframes & Prototype",
+    images: [
+      { src: "/assets/images/Prototype2.webp", alt: "AI Chat Interface Wireframe Concept" },
+      { src: "/assets/images/before1.webp", alt: "Search and Company Research Flows" },
+      { src: "/assets/images/Before2.webp", alt: "Financial Insights Layout Exploration" }
+    ]
+  },
+  beforeAfter: {
+    title: "Before & After UX",
+    images: [
+      { src: "/assets/images/before1.webp", alt: "Before: Users manually search multiple sources." },
+      { src: "/assets/images/Final2.webp", alt: "After: Ask questions and get structured answers instantly." },
+      { src: "/assets/images/Before2.webp", alt: "Before: Complex financial information discovery." },
+      { src: "/assets/images/Final3.webp", alt: "After: AI-powered company intelligence experience." },
+      { src: "/assets/images/before1.webp", alt: "Before: Time-consuming research workflow." },
+      { src: "/assets/images/Final4.webp", alt: "After: Conversational research assistant." }
+    ]
+  },
+  gallery: {
+    title: "Final UI Gallery",
+    images: [
+      { src: "/assets/images/Final1.webp", alt: "AskPC landing experience" },
+      { src: "/assets/images/Final2.webp", alt: "AI chat interface" },
+      { src: "/assets/images/Final3.webp", alt: "Company intelligence" },
+      { src: "/assets/images/Final4.webp", alt: "Financial insights" },
+      { src: "/assets/images/Final5.webp", alt: "Investor research" },
+      { src: "/assets/images/Final6.webp", alt: "Deal research" },
+      { src: "/assets/images/Final7.webp", alt: "Market analysis" },
+      { src: "/assets/images/Final1.webp", alt: "Dashboard screens" }
+    ]
+  }
 };
 
+type GroupName = keyof typeof IMAGE_GROUPS;
+
 export default function AskPCCaseStudyPage() {
+  const [activeGroup, setActiveGroup] = useState<GroupName | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isZoomed, setIsZoomed] = useState<boolean>(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  // Opens lightbox for a specific image group and index
+  const openLightbox = (group: GroupName, index: number) => {
+    document.body.style.overflow = "hidden";
+    setActiveGroup(group);
+    setActiveIndex(index);
+    setIsZoomed(false);
+  };
+
+  // Closes the lightbox and restores scroll
+  const closeLightbox = () => {
+    document.body.style.overflow = "";
+    setActiveGroup(null);
+    setIsZoomed(false);
+  };
+
+  const navigateNext = useCallback(() => {
+    if (!activeGroup) return;
+    setIsZoomed(false);
+    setActiveIndex((prev) => (prev + 1) % IMAGE_GROUPS[activeGroup].images.length);
+  }, [activeGroup]);
+
+  const navigatePrev = useCallback(() => {
+    if (!activeGroup) return;
+    setIsZoomed(false);
+    setActiveIndex((prev) => (prev - 1 + IMAGE_GROUPS[activeGroup].images.length) % IMAGE_GROUPS[activeGroup].images.length);
+  }, [activeGroup]);
+
+  // Handle keyboard events (ESC to close, Left/Right arrow keys to navigate)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!activeGroup) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") navigateNext();
+      if (e.key === "ArrowLeft") navigatePrev();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeGroup, navigateNext, navigatePrev]);
+
+  // Handle Touch Swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = touchStart - currentTouch;
+    if (diff > 50) {
+      navigateNext();
+      setTouchStart(null);
+    } else if (diff < -50) {
+      navigatePrev();
+      setTouchStart(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStart(null);
+  };
+
   return (
     <div className="w-full flex flex-col gap-12 sm:gap-16">
       {/* Back Link */}
@@ -24,459 +143,504 @@ export default function AskPCCaseStudyPage() {
       {/* Hero Section */}
       <div className="flex flex-col gap-6">
         <BlurFade delay={0.1}>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground/80">
-              AI Product • Fintech • Private Market Intelligence • SaaS Platform
+              AI • Fintech • Private Market Intelligence
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
               AskPC
             </h1>
-            <p className="text-lg sm:text-xl font-medium text-muted-foreground">
+            <p className="text-[16px] sm:text-xl font-medium text-muted-foreground">
               Your AI Analyst for Private Markets
             </p>
           </div>
         </BlurFade>
 
+        {/* Large Featured Product Preview - Opens Final UI Gallery */}
         <BlurFade delay={0.15}>
-          <p className="text-base sm:text-lg text-muted-foreground/90 leading-relaxed max-w-3xl">
-            AskPC transforms complex private market research into a simple conversational experience. It enables users to explore company intelligence, financial data, investor insights, market analysis, and business information through AI-powered conversations.
-          </p>
-        </BlurFade>
-
-        {/* Project Metadata Grid */}
-        <BlurFade delay={0.2}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 border rounded-2xl bg-muted/40 backdrop-blur-xs ring-2 ring-border/20 mt-4">
-            <div>
-              <span className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Role</span>
-              <span className="text-sm font-medium text-foreground">Product Design | UX/UI | AI Product</span>
-            </div>
-            <div>
-              <span className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Industry</span>
-              <span className="text-sm font-medium text-foreground">AI | Fintech | Private Markets</span>
-            </div>
-            <div>
-              <span className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Platform</span>
-              <span className="text-sm font-medium text-foreground">Web Application</span>
-            </div>
-            <div>
-              <span className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Users</span>
-              <span className="text-sm font-medium text-foreground">Investors, Analysts, Founders</span>
-            </div>
-          </div>
-        </BlurFade>
-
-        {/* Hero Video Banner */}
-        <BlurFade delay={0.25}>
-          <div className="overflow-hidden border rounded-2xl shadow-xl ring-2 ring-border/20 mt-4 bg-muted aspect-video relative">
-            <video
-              src="/askpc-hero.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </BlurFade>
-      </div>
-
-      {/* Project Overview & Problem Statement */}
-      <BlurFade delay={0.3}>
-        <div className="grid md:grid-cols-2 gap-8 py-8 border-t border-border/60">
-          {/* Overview */}
-          <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Project Overview</h2>
-            <div className="flex flex-col gap-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <p>
-                Private market research requires users to analyze information from multiple sources including company financials, funding history, investor profiles, market trends, and business intelligence.
-              </p>
-              <p>
-                The goal was to design an AI-driven research assistant that allows users to ask questions naturally and receive structured insights without manually searching through complex datasets.
-              </p>
-            </div>
-          </div>
-
-          {/* Problem Statement */}
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
-              <ShieldAlert className="size-5 text-destructive" />
-              <h2 className="text-2xl font-bold tracking-tight text-foreground">Problem Statement</h2>
-            </div>
-            <div className="flex flex-col gap-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <p>
-                Private market professionals spend significant time collecting, filtering, and analyzing fragmented company and investment data.
-              </p>
-              <p>
-                The challenge was to create a faster way to access meaningful insights while maintaining trust, clarity, and usability.
-              </p>
-            </div>
-          </div>
-        </div>
-      </BlurFade>
-
-      {/* Product Vision */}
-      <BlurFade delay={0.32}>
-        <div className="flex flex-col gap-4 py-8 border-t border-border/60">
-          <div className="flex items-center gap-2">
-            <Sparkles className="size-5 text-primary animate-pulse" />
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Product Vision</h2>
-          </div>
-          <p className="text-base text-muted-foreground">
-            AskPC brings private market intelligence into a conversational workflow.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-            {[
-              "Ask questions about companies, sectors, investors, and markets",
-              "Analyze financial information and business performance",
-              "Discover investment insights",
-              "Compare companies and market opportunities",
-              "Access structured research through AI conversations",
-            ].map((vision, idx) => (
-              <div key={idx} className="flex gap-2.5 p-4 border rounded-xl bg-muted/20">
-                <CheckCircle2 className="size-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-sm font-medium text-muted-foreground leading-relaxed">{vision}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </BlurFade>
-
-      {/* Core Capabilities */}
-      <BlurFade delay={0.35}>
-        <div className="flex flex-col gap-6 py-8 border-t border-border/60">
-          <div className="flex flex-col gap-1.5">
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Core Capabilities</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              The full spectrum of private market data accessible in a unified layout.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Company Research",
-                desc: "Access detailed company information including financial performance, revenue trends, EBITDA, PAT, shareholding patterns, and board information.",
-              },
-              {
-                title: "Deals & Valuations",
-                desc: "Explore funding rounds, M&A activity, IPO information, valuation multiples, and transaction insights.",
-              },
-              {
-                title: "Investor Intelligence",
-                desc: "Research VC/PE funds, family offices, and HNIs with filtering based on investment preferences, sectors, and portfolio activity.",
-              },
-              {
-                title: "MCA & Compliance",
-                desc: "Access company compliance information, MCA master data, charges, loans, insolvency status, and business records.",
-              },
-              {
-                title: "Market & Peer Analysis",
-                desc: "Compare companies, analyze competitors, identify market trends, and understand industry positioning.",
-              },
-              {
-                title: "Governance Team",
-                desc: "Explore leadership information, management teams, executive details, and company governance insights.",
-              },
-            ].map((cap, idx) => (
-              <div key={idx} className="p-5 border rounded-2xl bg-card hover:shadow-md transition-shadow flex flex-col gap-2">
-                <h3 className="font-bold text-base text-foreground">{cap.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="overflow-hidden border rounded-2xl bg-muted/20 mt-4 shadow-sm">
+          <div 
+            onClick={() => openLightbox("gallery", 0)}
+            className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in"
+          >
             <img
-              src="/askpc-spectrum.png"
-              alt="The Full Spectrum of Private Market Data"
+              src="/assets/images/Final1.webp"
+              alt="AskPC Dashboard Preview"
               className="w-full h-auto object-cover"
             />
           </div>
-        </div>
-      </BlurFade>
+        </BlurFade>
 
-      {/* AI Chat Experience */}
-      <BlurFade delay={0.38}>
-        <div className="flex flex-col md:flex-row gap-6 md:gap-12 py-8 border-t border-border/60">
-          <div className="md:w-1/3 flex flex-col gap-4">
-            <div className="flex items-center gap-2">
-              <MessageSquare className="size-5 text-primary" />
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-                Conversational Intelligence for Private Markets
-              </h2>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Designed an AI chat experience that allows users to interact naturally with private market data instead of navigating complex dashboards and databases.
-            </p>
-            <ul className="space-y-2">
-              {[
-                "Natural language queries",
-                "Structured AI-generated responses",
-                "Financial analysis",
-                "Company comparisons",
-                "Research summaries",
-                "Data-backed insights",
-              ].map((hl, idx) => (
-                <li key={idx} className="flex gap-2 text-sm text-muted-foreground font-medium">
-                  <CheckCircle2 className="size-4 text-emerald-500 shrink-0 mt-0.5" />
-                  <span>{hl}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="md:w-2/3 flex flex-col gap-4">
-            <div className="overflow-hidden border rounded-2xl shadow-sm bg-muted/10">
-              <img
-                src="/askpc-chat1.png"
-                alt="AskPC AI Chat Interface"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </BlurFade>
-
-      {/* UX Design section */}
-      <BlurFade delay={0.4}>
-        <div className="flex flex-col gap-6 py-8 border-t border-border/60">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground">Designing a Simple Research Workflow</h2>
-          <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
-            The experience was designed around reducing research complexity and helping users move from question to insight faster.
+        {/* Short introduction paragraph below hero media */}
+        <BlurFade delay={0.18}>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
+            AskPC is an AI-powered private market intelligence platform that helps users research companies, investors, deals, financial data, and market insights through conversational AI.
           </p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-2">
-            {[
-              {
-                title: "Reduce Information Overload",
-                desc: "Present only key financial metrics and high-level context first, allowing details to unfold progressively.",
-              },
-              {
-                title: "Clear Content Hierarchy",
-                desc: "Structure complex datasets with visual groups, readable metadata grids, and explicit labels.",
-              },
-              {
-                title: "Understandable Financials",
-                desc: "Translate tabular and raw transactional database values into interactive charts and comparative cards.",
-              },
-              {
-                title: "Conversational Exploration",
-                desc: "Allow follow-up prompts to refine searches, perform calculations, or slice intelligence contextually.",
-              },
-              {
-                title: "Trust through Structure",
-                desc: "Structure answers logically with verify-able reference keys, ensuring data integrity remains transparent.",
-              },
-            ].map((principle, idx) => (
-              <div key={idx} className="p-5 border rounded-2xl bg-muted/15 flex flex-col gap-2">
-                <span className="text-xs font-bold text-primary uppercase tracking-widest">0{idx + 1} • Design Rule</span>
-                <h3 className="font-bold text-base text-foreground mt-1">{principle.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{principle.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </BlurFade>
-
-      {/* Product Screens Storytelling */}
-      <div className="flex flex-col gap-12 py-8 border-t border-border/60">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground text-center">Product Walkthrough</h2>
-
-        {/* Landing Experience */}
-        <BlurFade delay={0.42}>
-          <div className="flex flex-col gap-4 p-6 sm:p-8 border rounded-3xl bg-card ring-2 ring-border/10">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">Landing Experience</span>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground">AI Analyst Landing Experience</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                The landing experience focuses on communicating AskPC&apos;s primary value proposition—removing research barriers and encouraging users to start questions immediately through an inviting and highly visible chat prompt.
-              </p>
-            </div>
-            <div className="overflow-hidden border rounded-2xl bg-muted/30 mt-2">
-              <img
-                src="/askpc-landing.png"
-                alt="AskPC AI Analyst Landing Experience"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
         </BlurFade>
 
-        {/* Categories */}
-        <BlurFade delay={0.44}>
-          <div className="flex flex-col gap-4 p-6 sm:p-8 border rounded-3xl bg-card ring-2 ring-border/10">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">Market Intelligence</span>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground">Private Market Data Intelligence</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Provides a structured taxonomy for private market queries. Users can explore specific data divisions—financial reports, funding, MCA records, and executive structures—in a guided discovery experience.
-              </p>
+        {/* Metadata Grid Layout - 2 Columns (repeat(2, 1fr)) with exact typography */}
+        <BlurFade delay={0.2}>
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 gap-4 mt-2">            
+            {/* Card 1: Role */}
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
+              <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Role</span>
+              <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Product Design | UX/UI Design</span>
             </div>
-            <div className="overflow-hidden border rounded-2xl bg-muted/30 mt-2">
-              <img
-                src="/askpc-categories.png"
-                alt="Private Market Data Intelligence Explorer"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-        </BlurFade>
 
-        {/* Chat responses */}
-        <BlurFade delay={0.46}>
-          <div className="flex flex-col gap-4 p-6 sm:p-8 border rounded-3xl bg-card ring-2 ring-border/10">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">Conversational Flow</span>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground">AI Research Conversation</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Allows business and research teams to ask complex queries like company benchmarking or financial breakdowns. Responses are formatted into structured UI cards, comparisons, and markdown blocks that simplify reading.
-              </p>
+            {/* Card 2: Industry */}
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
+              <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Industry</span>
+              <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>AI | Fintech | Private Market Intelligence</span>
             </div>
-            <div className="overflow-hidden border rounded-2xl bg-muted/30 mt-2">
-              <img
-                src="/askpc-chat2.png"
-                alt="AI Research Conversation View"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div>
-        </BlurFade>
 
-        {/* Dashboard and Settings Grid */}
-        <BlurFade delay={0.48}>
-          <div className="flex flex-col gap-6 p-6 sm:p-8 border rounded-3xl bg-card ring-2 ring-border/10">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-bold text-muted-foreground/70 uppercase tracking-wider">Supporting Platform Experience</span>
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground">Dashboard and Account Experience</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Designed a clean and unified dashboard suite supporting core workflows, search histories, usage limits, settings, and team subscription controls.
-              </p>
+            {/* Card 3: Platform */}
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
+              <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Platform</span>
+              <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Website, Web and Mobile Application</span>
             </div>
-            
-            <div className="grid sm:grid-cols-2 gap-4 mt-2">
-              <div className="flex flex-col gap-1.5 border rounded-2xl p-4 bg-muted/10">
-                <span className="text-xs font-semibold text-muted-foreground">Token & Usage Tracking</span>
-                <div className="overflow-hidden border rounded-xl">
-                  <img src="/askpc-usage.png" alt="Usage Tracking" className="w-full h-auto object-cover" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5 border rounded-2xl p-4 bg-muted/10">
-                <span className="text-xs font-semibold text-muted-foreground">Search History</span>
-                <div className="overflow-hidden border rounded-xl">
-                  <img src="/askpc-search.png" alt="Search History" className="w-full h-auto object-cover" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5 border rounded-2xl p-4 bg-muted/10">
-                <span className="text-xs font-semibold text-muted-foreground">Billing Management</span>
-                <div className="overflow-hidden border rounded-xl">
-                  <img src="/askpc-billing.png" alt="Billing Management" className="w-full h-auto object-cover" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5 border rounded-2xl p-4 bg-muted/10">
-                <span className="text-xs font-semibold text-muted-foreground">Account Settings</span>
-                <div className="overflow-hidden border rounded-xl">
-                  <img src="/askpc-settings.png" alt="Account Settings" className="w-full h-auto object-cover" />
-                </div>
-              </div>
+
+            {/* Card 4: Users */}
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
+              <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Users</span>
+              <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Investors, Analysts, Founders, Business Teams</span>
             </div>
+
           </div>
         </BlurFade>
       </div>
 
-      {/* My Role & Responsibilities */}
-      <BlurFade delay={0.5}>
-        <div className="flex flex-col gap-4 py-8 border-t border-border/60">
-          <div className="flex items-center gap-2">
-            <Briefcase className="size-5 text-primary" />
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">My Role & Responsibilities</h2>
+      {/* Overview Section */}
+      <BlurFade delay={0.25}>
+        <div className="flex flex-col gap-2 max-w-3xl pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Overview</h2>
+          <div className="flex flex-col gap-4 text-muted-foreground leading-relaxed text-sm">
+            <p>
+              Private market research requires users to collect information from multiple sources including company financials, funding history, investor activity, and business intelligence.
+            </p>
+            <p>
+              AskPC simplifies this process by creating an AI-powered research workflow where users can ask questions naturally and quickly access structured insights.
+            </p>
+            <p>
+              The goal was to design a reliable AI analyst experience that reduces research effort and helps users make faster decisions.
+            </p>
           </div>
-          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">
-            Product Design | UX/UI Design | AI Product Design
-          </p>
-          <ul className="grid sm:grid-cols-2 gap-3 mt-2">
-            {[
-              "Defined product experience and user workflows for AI-powered research",
-              "Designed information architecture for complex financial data",
-              "Created high-fidelity interfaces and interaction patterns",
-              "Designed conversational AI workflows and response structures",
-              "Collaborated with product and engineering teams",
-              "Improved usability through iterative design validation",
-              "Worked with AI-assisted design workflows for faster prototyping",
-            ].map((resp, idx) => (
-              <li key={idx} className="flex gap-2 text-sm text-muted-foreground leading-relaxed">
-                <ChevronRight className="size-4 text-primary shrink-0 mt-0.5" />
-                <span>{resp}</span>
-              </li>
-            ))}
-          </ul>
         </div>
       </BlurFade>
 
-      {/* Design Impact */}
-      <BlurFade delay={0.52}>
-        <div className="flex flex-col gap-6 py-8 border-t border-border/60">
-          <div className="flex items-center gap-2">
-            <Award className="size-5 text-primary" />
-            <h2 className="text-2xl font-bold tracking-tight text-foreground">Design Impact</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Roles & Responsibilities Section */}
+      <BlurFade delay={0.3}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Roles & Responsibilities</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
+            As the lead product designer for the AI Analyst workflow, I directed user research, interaction flows, high-fidelity UI layout schemas, and design system alignment for the conversational experience.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              "Created an intuitive AI research experience for private market intelligence",
-              "Simplified access to complex financial and investment data",
-              "Designed scalable patterns for AI conversations and data visualization",
-              "Improved research workflows by reducing manual information discovery",
-              "Established a foundation for AI-driven financial products",
-            ].map((impact, idx) => (
-              <div key={idx} className="p-5 border rounded-2xl bg-muted/20 hover:bg-muted/40 transition-colors flex flex-col gap-2">
-                <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center font-bold text-sm text-primary">
-                  {idx + 1}
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{impact}</p>
+              { skill: "Product Strategy" },
+              { skill: "UX Research" },
+              { skill: "User Flows" },
+              { skill: "Wireframing" },
+              { skill: "UI Design" },
+              { skill: "Design Systems" },
+              { skill: "Prototyping" },
+              { skill: "AI Product Design" },
+              { skill: "Design QA" }
+            ].map((item, idx) => (
+              <div 
+                key={idx} 
+                className="border border-slate-100 rounded-lg bg-slate-50/40 flex items-center cursor-default"
+                style={{ padding: "0.4rem", gap: "0.5rem" }}
+              >
+                <span className="text-xs font-semibold text-slate-700 leading-none pl-2">{item.skill}</span>
               </div>
             ))}
           </div>
         </div>
       </BlurFade>
 
-      {/* Tools & Workflow */}
-      <BlurFade delay={0.54}>
-        <div className="grid md:grid-cols-3 gap-6 py-8 border-t border-border/60">
-          <div className="p-6 border rounded-2xl bg-card">
-            <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Design</span>
-            <p className="text-sm text-foreground leading-relaxed">
-              Figma, Wireframing, Prototyping, Design Systems, High-Fidelity UI
-            </p>
-          </div>
-          <div className="p-6 border rounded-2xl bg-card">
-            <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">Collaboration</span>
-            <p className="text-sm text-foreground leading-relaxed">
-              Product Managers, Engineers, Business Teams
-            </p>
-          </div>
-          <div className="p-6 border rounded-2xl bg-card">
-            <span className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">AI Workflow</span>
-            <p className="text-sm text-foreground leading-relaxed">
-              Cursor, Claude, Antigravity, AI-assisted prototyping
-            </p>
+      {/* Brainstorming Section */}
+      <BlurFade delay={0.35}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Brainstorming</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
+            Mapping conversational query parameters, search suggestions, visual tables, prompt interaction patterns, and response structure models on workflow whiteboard planning sessions.
+          </p>
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 gap-4">
+            {IMAGE_GROUPS.brainstorming.images.map((img, idx) => (
+              <div 
+                key={idx}
+                onClick={() => openLightbox("brainstorming", idx)}
+                className="snap-start flex-shrink-0 w-[85%] sm:w-auto overflow-hidden border rounded-lg bg-muted shadow-xs aspect-video cursor-zoom-in"
+              >
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+              </div>
+            ))}
           </div>
         </div>
       </BlurFade>
 
-      {/* Final Outcome */}
-      <BlurFade delay={0.56}>
-        <div className="p-8 border rounded-3xl bg-primary text-primary-foreground text-center flex flex-col gap-4 mt-4 shadow-xl">
-          <h2 className="text-2xl font-bold tracking-tight">Final Outcome</h2>
-          <p className="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto opacity-95">
-            AskPC transformed private market research by combining AI conversations with structured financial intelligence. The product enables investors, analysts, and business professionals to quickly discover insights, compare opportunities, and make informed decisions through a simpler and more intuitive workflow.
+      {/* Wireframes & Prototype Section */}
+      <BlurFade delay={0.4}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Wireframes & Prototype</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
+            Exploring structured table schemas, company search result layouts, and dynamic sidebar filters to layout natural conversational results before detailed hi-fi design stages.
           </p>
-          <div className="mt-4">
-            <Link
-              href="/#projects"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
+          
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-col gap-4 sm:gap-6">
+            {IMAGE_GROUPS.wireframes.images.map((img, idx) => (
+              <div 
+                key={idx}
+                onClick={() => openLightbox("wireframes", idx)}
+                className="snap-start flex-shrink-0 w-[85%] sm:w-auto overflow-hidden border rounded-lg bg-slate-50 cursor-zoom-in"
+              >
+                <img src={img.src} alt={img.alt} className="w-full h-auto object-cover filter grayscale" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+
+      {/* Challenges & Solutions Section */}
+      <BlurFade delay={0.45}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
+          <div className="flex flex-col gap-8 mt-2">
+            
+            {/* Item 1 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Users needed faster access to complex private market information.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Designed a conversational AI workflow that allows users to ask questions naturally and receive structured insights.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 2 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Private market data exists across multiple fragmented sources.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Created a unified research experience combining company intelligence, financial information, investor data, and market insights.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 3 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Traditional research requires multiple searches and manual analysis.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Designed AI-powered workflows for summaries, comparisons, financial analysis, and quick discovery.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 4 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Users need confidence and trust while interacting with AI-generated insights.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Created clear response structures, organized information hierarchy, and transparent data presentation.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </BlurFade>
+
+      {/* Before & After UX Section */}
+      <BlurFade delay={0.5}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Before & After UX</h2>
+
+          <div className="flex flex-col gap-8 mt-2">
+            {/* Compare Group 1 */}
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 0)} 
+                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
+                  <img src="/assets/images/before1.webp" alt="Before: Users manually search multiple sources." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>Before:</strong> Users manually search multiple sources.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 1)} 
+                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
+                  <img src="/assets/images/Final2.webp" alt="After: Ask questions and get structured answers instantly." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>After:</strong> Ask questions and get structured answers instantly.
+                </p>
+              </div>
+            </div>
+
+            {/* Compare Group 2 */}
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 2)} 
+                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
+                  <img src="/assets/images/Before2.webp" alt="Before: Complex financial information discovery." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>Before:</strong> Complex financial information discovery.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 3)} 
+                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
+                  <img src="/assets/images/Final3.webp" alt="After: AI-powered company intelligence experience." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>After:</strong> AI-powered company intelligence experience.
+                </p>
+              </div>
+            </div>
+
+            {/* Compare Group 3 */}
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 4)} 
+                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
+                  <img src="/assets/images/before1.webp" alt="Before: Time-consuming research workflow." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>Before:</strong> Time-consuming research workflow.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
+                <div 
+                  onClick={() => openLightbox("beforeAfter", 5)} 
+                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
+                >
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
+                  <img src="/assets/images/Final4.webp" alt="After: Conversational research assistant." className="w-full h-full object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                  <strong>After:</strong> Conversational research assistant.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+
+      {/* Impact Section */}
+      <BlurFade delay={0.55}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+            Impact
+          </h2>
+                 <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">300+</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Funds, HNIs & Family Office</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">50% Faster</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Deal closure process</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">30% Increase</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active session time</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Referral traffic</span>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+      {/* Final UI Gallery Section */}
+      <BlurFade delay={0.6}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Final UI Gallery</h2>
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-col gap-4 sm:gap-10 mt-2">
+            {IMAGE_GROUPS.gallery.images.map((img, idx) => (
+              <div key={idx} className="snap-start flex-shrink-0 w-[85%] sm:w-auto flex flex-col gap-2 group">
+                <div 
+                  onClick={() => openLightbox("gallery", idx)}
+                  className="overflow-hidden border rounded-lg bg-muted cursor-zoom-in"
+                >
+                  <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
+                  <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </BlurFade>
+
+      {/* Final Output Section */}
+      <BlurFade delay={0.65}>
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground text-left">Final Output</h2>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl mb-3 text-left">
+            AskPC transformed private market research by combining conversational AI with structured intelligence, helping investors, analysts, and business teams discover insights faster.
+          </p>
+          <ul className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl list-disc pl-5 flex flex-col gap-2 mb-8 text-left">
+            <li>Simplified access to complex private market intelligence through AI conversations.</li>
+            <li>Reduced research effort by combining multiple data sources into one workflow.</li>
+            <li>Created a scalable AI-first experience for future financial intelligence products.</li>
+          </ul>
+
+          {/* Case Study Navigation */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 pt-8 border-t border-border/60 w-full">
+            <Link 
+              href="/projects/privatecircle-markets" 
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 font-semibold text-sm border rounded-lg bg-background text-foreground hover:bg-muted border-border transition-all w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0"
             >
-              Back to Portfolio
+              <ArrowLeft className="size-4" />
+              PrivateCircle Markets
+            </Link>
+            <Link 
+              href="/projects/privatecircle-markets" 
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 font-semibold text-sm rounded-lg bg-foreground text-background hover:opacity-90 transition-all w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Next Project
+              <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
       </BlurFade>
+
+      {/* Lightbox / Modal Component */}
+      {activeGroup && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center select-none"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Modal Header containing Section Title and Counter */}
+          <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white z-50">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+              <span className="text-sm font-bold tracking-tight text-white/90">
+                {IMAGE_GROUPS[activeGroup].title}
+              </span>
+              <span className="text-xs font-mono opacity-60 hidden sm:inline">|</span>
+              <span className="text-xs font-mono tracking-wider opacity-75">
+                {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].images.length}
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <span className="text-xs font-mono tracking-wider opacity-75 sm:hidden">
+                {activeIndex + 1} / {IMAGE_GROUPS[activeGroup].images.length}
+              </span>
+              <button 
+                onClick={() => setIsZoomed(!isZoomed)}
+                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                title={isZoomed ? "Zoom Out" : "Zoom In"}
+              >
+                {isZoomed ? <ZoomOut className="size-5" /> : <ZoomIn className="size-5" />}
+              </button>
+              <button 
+                onClick={closeLightbox}
+                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                title="Close"
+              >
+                <X className="size-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Previous Button */}
+          <button 
+            onClick={navigatePrev}
+            className="absolute left-4 p-3 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all border border-white/10 z-50 hidden sm:block"
+            title="Previous"
+          >
+            <ChevronLeft className="size-6" />
+          </button>
+
+          {/* Image Canvas with Click to Toggle Zoom & Close on canvas click */}
+          <div 
+            className="w-full h-full flex items-center justify-center p-4 overflow-auto cursor-zoom-out"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) closeLightbox();
+            }}
+          >
+            <img
+              src={IMAGE_GROUPS[activeGroup].images[activeIndex].src}
+              alt={IMAGE_GROUPS[activeGroup].images[activeIndex].alt}
+              onClick={() => setIsZoomed(!isZoomed)}
+              className={`max-h-[85vh] max-w-[90vw] object-contain transition-all duration-300 ${
+                isZoomed 
+                  ? "scale-150 cursor-zoom-out max-h-none max-w-none shadow-2xl" 
+                  : "scale-100 cursor-zoom-in"
+              }`}
+            />
+          </div>
+
+          {/* Next Button */}
+          <button 
+            onClick={navigateNext}
+            className="absolute right-4 p-3 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all border border-white/10 z-50 hidden sm:block"
+            title="Next"
+          >
+            <ChevronRight className="size-6" />
+          </button>
+
+          {/* Helper caption for mobile swipe */}
+          <div className="absolute bottom-4 text-center text-xs text-white/50 w-full px-4 select-none pointer-events-none block sm:hidden">
+            Swipe left or right to navigate
+          </div>
+        </div>
+      )}
     </div>
   );
 }
