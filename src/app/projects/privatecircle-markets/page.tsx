@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { 
   ArrowLeft, 
+  ArrowRight,
   X, 
   ChevronLeft, 
   ChevronRight, 
@@ -142,10 +143,10 @@ export default function PrivateCircleMarketsPage() {
             <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground/80">
               Fintech • Private Markets • Investment Platform
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
               PrivateCircle Markets
             </h1>
-            <p className="text-lg sm:text-xl font-medium text-muted-foreground">
+            <p className="text-[16px] sm:text-xl font-medium text-muted-foreground">
               AI-Powered Fundraising & Deal-Flow Marketplace
             </p>
           </div>
@@ -167,28 +168,28 @@ export default function PrivateCircleMarketsPage() {
 
         {/* Metadata Grid Layout - 2 Columns (repeat(2, 1fr)) with exact typography */}
         <BlurFade delay={0.2}>
-          <div className="grid grid-cols-2 gap-4 mt-2">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 gap-4 mt-2">
             
             {/* Card 1: Role */}
-            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
               <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Role</span>
               <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Product Design | UX/UI</span>
             </div>
 
             {/* Card 2: Industry */}
-            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
               <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Industry</span>
               <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Fintech | Private Markets</span>
             </div>
 
             {/* Card 3: Platform */}
-            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
               <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Platform</span>
               <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Website, Web and Mobile Application</span>
             </div>
 
             {/* Card 4: Users */}
-            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1">
+            <div className="p-4 border rounded-xl bg-white flex flex-col gap-1 snap-start flex-shrink-0 w-[85%] sm:w-auto">
               <span className="font-bold text-slate-400 uppercase tracking-widest" style={{ fontSize: "0.75rem" }}>Users</span>
               <span className="font-semibold text-slate-800" style={{ fontSize: "0.875rem" }}>Founders, HNIs, VCs, PEs, Wealth Managers, Investment Bankers</span>
             </div>
@@ -249,12 +250,12 @@ export default function PrivateCircleMarketsPage() {
           <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mb-3">
             Analyzing user pain points and mapping workflows. We aligned investor discovery lanes, match parameter logic, and meeting coordination triggers on whiteboard planning sessions.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 gap-4">
             {IMAGE_GROUPS.brainstorming.images.map((img, idx) => (
               <div 
                 key={idx}
                 onClick={() => openLightbox("brainstorming", idx)}
-                className="overflow-hidden border rounded-lg bg-muted shadow-xs aspect-video cursor-zoom-in"
+                className="snap-start flex-shrink-0 w-[85%] sm:w-auto overflow-hidden border rounded-lg bg-muted shadow-xs aspect-video cursor-zoom-in"
               >
                 <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
               </div>
@@ -271,12 +272,12 @@ export default function PrivateCircleMarketsPage() {
             Visualizing grid cards and modular navigation widgets. Early wireframe explorations focused on validating quick-connect alerts and match rating tags before moving to high-fidelity visual production.
           </p>
           
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-col gap-6">
             {IMAGE_GROUPS.wireframes.images.map((img, idx) => (
               <div 
                 key={idx}
                 onClick={() => openLightbox("wireframes", idx)}
-                className="overflow-hidden border rounded-lg bg-slate-50 cursor-zoom-in"
+                className="snap-start flex-shrink-0 w-[85%] sm:w-auto overflow-hidden border rounded-lg bg-slate-50 cursor-zoom-in"
               >
                 <img src={img.src} alt={img.alt} className="w-full h-auto object-cover filter grayscale" />
               </div>
@@ -366,8 +367,8 @@ export default function PrivateCircleMarketsPage() {
           
           <div className="flex flex-col gap-8 mt-2">
             {/* Compare Group 1 */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 0)} 
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
@@ -379,7 +380,7 @@ export default function PrivateCircleMarketsPage() {
                   <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
                 </p>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 1)} 
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
@@ -394,8 +395,8 @@ export default function PrivateCircleMarketsPage() {
             </div>
 
             {/* Compare Group 2 */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
+            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 2)} 
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
@@ -407,7 +408,7 @@ export default function PrivateCircleMarketsPage() {
                   <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
                 </p>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
                   onClick={() => openLightbox("beforeAfter", 3)} 
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
@@ -431,28 +432,28 @@ export default function PrivateCircleMarketsPage() {
             Impact
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">300+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Funds, HNIs & Family Office</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">50% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Deal closure process</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">30% Increase</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active session time</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Referral traffic</span>
             </div>
@@ -465,9 +466,9 @@ export default function PrivateCircleMarketsPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Final UI Gallery</h2>
           
-          <div className="flex flex-col gap-10 mt-2">
+          <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-col gap-10 mt-2">
             {IMAGE_GROUPS.gallery.images.map((img, idx) => (
-              <div key={idx} className="flex flex-col gap-2 group">
+              <div key={idx} className="snap-start flex-shrink-0 w-[85%] sm:w-auto flex flex-col gap-2 group">
                 <div 
                   onClick={() => openLightbox("gallery", idx)}
                   className="overflow-hidden border rounded-lg bg-muted cursor-zoom-in"
@@ -481,21 +482,34 @@ export default function PrivateCircleMarketsPage() {
             ))}
           </div>
         </div>
-      </BlurFade>
-
-      {/* Final Outcome */}
+      </BlurFade>      {/* Final Output Section */}
       <BlurFade delay={0.65}>
-        <div className="p-8 border rounded-xl bg-primary text-primary-foreground text-center flex flex-col gap-4 mt-4 shadow-lg">
-          <h2 className="text-2xl font-bold tracking-tight">Final Outcome</h2>
-          <p className="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto opacity-95">
-            PrivateCircle Markets evolved into a comprehensive private market ecosystem enabling founders and investors to discover opportunities, build connections, manage fundraising activities, and make informed investment decisions through structured data and intelligent workflows.
+        <div className="flex flex-col gap-2 pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground text-left">Final Output</h2>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl mb-3 text-left">
+            PrivateCircle Markets evolved into a unified private market platform that helps founders, investors, and financial professionals discover opportunities, manage connections, and streamline investment workflows.
           </p>
-          <div className="mt-4 flex justify-center">
-            <Link
-              href="/#projects"
-              className="inline-flex h-10 items-center justify-center rounded-lg bg-background px-6 text-sm font-semibold text-foreground hover:bg-background/90 transition-colors shadow"
+          <ul className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl list-disc pl-5 flex flex-col gap-2 mb-8 text-left">
+            <li>Simplified fundraising and investment journeys through structured user flows.</li>
+            <li>Enabled investor discovery, deal sharing, meetings, and collaboration in one platform.</li>
+            <li>Created scalable experiences for multiple user profiles and future product expansion.</li>
+          </ul>
+
+          {/* Case Study Navigation */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 pt-8 border-t border-border/60 w-full">
+            <Link 
+              href="/projects/askpc" 
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 font-semibold text-sm border rounded-lg bg-background text-foreground hover:bg-muted border-border transition-all w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0"
             >
-              Back to Portfolio
+              <ArrowLeft className="size-4" />
+              Previous Project
+            </Link>
+            <Link 
+              href="/projects/askpc" 
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 font-semibold text-sm rounded-lg bg-foreground text-background hover:opacity-90 transition-all w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Next Project
+              <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>
