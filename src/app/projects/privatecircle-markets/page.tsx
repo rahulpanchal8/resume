@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 // Define the groups of images for the lightbox navigation with mapped section titles
 const IMAGE_GROUPS = {
@@ -156,17 +157,19 @@ export default function PrivateCircleMarketsPage() {
         <BlurFade delay={0.15}>
           <div 
             onClick={() => openLightbox("gallery", 0)}
-            className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in"
+            className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in relative aspect-[16/10] w-full"
           >
-            <img
+            <Image
               src="/assets/images/Final1.webp"
               alt="PrivateCircle Markets Dashboard Preview"
-              className="w-full h-auto object-cover"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </BlurFade>
 
-        {/* Metadata Grid Layout - 2 Columns (repeat(2, 1fr)) with exact typography */}
         <BlurFade delay={0.2}>
           <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 gap-4 mt-2">            
             {/* Card 1: Role */}

@@ -12,53 +12,50 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 // Define the groups of images for the lightbox navigation with mapped section titles
 const IMAGE_GROUPS = {
   brainstorming: {
     title: "Brainstorming",
     images: [
-      { src: "/assets/images/brainstorm0.webp", alt: "AI Assistant Workflow Mapping" },
-      { src: "/assets/images/brainstorm1.webp", alt: "User Query Exploration Flow" },
-      { src: "/assets/images/brainstorm3.webp", alt: "Prompt Interaction Patterns" },
-      { src: "/assets/images/brainstorm4.webp", alt: "Information Architecture" }
+      { src: "/assets/images/askpc-brainstorm2.png", alt: "AI Assistant Chat Flows and Wire-flow" },
+      { src: "/assets/images/askpc-brainstorm3.png", alt: "Information Exploration and Architecture Design" }
     ]
   },
   wireframes: {
     title: "Wireframes & Prototype",
     images: [
-      { src: "/assets/images/Prototype2.webp", alt: "AI Chat Interface Wireframe Concept" },
-      { src: "/assets/images/before1.webp", alt: "Search and Company Research Flows" },
-      { src: "/assets/images/Before2.webp", alt: "Financial Insights Layout Exploration" }
+      { src: "/assets/images/askpc-wireframe1.png", alt: "AI Chat Assistant Wireframe Interface" },
+      { src: "/assets/images/askpc-wireframe2.png", alt: "Search results and structured list designs" },
+      { src: "/assets/images/askpc-wireframe3.png" , alt: "Financial information exploration interface design" }
     ]
   },
   beforeAfter: {
     title: "Before & After UX",
     images: [
-      { src: "/assets/images/before1.webp", alt: "Before: Users manually search multiple sources." },
-      { src: "/assets/images/Final2.webp", alt: "After: Ask questions and get structured answers instantly." },
-      { src: "/assets/images/Before2.webp", alt: "Before: Complex financial information discovery." },
-      { src: "/assets/images/Final3.webp", alt: "After: AI-powered company intelligence experience." },
-      { src: "/assets/images/before1.webp", alt: "Before: Time-consuming research workflow." },
-      { src: "/assets/images/Final4.webp", alt: "After: Conversational research assistant." }
+      { src: "/assets/images/askpc-Before1.jpeg", alt: "Before: Time-consuming manual search research workflow across multiple sources." },
+      { src: "/assets/images/askpc-After1.png", alt: "After: AI-powered conversational private market intelligence." }
     ]
   },
   gallery: {
     title: "Final UI Gallery",
     images: [
-      { src: "/assets/images/Final1.webp", alt: "AskPC landing experience" },
-      { src: "/assets/images/Final2.webp", alt: "AI chat interface" },
-      { src: "/assets/images/Final3.webp", alt: "Company intelligence" },
-      { src: "/assets/images/Final4.webp", alt: "Financial insights" },
-      { src: "/assets/images/Final5.webp", alt: "Investor research" },
-      { src: "/assets/images/Final6.webp", alt: "Deal research" },
-      { src: "/assets/images/Final7.webp", alt: "Market analysis" },
-      { src: "/assets/images/Final1.webp", alt: "Dashboard screens" }
+      { src: "/assets/images/askpc-Final1.png", alt: "AskPC landing experience" },
+      { src: "/assets/images/askpc-Final2.png", alt: "AI chat interface" },
+      { src: "/assets/images/askpc-Final3.png", alt: "Company intelligence" },
+      { src: "/assets/images/askpc-Final4.png", alt: "Financial insights" },
+      { src: "/assets/images/askpc-Final5.png", alt: "Investor research" },
+      { src: "/assets/images/askpc-Final6.png", alt: "Deal research" },
+      { src: "/assets/images/askpc-Final7.png", alt: "Market analysis" },
+      { src: "/assets/images/askpc-Final8.png", alt: "Private company intelligence tools" },
+      { src: "/assets/images/askpc-Final9.png", alt: "Dashboard screens" }
     ]
   }
 };
 
 type GroupName = keyof typeof IMAGE_GROUPS;
+
 
 export default function AskPCCaseStudyPage() {
   const [activeGroup, setActiveGroup] = useState<GroupName | null>(null);
@@ -160,17 +157,19 @@ export default function AskPCCaseStudyPage() {
         <BlurFade delay={0.15}>
           <div 
             onClick={() => openLightbox("gallery", 0)}
-            className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in"
+            className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in relative aspect-[16/10] w-full"
           >
-            <img
-              src="/assets/images/Final1.webp"
+            <Image
+              src="/assets/images/askpc-Title hero image.png"
               alt="AskPC Dashboard Preview"
-              className="w-full h-auto object-cover"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         </BlurFade>
 
-        {/* Short introduction paragraph below hero media */}
         <BlurFade delay={0.18}>
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
             AskPC is an AI-powered private market intelligence platform that helps users research companies, investors, deals, financial data, and market insights through conversational AI.
@@ -379,7 +378,6 @@ export default function AskPCCaseStudyPage() {
       <BlurFade delay={0.5}>
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Before & After UX</h2>
-
           <div className="flex flex-col gap-8 mt-2">
             {/* Compare Group 1 */}
             <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
@@ -389,10 +387,10 @@ export default function AskPCCaseStudyPage() {
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/before1.webp" alt="Before: Users manually search multiple sources." className="w-full h-full object-cover" />
+                  <img src="/assets/images/askpc-Before1.jpeg" alt="Before: Time-consuming manual search research workflow across multiple sources." className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Users manually search multiple sources.
+                  <strong>Before:</strong> Time-consuming manual search research workflow across multiple sources.
                 </p>
               </div>
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
@@ -401,73 +399,16 @@ export default function AskPCCaseStudyPage() {
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final2.webp" alt="After: Ask questions and get structured answers instantly." className="w-full h-full object-cover" />
+                  <img src="/assets/images/askpc-After1.png" alt="After: AI-powered conversational private market intelligence." className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> Ask questions and get structured answers instantly.
-                </p>
-              </div>
-            </div>
-
-            {/* Compare Group 2 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 2)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/Before2.webp" alt="Before: Complex financial information discovery." className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Complex financial information discovery.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 3)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final3.webp" alt="After: AI-powered company intelligence experience." className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> AI-powered company intelligence experience.
-                </p>
-              </div>
-            </div>
-
-            {/* Compare Group 3 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 4)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/before1.webp" alt="Before: Time-consuming research workflow." className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Time-consuming research workflow.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 5)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final4.webp" alt="After: Conversational research assistant." className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> Conversational research assistant.
+                  <strong>After:</strong> AI-powered conversational private market intelligence.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </BlurFade>
-
       {/* Impact Section */}
       <BlurFade delay={0.55}>
         <div className="flex flex-col gap-2 pt-2">

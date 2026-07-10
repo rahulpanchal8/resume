@@ -214,7 +214,7 @@ export const DATA = {
         "AI Workflow",
       ],
       links: [],
-      image: "/fold1.png",
+      image: "/assets/images/Final1.webp",
       video: "",
     },
     {
@@ -232,7 +232,7 @@ export const DATA = {
         "Prototyping",
       ],
       links: [],
-      image: "/askpc-landing.png",
+      image: "/assets/images/askpc-Title hero image.png",
       video: "",
     },
     {

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,21 +6,28 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import Image from "next/image";
 
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
+function ProjectImage({ src, alt, priority }: { src: string; alt: string; priority?: boolean }) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
+    return <div className="w-full h-48 bg-muted animate-pulse" />;
   }
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      className="w-full h-48 object-cover"
-      onError={() => setImageError(true)}
-    />
+    <div className="relative w-full h-48 overflow-hidden bg-muted">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority={priority}
+        loading={priority ? undefined : "lazy"}
+        className="object-cover transition-transform duration-300 hover:scale-105"
+        onError={() => setImageError(true)}
+      />
+    </div>
   );
 }
 
@@ -40,6 +46,7 @@ interface Props {
     href: string;
   }[];
   className?: string;
+  priority?: boolean;
 }
 
 export function ProjectCard({
@@ -53,6 +60,7 @@ export function ProjectCard({
   video,
   links,
   className,
+  priority,
 }: Props) {
   const isInternal = href?.startsWith("/");
 
@@ -80,7 +88,7 @@ export function ProjectCard({
               className="w-full h-48 object-cover"
             />
           ) : image ? (
-            <ProjectImage src={image} alt={title} />
+            <ProjectImage src={image} alt={title} priority={priority} />
           ) : (
             <div className="w-full h-48 bg-muted" />
           )}
