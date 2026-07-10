@@ -289,56 +289,68 @@ export default function PrivateCircleMarketsPage() {
       <BlurFade delay={0.45}>
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
-          
-          <div className="flex flex-col gap-6 mt-2">
+          <div className="flex flex-col gap-8 mt-2">
             
-            {/* Card 1 */}
-            <div className="p-6 border rounded-xl bg-white shadow-xs flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
+            {/* Item 1 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
-                <h3 className="font-bold text-sm text-slate-800 leading-snug">Helping investors quickly identify relevant companies</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Investors were forced to open dozens of browser tabs and download multiple reports to perform simple filtering processes.
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Initially, only a mobile version was planned for the product experience.
                 </p>
               </div>
-              <div className="border-t border-slate-100 pt-3 flex flex-col gap-1">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                  Introduced progressive disclosure with interactive badges displaying match criteria statistics instantly on the list card.
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Created a complete desktop experience and redesigned the mobile version to maintain consistency across platforms with unified user flows and interactions.
                 </p>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="p-6 border rounded-xl bg-white shadow-xs flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
+            {/* Item 2 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
-                <h3 className="font-bold text-sm text-slate-800 leading-snug">Managing large amounts of financial information</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Displaying capital allocations, cap tables, historical fund sizes, and sectors created high visual noise and cognitive overload.
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  The product initially focused only on fundraising and investing workflows for HNIs, with plans to expand to other user profiles.
                 </p>
               </div>
-              <div className="border-t border-slate-100 pt-3 flex flex-col gap-1">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                  Designed modular dashboard cards with a tabbed viewport grouping Connect requests, active matches, and schedule logs.
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Expanded the platform experience to support multiple user types including VCs, PEs, Wealth Managers, Investment Bankers, Portfolio Managers and Deal Scouts. Created dedicated profiles and workflows for each user type, including internal transactions and meeting journeys.
                 </p>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="p-6 border rounded-xl bg-white shadow-xs flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
+            {/* Item 3 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
-                <h3 className="font-bold text-sm text-slate-800 leading-snug">Manual meeting scheduling friction</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Back-and-forth email/calendar sharing between founders and investors delayed connection setups by days.
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Previously, meetings, data sharing, and transaction-related activities were happening outside the platform.
                 </p>
               </div>
-              <div className="border-t border-slate-100 pt-3 flex flex-col gap-1">
+              <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-xs text-slate-700 leading-relaxed font-medium">
-                  Integrated automated slot coordination flows directly within the investor matching profile cards.
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Introduced in-platform workflows including meeting management between connections, pitch deck uploads, data/file sharing and fund commitment functionality to bring the complete investment journey into one platform.
+                </p>
+              </div>
+            </div>
+
+            {/* Item 4 */}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
+                <p className="text-sm font-semibold text-foreground leading-relaxed">
+                  Users needed an easier way to share profiles and deals beyond the platform.
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Integrated profile and deal-sharing functionality within the platform and enabled sharing across external services such as WhatsApp to improve discoverability and collaboration.
                 </p>
               </div>
             </div>
