@@ -17,38 +17,38 @@ const IMAGE_GROUPS = {
   brainstorming: {
     title: "Brainstorming",
     images: [
-      { src: "/assets/images/brainstorm0.jpg", alt: "Whiteboard Session 1" },
-      { src: "/assets/images/brainstorm1.jpg", alt: "Whiteboard Session 2" },
-      { src: "/assets/images/brainstorm3.png", alt: "Whiteboard Session 3" },
-      { src: "/assets/images/brainstorm4.jpg", alt: "Whiteboard Session 4" }
+      { src: "/assets/images/brainstorm0.webp", alt: "Whiteboard Session 1" },
+      { src: "/assets/images/brainstorm1.webp", alt: "Whiteboard Session 2" },
+      { src: "/assets/images/brainstorm3.webp", alt: "Whiteboard Session 3" },
+      { src: "/assets/images/brainstorm4.webp", alt: "Whiteboard Session 4" }
     ]
   },
   wireframes: {
     title: "Wireframes & Prototype",
     images: [
-      { src: "/assets/images/Prototype2.png", alt: "Prototype Flow Map" },
-      { src: "/assets/images/before1.png", alt: "Low Fidelity Screen Concept" }
+      { src: "/assets/images/Prototype2.webp", alt: "Prototype Flow Map" },
+      { src: "/assets/images/before1.webp", alt: "Low Fidelity Screen Concept" }
     ]
   },
   beforeAfter: {
     title: "Before & After UX",
     images: [
-      { src: "/assets/images/before1.png", alt: "Before: Static company lists" },
-      { src: "/assets/images/Final2.png", alt: "After: Unified investor matches layout" },
-      { src: "/assets/images/Before2.png", alt: "Before: Complex investor search forms" },
-      { src: "/assets/images/Final3.png", alt: "After: Card Discovery Layout" }
+      { src: "/assets/images/before1.webp", alt: "Before: Static company lists" },
+      { src: "/assets/images/Final2.webp", alt: "After: Unified investor matches layout" },
+      { src: "/assets/images/Before2.webp", alt: "Before: Complex investor search forms" },
+      { src: "/assets/images/Final3.webp", alt: "After: Card Discovery Layout" }
     ]
   },
   gallery: {
     title: "Final UI Gallery",
     images: [
-      { src: "/assets/images/Final1.png", alt: "HNI Investor Home Dashboard" },
-      { src: "/assets/images/Final2.png", alt: "Criteria Match details" },
-      { src: "/assets/images/Final3.png", alt: "Startup Discovery lanes" },
-      { src: "/assets/images/Final4.png", alt: "Investor Connection Profiles" },
-      { src: "/assets/images/Final5.png", alt: "Explore Network node mapping visualizer" },
-      { src: "/assets/images/Final6.png", alt: "Mobile Dashboard Layouts" },
-      { src: "/assets/images/Final7.png", alt: "Automated Slot Coordination and booking calendar" }
+      { src: "/assets/images/Final1.webp", alt: "HNI Investor Home Dashboard" },
+      { src: "/assets/images/Final2.webp", alt: "Criteria Match details" },
+      { src: "/assets/images/Final3.webp", alt: "Startup Discovery lanes" },
+      { src: "/assets/images/Final4.webp", alt: "Investor Connection Profiles" },
+      { src: "/assets/images/Final5.webp", alt: "Explore Network node mapping visualizer" },
+      { src: "/assets/images/Final6.webp", alt: "Mobile Dashboard Layouts" },
+      { src: "/assets/images/Final7.webp", alt: "Automated Slot Coordination and booking calendar" }
     ]
   }
 };
@@ -158,7 +158,7 @@ export default function PrivateCircleMarketsPage() {
             className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in"
           >
             <img
-              src="/assets/images/Final1.png"
+              src="/assets/images/Final1.webp"
               alt="PrivateCircle Markets Dashboard Preview"
               className="w-full h-auto object-cover"
             />
@@ -361,7 +361,7 @@ export default function PrivateCircleMarketsPage() {
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/assets/images/before1.png" alt="Static company lists" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/before1.webp" alt="Static company lists" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
@@ -373,7 +373,7 @@ export default function PrivateCircleMarketsPage() {
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/assets/images/Final2.png" alt="Unified investor matches layout" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Final2.webp" alt="Unified investor matches layout" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
@@ -389,7 +389,7 @@ export default function PrivateCircleMarketsPage() {
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md">Before</span>
-                  <img src="/assets/images/Before2.png" alt="Complex investor search forms" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Before2.webp" alt="Complex investor search forms" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
@@ -401,7 +401,7 @@ export default function PrivateCircleMarketsPage() {
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md">After</span>
-                  <img src="/assets/images/Final3.png" alt="Card Discovery Layout" className="w-full h-auto object-cover" />
+                  <img src="/assets/images/Final3.webp" alt="Card Discovery Layout" className="w-full h-auto object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Horizontal scroll lanes grouping categories (Super lists, AI-suggestions) and clear, structured cards.
@@ -436,28 +436,13 @@ export default function PrivateCircleMarketsPage() {
               <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
             </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mt-2 text-muted-foreground leading-relaxed text-xs">
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2">
-                <span className="size-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5 animate-pulse"></span>
-                <p>Users transitioned from downloading offline company PDF reports to reading financial details directly online after the profile redesign.</p>
-              </div>
-              <div className="flex gap-2">
-                <span className="size-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5 animate-pulse"></span>
-                <p>The consolidated dashboard layout led to a measurable increase in active session time and exploration of matching parameters.</p>
-              </div>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">30% Increase</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active session time</span>
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2">
-                <span className="size-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5 animate-pulse"></span>
-                <p>Improved search capabilities drove higher discovery rates, contributing directly to platform renewals and subscription retention.</p>
-              </div>
-              <div className="flex gap-2">
-                <span className="size-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5 animate-pulse"></span>
-                <p>Richer, easily navigable pages significantly improved discovery and referral traffic.</p>
-              </div>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Referral traffic</span>
             </div>
           </div>
         </div>
