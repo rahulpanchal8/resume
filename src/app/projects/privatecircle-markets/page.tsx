@@ -229,7 +229,6 @@ export default function PrivateCircleMarketsPage() {
               { skill: "UI Design" },
               { skill: "Design Systems" },
               { skill: "Prototyping" },
-              { skill: "Design QA" }
             ].map((item, idx) => (
               <div 
                 key={idx} 
@@ -421,19 +420,19 @@ export default function PrivateCircleMarketsPage() {
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">300+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Funds, HNIs & Family Office</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">50% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Deal closure process</span>
             </div>
-            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: 'calc(var(--spacing) * 4)' }}>
+            <div className="border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
             </div>
