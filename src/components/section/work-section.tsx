@@ -10,6 +10,7 @@ import {
 import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Markdown from "react-markdown";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -105,7 +106,7 @@ export default function WorkSection() {
             <ul className="list-disc pl-4 space-y-1.5 mt-2">
               {work.points.map((point, idx) => (
                 <li key={idx} className="leading-relaxed">
-                  {point}
+                  <Markdown components={{ p: ({ children }) => <>{children}</> }}>{point}</Markdown>
                 </li>
               ))}
             </ul>
