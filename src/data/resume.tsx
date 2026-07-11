@@ -11,7 +11,7 @@ export const DATA = {
   description:
     "Product Designer | UX-UI Designer | AI Product Design",
   summary:
-    "Experienced designer with 13 years of creating intuitive, **user-centered designs**. Proficient in design tools: Figma, Sketch, Adobe Suite, Illustrator. Working knowledge of AI tools: Cursor, Vercel, Antigravity, Claude etc.\n\nExpertise in **wireframing, prototyping, and high-fidelity UI design** with a strong understanding of user research, user flows, and usability principles. Experienced in cross-team collaboration with product, developers, and marketers, and knowledgeable in front-end and **AI-driven workflows** for design feasibility.",
+    "Product Designer with 14 years of experience creating intuitive, **user-centered digital experiences** across SaaS, AI products and complex data platforms. Skilled in Figma, Sketch, Adobe Suite and modern AI design tools including Cursor, Vercel, Antigravity and Claude.\n\nExperienced in **user research, UX strategy, wireframing, prototyping and high-fidelity UI design**. Strong at translating complex business problems into simple, scalable product solutions through close collaboration with product, engineering and business teams. Familiar with front-end technologies and **AI-powered workflows** to improve design feasibility and accelerate product development.",
   avatarUrl: "/me.png",
   skills: [
     { name: "Figma" },
