@@ -500,7 +500,7 @@ export default function PrivateCircleMarketsPage() {
           {/* Case Study Navigation */}
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 pt-8 border-t border-border/60 w-full">
             <Link 
-              href="/projects/askpc" 
+              href="/projects/privatecircle-networks" 
               className="inline-flex items-center justify-center gap-2 h-11 px-6 font-semibold text-sm border rounded-lg bg-background text-foreground hover:bg-muted border-border transition-all w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0"
             >
               <ArrowLeft className="size-4" />
