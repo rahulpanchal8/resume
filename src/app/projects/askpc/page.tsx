@@ -14,8 +14,13 @@ import {
 import BlurFade from "@/components/magicui/blur-fade";
 import Image from "next/image";
 
-// Define the groups of images for the lightbox navigation with mapped section titles
 const IMAGE_GROUPS = {
+  hero: {
+    title: "AskPC",
+    images: [
+      { src: "/assets/images/askpc-Title hero image.png", alt: "AskPC Dashboard Preview" }
+    ]
+  },
   brainstorming: {
     title: "Brainstorming",
     images: [
@@ -156,7 +161,7 @@ export default function AskPCCaseStudyPage() {
         {/* Large Featured Product Preview - Opens Final UI Gallery */}
         <BlurFade delay={0.15}>
           <div 
-            onClick={() => openLightbox("gallery", 0)}
+            onClick={() => openLightbox("hero", 0)}
             className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in relative aspect-[16/10] w-full"
           >
             <Image

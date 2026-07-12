@@ -250,7 +250,7 @@ export const DATA = {
         "Prototyping",
       ],
       links: [],
-      image: "/assets/images/Final1.webp",
+      image: "/assets/images/research-title hero.png",
       video: "",
     },
     {
