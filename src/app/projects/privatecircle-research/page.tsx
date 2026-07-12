@@ -19,38 +19,44 @@ const IMAGE_GROUPS = {
   brainstorming: {
     title: "Brainstorming",
     images: [
-      { src: "/assets/images/brainstorm0.webp", alt: "Research workflow exploration whiteboard session" },
-      { src: "/assets/images/brainstorm1.webp", alt: "Company profile structure whiteboard session" },
-      { src: "/assets/images/brainstorm3.webp", alt: "Search experience and content hierarchy mapping" },
-      { src: "/assets/images/brainstorm4.webp", alt: "User journey and feature prioritization mapping" }
+      { src: "/assets/images/research-branstorm1.png", alt: "Research workflow exploration and filter behavior sketches" },
+      { src: "/assets/images/research-brainstorm3.png", alt: "Company info and data architecture whiteboard diagram" }
     ]
   },
   wireframes: {
     title: "Wireframes & Prototype",
     images: [
-      { src: "/assets/images/Prototype2.webp", alt: "Company profile layout wireframes" },
-      { src: "/assets/images/before1.webp", alt: "Advanced search & navigation wireframes" }
+      { src: "/assets/images/research-wireframe1.png", alt: "Financial data dashboard wireframe layout" },
+      { src: "/assets/images/research-wireframe2.png", alt: "Company list database layout with sidebar filters" }
     ]
   },
   beforeAfter: {
     title: "Before & After UX",
     images: [
-      { src: "/assets/images/before1.webp", alt: "Before: Static company information experience" },
-      { src: "/assets/images/Final2.webp", alt: "After: Interactive company research experience" },
-      { src: "/assets/images/Before2.webp", alt: "Before: Download-focused workflow" },
-      { src: "/assets/images/Final3.webp", alt: "After: Online exploration and discovery" }
+      { src: "/assets/images/research-wireframe2.png", alt: "Before: Static table rows" },
+      { src: "/assets/images/research-final5.png", alt: "After: Interactive charts and valuation metrics" },
+      { src: "/assets/images/research-wireframe1.png", alt: "Before: Download-heavy report structures" },
+      { src: "/assets/images/research-final8.png", alt: "After: Direct in-app insight feeds" },
+      { src: "/assets/images/research-wireframe2.png", alt: "Before: Cluttered nested list categories" },
+      { src: "/assets/images/research-final4.png", alt: "After: Clean, structured company profile summary" }
     ]
   },
   gallery: {
     title: "Final UI Gallery",
     images: [
-      { src: "/assets/images/Final1.webp", alt: "Company profile dashboard view" },
-      { src: "/assets/images/Final2.webp", alt: "Interactive financial intelligence view" },
-      { src: "/assets/images/Final3.webp", alt: "Advanced search and filtering workspace" },
-      { src: "/assets/images/Final4.webp", alt: "Company connections and investor mappings" },
-      { src: "/assets/images/Final5.webp", alt: "Funding history and capitalization tables dashboard" },
-      { src: "/assets/images/Final6.webp", alt: "Mobile search and profile views layout" },
-      { src: "/assets/images/Final7.webp", alt: "Export and report customization panel view" }
+      { src: "/assets/images/research-final1.png", alt: "Company Master List: Customizable table and query layout" },
+      { src: "/assets/images/research-final2.png", alt: "Search Filters Panel: Side drawer showing advanced filters" },
+      { src: "/assets/images/research-final3.png", alt: "Custom Column Selector: Column ordering configuration drawer" },
+      { src: "/assets/images/research-final4.png", alt: "Company Profile Overview: Dashboard presenting Ather Energy key metrics" },
+      { src: "/assets/images/research-final5.png", alt: "Valuation Performance Chart: Valuation trend line graph" },
+      { src: "/assets/images/research-final6.png", alt: "Search History Log: Database of previous search queries" },
+      { src: "/assets/images/research-final7.png", alt: "Regulatory Feed Alerts: In-app listings for MCA/audit filings" },
+      { src: "/assets/images/research-final8.png", alt: "Workspace Feed: Insights feed carousel dashboard view" },
+      { src: "/assets/images/research-final9.png", alt: "Investment Deals: Curated VC rounds list view" },
+      { src: "/assets/images/research-final10.png", alt: "Workspace Management: Real-time company categorizer sidebar" },
+      { src: "/assets/images/research-final11.png", alt: "Team Notes: Real-time collaborative annotations drawer" },
+      { src: "/assets/images/research-final12.png", alt: "Portfolio Overview: Sector distribution and asset trackers" },
+      { src: "/assets/images/research-final13.png", alt: "Portfolio Companies: Detailed transactions tracker ledger" }
     ]
   }
 };
@@ -160,7 +166,7 @@ export default function PrivateCircleResearchPage() {
             className="overflow-hidden border rounded-xl shadow-md bg-muted cursor-zoom-in relative aspect-[16/10] w-full"
           >
             <Image
-              src="/assets/images/Final1.webp"
+              src="/assets/images/research-title hero.png"
               alt="PrivateCircle Research Dashboard Preview"
               fill
               priority
@@ -376,7 +382,7 @@ export default function PrivateCircleResearchPage() {
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/before1.webp" alt="Static company lists" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-wireframe2.png" alt="Static company lists" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Static company information experience. Flat text rows showing static company listings.
@@ -388,7 +394,7 @@ export default function PrivateCircleResearchPage() {
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final2.webp" alt="Unified investor matches layout" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-final5.png" alt="Unified investor matches layout" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Interactive company research experience. Unified layout with interactive charts and inline details.
@@ -404,7 +410,7 @@ export default function PrivateCircleResearchPage() {
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/Before2.webp" alt="Complex investor search forms" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-wireframe1.png" alt="Complex investor search forms" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Download-focused workflow. Users had to download PDFs to get simple insights.
@@ -416,7 +422,7 @@ export default function PrivateCircleResearchPage() {
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final3.webp" alt="Card Discovery Layout" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-final8.png" alt="Card Discovery Layout" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Online exploration and discovery. In-app widgets and interactive profiles that eliminate unnecessary downloads.
@@ -428,11 +434,11 @@ export default function PrivateCircleResearchPage() {
             <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 0)} 
+                  onClick={() => openLightbox("beforeAfter", 4)} 
                   className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/before1.webp" alt="Complex information structure" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-wireframe2.png" alt="Complex information structure" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Complex information structure. Heavy tabs and nested categories that hid key statistics.
@@ -440,11 +446,11 @@ export default function PrivateCircleResearchPage() {
               </div>
               <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
                 <div 
-                  onClick={() => openLightbox("beforeAfter", 1)} 
+                  onClick={() => openLightbox("beforeAfter", 5)} 
                   className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
                 >
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/Final2.webp" alt="Clear and organized company profiles" className="w-full h-full object-cover" />
+                  <img src="/assets/images/research-final4.png" alt="Clear and organized company profiles" className="w-full h-full object-cover" />
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Clear and organized company profiles. A clean, dashboard-like overview layout.
