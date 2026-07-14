@@ -32,3 +32,5 @@ const nextConfig = {
 
 // withContentCollections must be the outermost plugin
 export default withContentCollections(nextConfig);
+
+import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
