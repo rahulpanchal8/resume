@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
 // Define the groups of images for the lightbox navigation with mapped section titles
@@ -222,26 +223,18 @@ export default function PrivateCircleNetworksPage() {
             As lead designer, I led the networking journey mapping, profile discovery layouts, connection requests, search parameters, matching algorithms, and conversational/meeting workflows, guiding the product from strategy to development-ready UI.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              { skill: "Product Strategy" },
-              { skill: "UX Research" },
-              { skill: "User Flows" },
-              { skill: "Wireframing" },
-              { skill: "UI Design" },
-              { skill: "Design Systems" },
-              { skill: "Prototyping" },
-              { skill: "Design QA" },
-            ].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="border border-slate-100 rounded-lg bg-slate-50/40 flex items-center cursor-default"
-                style={{ padding: "0.4rem", gap: "0.5rem" }}
-              >
-                <span className="text-xs font-semibold text-slate-700 leading-none pl-2">{item.skill}</span>
-              </div>
-            ))}
-          </div>
+          <RolesResponsibilitiesPills
+            skills={[
+              "Product Strategy",
+              "UX Research",
+              "User Flows",
+              "Wireframing",
+              "UI Design",
+              "Design Systems",
+              "Prototyping",
+              "Design QA",
+            ]}
+          />
         </div>
       </BlurFade>
 

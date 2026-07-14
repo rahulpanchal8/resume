@@ -66,10 +66,10 @@ export function ProjectCard({
     <div
       className={cn(
         "group flex flex-col h-full border border-border rounded-xl overflow-hidden",
-        "transition-[transform,box-shadow,border-color] duration-300 ease-out",
-        "fine-hover:-translate-y-1 fine-hover:shadow-md fine-hover:shadow-black/5 fine-hover:border-border/80",
+        "transition-[box-shadow,border-color] duration-300 ease-out",
+        "fine-hover:shadow-md fine-hover:shadow-black/5 fine-hover:border-border/80",
         "dark:fine-hover:shadow-black/25",
-        "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none",
+        "motion-reduce:transition-none motion-reduce:hover:shadow-none",
         className
       )}
     >

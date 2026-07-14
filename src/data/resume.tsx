@@ -25,7 +25,6 @@ export const DATA = {
     { name: "User Flows" },
     { name: "Usability Testing" },
     { name: "Design Systems" },
-    { name: "Information Architecture" },
     { name: "Cursor" },
     { name: "Vercel" },
     { name: "Antigravity" },

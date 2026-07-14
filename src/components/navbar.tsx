@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 
+const NAVBAR_SOCIAL_KEYS = ["Projects", "LinkedIn", "downloadCV", "email"] as const;
+
 export default function Navbar() {
   const pathname = usePathname();
   const [isProjectsInView, setIsProjectsInView] = useState(false);
@@ -118,9 +120,9 @@ export default function Navbar() {
           orientation="vertical"
           className="h-2/3 m-auto w-px bg-border"
         />
-        {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
-          .map(([name, social], index) => {
+        {NAVBAR_SOCIAL_KEYS.map((name, index) => {
+            const social = DATA.contact.social[name];
+            if (!social?.navbar) return null;
             const isExternal = social.url.startsWith("http");
             const downloadFilename =
               "download" in social && typeof social.download === "string"

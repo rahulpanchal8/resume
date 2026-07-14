@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
 const IMAGE_GROUPS = {
@@ -238,27 +239,19 @@ export default function AskPCCaseStudyPage() {
             As the lead product designer for the AI Analyst workflow, I directed user research, interaction flows, high-fidelity UI layout schemas, and design system alignment for the conversational experience.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {[
-              { skill: "Product Strategy" },
-              { skill: "UX Research" },
-              { skill: "User Flows" },
-              { skill: "Wireframing" },
-              { skill: "UI Design" },
-              { skill: "Design Systems" },
-              { skill: "Prototyping" },
-              { skill: "AI Product Design" },
-              { skill: "Design QA" }
-            ].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="border border-slate-100 rounded-lg bg-slate-50/40 flex items-center cursor-default"
-                style={{ padding: "0.4rem", gap: "0.5rem" }}
-              >
-                <span className="text-xs font-semibold text-slate-700 leading-none pl-2">{item.skill}</span>
-              </div>
-            ))}
-          </div>
+          <RolesResponsibilitiesPills
+            skills={[
+              "Product Strategy",
+              "UX Research",
+              "User Flows",
+              "Wireframing",
+              "UI Design",
+              "Design Systems",
+              "Prototyping",
+              "AI Product Design",
+              "Design QA",
+            ]}
+          />
         </div>
       </BlurFade>
 
