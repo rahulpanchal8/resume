@@ -1,6 +1,8 @@
- 
+
 import { ImageResponse } from "next/og";
 import { DATA } from "@/data/resume";
+
+export const dynamic = "force-static";
 
 export const alt = "Blog";
 export const size = {

@@ -4,6 +4,14 @@ import { ImageResponse } from "next/og";
 import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";
 
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post._meta.path.replace(/\.mdx$/, ""),
+  }));
+}
+
 export const alt = "Blog Post";
 export const size = {
     width: 1200,

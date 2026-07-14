@@ -34,11 +34,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build for Cloudflare
-        run: pnpm exec opennextjs-cloudflare build
+      - name: Build static site
+        run: pnpm build
 
-      - name: Deploy to Cloudflare
-        run: pnpm exec opennextjs-cloudflare deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy out --project-name=rahulpanchal --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
