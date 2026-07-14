@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Creates a Cloudflare Pages API token and prints it to stdout.
- * Used once to configure GitHub Actions secrets.
+ * Creates a permanent Cloudflare API token using the logged-in Wrangler session.
+ * Prints the token to stdout for piping into `gh secret set`.
  */
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
@@ -19,9 +19,8 @@ if (!oauthToken) {
   process.exit(1);
 }
 
-const response = await fetch(
-  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/tokens`,
-  {
+async function createToken(url) {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${oauthToken}`,
@@ -39,13 +38,22 @@ const response = await fetch(
         },
       ],
     }),
-  }
-);
+  });
+  return response.json();
+}
 
-const data = await response.json();
+let data = await createToken("https://api.cloudflare.com/client/v4/user/tokens");
+if (!data.success) {
+  data = await createToken(
+    `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/tokens`
+  );
+}
 
 if (!data.success) {
-  console.error("Failed to create API token:", JSON.stringify(data.errors ?? data));
+  console.error(
+    "Could not create API token automatically. Run: node scripts/configure-permanent-cf-token.mjs"
+  );
+  console.error(JSON.stringify(data.errors ?? data));
   process.exit(1);
 }
 

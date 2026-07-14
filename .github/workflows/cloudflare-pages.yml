@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://rahulpanchal.pages.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,12 +38,9 @@ jobs:
         run: pnpm build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        id: deployment
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: rahulpanchal
-          directory: .
-          wranglerVersion: latest
+          command: pages deploy . --project-name=rahulpanchal --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
