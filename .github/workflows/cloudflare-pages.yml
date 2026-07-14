@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  deployments: write
   id-token: write
 
 jobs:
@@ -40,7 +41,9 @@ jobs:
         uses: cloudflare/pages-action@v1
         id: deployment
         with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: rahulpanchal
           directory: .
           wranglerVersion: latest
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
