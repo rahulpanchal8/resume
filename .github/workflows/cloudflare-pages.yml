@@ -34,7 +34,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build and deploy to Cloudflare
+      - name: Build for Cloudflare
+        run: pnpm exec opennextjs-cloudflare build
+
+      - name: Deploy to Cloudflare
         run: pnpm exec opennextjs-cloudflare deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
