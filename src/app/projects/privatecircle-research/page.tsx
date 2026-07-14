@@ -35,17 +35,6 @@ const IMAGE_GROUPS = {
       { src: "/assets/images/research-wireframe2.png", alt: "Company list database layout with sidebar filters" }
     ]
   },
-  beforeAfter: {
-    title: "Before & After UX",
-    images: [
-      { src: "/assets/images/research-wireframe2.png", alt: "Before: Static table rows" },
-      { src: "/assets/images/research-final5.png", alt: "After: Interactive charts and valuation metrics" },
-      { src: "/assets/images/research-wireframe1.png", alt: "Before: Download-heavy report structures" },
-      { src: "/assets/images/research-final8.png", alt: "After: Direct in-app insight feeds" },
-      { src: "/assets/images/research-wireframe2.png", alt: "Before: Cluttered nested list categories" },
-      { src: "/assets/images/research-final4.png", alt: "After: Clean, structured company profile summary" }
-    ]
-  },
   gallery: {
     title: "Final UI Gallery",
     images: [
@@ -365,100 +354,6 @@ export default function PrivateCircleResearchPage() {
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Created connected research journeys that encouraged deeper exploration of company data and features.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </BlurFade>
-
-      {/* Before & After UX Section */}
-      <BlurFade delay={0.5}>
-        <div className="flex flex-col gap-2 pt-2">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Before & After UX</h2>
-          
-          <div className="flex flex-col gap-8 mt-2">
-            {/* Compare Group 1 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 0)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/research-wireframe2.png" alt="Static company lists" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Static company information experience. Flat text rows showing static company listings.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 1)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/research-final5.png" alt="Unified investor matches layout" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> Interactive company research experience. Unified layout with interactive charts and inline details.
-                </p>
-              </div>
-            </div>
-
-            {/* Compare Group 2 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 2)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/research-wireframe1.png" alt="Complex investor search forms" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Download-focused workflow. Users had to download PDFs to get simple insights.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 3)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/research-final8.png" alt="Card Discovery Layout" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> Online exploration and discovery. In-app widgets and interactive profiles that eliminate unnecessary downloads.
-                </p>
-              </div>
-            </div>
-
-            {/* Compare Group 3 */}
-            <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 4)} 
-                  className="overflow-hidden border border-rose-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
-                  <img src="/assets/images/research-wireframe2.png" alt="Complex information structure" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>Before:</strong> Complex information structure. Heavy tabs and nested categories that hid key statistics.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 snap-start flex-shrink-0 w-[85%] md:w-auto">
-                <div 
-                  onClick={() => openLightbox("beforeAfter", 5)} 
-                  className="overflow-hidden border border-emerald-100 rounded-lg shadow-xs relative cursor-zoom-in aspect-[16/10]"
-                >
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
-                  <img src="/assets/images/research-final4.png" alt="Clear and organized company profiles" className="w-full h-full object-cover" />
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
-                  <strong>After:</strong> Clear and organized company profiles. A clean, dashboard-like overview layout.
                 </p>
               </div>
             </div>
