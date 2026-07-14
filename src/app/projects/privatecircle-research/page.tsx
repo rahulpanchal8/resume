@@ -292,13 +292,13 @@ export default function PrivateCircleResearchPage() {
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
                 <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users relied heavily on downloading reports instead of exploring information online.
+                  Users mostly downloaded reports instead of exploring company information online.
                 </p>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Redesigned company profiles into richer online experiences with better content hierarchy and discoverability.
+                  Redesigned company profiles into richer online experiences with improved content hierarchy and discoverability.
                 </p>
               </div>
             </div>
@@ -308,13 +308,13 @@ export default function PrivateCircleResearchPage() {
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
                 <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Large amounts of company information were difficult to scan.
+                  Large amounts of company data were difficult to scan and manage from the backend.
                 </p>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created structured sections, improved information hierarchy, and simplified content discovery.
+                  Created structured sections with improved information hierarchy and simplified content discovery.
                 </p>
               </div>
             </div>
@@ -324,13 +324,13 @@ export default function PrivateCircleResearchPage() {
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
                 <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users needed faster ways to discover relevant company insights.
+                  Users were not exploring other valuable platform features.
                 </p>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Improved navigation, search experience, and related information discovery.
+                  Improved user journeys and platform experience, increasing feature adoption, engagement and re-subscription rates.
                 </p>
               </div>
             </div>
@@ -340,13 +340,13 @@ export default function PrivateCircleResearchPage() {
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
                 <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users needed more reasons to continue exploring the platform.
+                  The platform mainly focused on company financial data, limiting usage to investors researching companies.
                 </p>
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created connected research journeys that encouraged deeper exploration of company data and features.
+                  Expanded the platform with HNIs, Funds, and Family Office profiles, including investments, portfolios, returns, sectors and team insights.
                 </p>
               </div>
             </div>
@@ -364,20 +364,8 @@ export default function PrivateCircleResearchPage() {
           
           <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">Improved</span>
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Online research experience</span>
-            </div>
-            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">User engagement</span>
-            </div>
-            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">Higher</span>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">60%+ Increase</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Company profile exploration</span>
-            </div>
-            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">Improved</span>
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Subscription retention</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
               <span className="text-2xl font-extrabold text-primary tracking-tight">30% Increase</span>
@@ -387,18 +375,18 @@ export default function PrivateCircleResearchPage() {
               <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Referral traffic</span>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4 text-muted-foreground leading-relaxed text-sm max-w-3xl mt-4">
-            <p>
-              Users shifted from downloading company reports to consuming information directly online.
-            </p>
-            <p>
-              Users spent more time exploring company profiles and additional platform features.
-            </p>
-            <p>
-              The improved experience contributed to higher subscription renewals and increased referral traffic.
-            </p>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">More Enquiries</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">For product upgrades</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Data loading experience</span>
+            </div>
+            <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
+              <span className="text-2xl font-extrabold text-primary tracking-tight">Improved</span>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Subscription retention</span>
+            </div>
           </div>
         </div>
       </BlurFade>
