@@ -8,7 +8,7 @@
   "scripts": {
     "build": "next build",
     "dev": "lsof -t -i:3000 | xargs kill -9 2>/dev/null || true; next dev",
-    "start": "lsof -t -i:3000 | xargs kill -9 2>/dev/null || true; next start",
+    "start": "lsof -t -i:3000 | xargs kill -9 2>/dev/null || true; next build && serve out -l 3000",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
@@ -54,6 +54,7 @@
     "eslint": "^9.39.2",
     "eslint-config-next": "16.1.1",
     "postcss": "^8.5.6",
+    "serve": "^14.2.6",
     "typescript": "^5.9.3",
     "wrangler": "^4.110.0",
     "zod": "^4.3.5"

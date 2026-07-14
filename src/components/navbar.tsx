@@ -63,14 +63,12 @@ export default function Navbar() {
   };
 
   const getNavbarItemClass = (href: string) => {
-    const isActive =
-      (href === "/" && pathname === "/" && !isProjectsInView) ||
-      (href === "/blog" && pathname.startsWith("/blog"));
+    const isActive = href === "/" && pathname === "/" && !isProjectsInView;
 
     return cn(
-      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-200 border border-border backdrop-blur-3xl",
+      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-300 ease-out border border-border backdrop-blur-3xl",
       isActive
-        ? "text-foreground bg-muted scale-110 shadow-sm"
+        ? "text-foreground bg-muted scale-105 shadow-sm"
         : "text-muted-foreground hover:text-foreground hover:bg-muted"
     );
   };
@@ -79,9 +77,9 @@ export default function Navbar() {
     const isActive = name === "Projects" && pathname === "/" && isProjectsInView;
 
     return cn(
-      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-200 border border-border backdrop-blur-3xl",
+      "rounded-3xl cursor-pointer size-full bg-background p-0 transition-all duration-300 ease-out border border-border backdrop-blur-3xl",
       isActive
-        ? "text-foreground bg-muted scale-110 shadow-sm"
+        ? "text-foreground bg-muted scale-105 shadow-sm"
         : "text-muted-foreground hover:text-foreground hover:bg-muted"
     );
   };
@@ -124,6 +122,10 @@ export default function Navbar() {
           .filter(([_, social]) => social.navbar)
           .map(([name, social], index) => {
             const isExternal = social.url.startsWith("http");
+            const downloadFilename =
+              "download" in social && typeof social.download === "string"
+                ? social.download
+                : undefined;
             const IconComponent = social.icon;
             return (
               <Tooltip key={`social-${name}-${index}`}>
@@ -131,6 +133,7 @@ export default function Navbar() {
                   <a
                     href={social.url}
                     onClick={(e) => handleSocialClick(e, name)}
+                    download={downloadFilename}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                   >

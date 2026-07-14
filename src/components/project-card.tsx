@@ -24,7 +24,7 @@ function ProjectImage({ src, alt, priority }: { src: string; alt: string; priori
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         priority={priority}
         loading={priority ? undefined : "lazy"}
-        className="object-cover transition-transform duration-300 hover:scale-105"
+        className="object-cover transition-transform duration-300 ease-out fine-group-hover:scale-[1.03]"
         onError={() => setImageError(true)}
       />
     </div>
@@ -35,7 +35,6 @@ interface Props {
   title: string;
   href?: string;
   description: string;
-  dates: string;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -53,7 +52,6 @@ export function ProjectCard({
   title,
   href,
   description,
-  dates,
   tags,
   link,
   image,
@@ -67,7 +65,11 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "group flex flex-col h-full border border-border rounded-xl overflow-hidden",
+        "transition-[transform,box-shadow,border-color] duration-300 ease-out",
+        "fine-hover:-translate-y-1 fine-hover:shadow-md fine-hover:shadow-black/5 fine-hover:border-border/80",
+        "dark:fine-hover:shadow-black/25",
+        "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none",
         className
       )}
     >
@@ -119,13 +121,12 @@ export function ProjectCard({
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
           </div>
           <Link
             href={href || "#"}
             target={isInternal ? undefined : "_blank"}
             rel={isInternal ? undefined : "noopener noreferrer"}
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            className="text-muted-foreground transition-colors duration-300 ease-out fine-group-hover:text-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             aria-label={`Open ${title}`}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />

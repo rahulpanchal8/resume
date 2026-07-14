@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, BriefcaseIcon } from "lucide-react";
+import { HomeIcon, BriefcaseIcon } from "lucide-react";
 import type { IconProps } from "@/components/icons";
 
 export const DATA = {
@@ -35,7 +35,6 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "rahul13@live.com",
@@ -49,7 +48,7 @@ export const DATA = {
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://linkedin.com/in/rahulpanchal",
+        url: "https://www.linkedin.com/in/panchalrahul/",
         icon: Icons.linkedin,
         navbar: true,
       },
@@ -64,6 +63,13 @@ export const DATA = {
         url: "#",
         icon: Icons.youtube,
         navbar: false,
+      },
+      downloadCV: {
+        name: "Download CV",
+        url: "/assets/Rahul-Panchal-UX-Product-Designer-Resume.pdf",
+        download: "Rahul-Panchal-UX-Product-Designer-Resume.pdf",
+        icon: Icons.download,
+        navbar: true,
       },
       email: {
         name: "Send Email",
@@ -205,7 +211,7 @@ export const DATA = {
       dates: "July 2021 – Present",
       active: true,
       description:
-        "PrivateCircle Markets is an AI-powered private market platform designed to help startups connect with investors and enable investors to discover, evaluate, and manage investment opportunities through data-driven insights.",
+        "AI-powered platform helping startups and investors discover, evaluate, and manage private market opportunities.",
       technologies: [
         "Figma",
         "Design Systems",
@@ -223,7 +229,7 @@ export const DATA = {
       dates: "July 2021 – Present",
       active: true,
       description:
-        "AI-powered private market intelligence platform that helps users discover, analyze, and understand company, investor, and market data through conversational AI.",
+        "Conversational AI platform for exploring company intelligence, funding data, and private market insights.",
       technologies: [
         "Figma",
         "Design Systems",
@@ -241,7 +247,7 @@ export const DATA = {
       dates: "July 2021 – Present",
       active: true,
       description:
-        "Company intelligence and research platform helping users discover, analyze, and understand private company information.",
+        "Research platform for discovering, analyzing, and understanding private company intelligence at scale.",
       technologies: [
         "Figma",
         "Design Systems",
@@ -259,7 +265,7 @@ export const DATA = {
       dates: "July 2021 – Present",
       active: true,
       description:
-        "Investor and founder networking platform simplifies discovery, collaboration, and professional interactions within the private market ecosystem.",
+        "Networking platform connecting investors and founders across the private market ecosystem.",
       technologies: [
         "Figma",
         "Design Systems",
