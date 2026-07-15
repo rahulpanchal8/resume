@@ -252,3 +252,9 @@
   }
 
 }
+
+@layer utilities {
+  .case-study-hero-gap {
+    gap: calc(var(--spacing) * 2);
+  }
+}

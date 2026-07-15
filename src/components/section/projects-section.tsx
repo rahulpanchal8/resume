@@ -3,6 +3,8 @@ import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
 
 const BLUR_FADE_DELAY = 0.04;
+// Temporarily hidden from My Projects; case study page and data remain unchanged.
+const HIDDEN_PROJECT_HREFS = ["/projects/privatecircle-networks"];
 
 export default function ProjectsSection() {
     return (
@@ -32,7 +34,9 @@ export default function ProjectsSection() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
-                    {DATA.projects.map((project, id) => (
+                    {DATA.projects
+                        .filter((project) => !HIDDEN_PROJECT_HREFS.includes(project.href))
+                        .map((project, id) => (
                         <BlurFade
                             key={project.title}
                             delay={BLUR_FADE_DELAY * 12 + id * 0.05}

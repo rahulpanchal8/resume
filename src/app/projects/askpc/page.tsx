@@ -146,15 +146,15 @@ export default function AskPCCaseStudyPage() {
       {/* Hero Section */}
       <div className="flex flex-col gap-6">
         <BlurFade delay={0.1}>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col case-study-hero-gap">
             <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground/80">
               AI • Fintech • Private Market Intelligence
             </span>
-            <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              AskPC
+            <h1 className="text-[2.5rem] font-bold tracking-tight text-foreground leading-tight">
+              AI Analyst for Private Markets
             </h1>
             <p className="text-[16px] sm:text-xl font-medium text-muted-foreground">
-              Your AI Analyst for Private Markets
+              AskPC
             </p>
           </div>
         </BlurFade>
@@ -415,27 +415,27 @@ export default function AskPCCaseStudyPage() {
           </h2>
                  <div className="flex flex-row overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">200+</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">200+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Companies onboarded</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">300+</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">300+</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Funds, HNIs & Family Office</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">50% Faster</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">50% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Deal closure process</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">80% Faster</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">80% Faster</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Onboarding experience</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">30% Increase</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">30% Increase</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active session time</span>
             </div>
             <div className="snap-start flex-shrink-0 w-[85%] sm:w-auto border rounded-xl bg-slate-50/40 text-center flex flex-col items-center justify-center gap-2" style={{ padding: '16px' }}>
-              <span className="text-2xl font-extrabold text-primary tracking-tight">Increased</span>
+              <span className="text-[22px] font-extrabold text-primary tracking-tight">Increased</span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Referral traffic</span>
             </div>
           </div>
