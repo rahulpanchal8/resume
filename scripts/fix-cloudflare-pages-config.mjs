@@ -83,6 +83,20 @@ async function main() {
     return;
   }
 
+  if (mode === "logs") {
+    const deploymentId = process.argv[3];
+    if (!deploymentId) {
+      throw new Error("Usage: node scripts/fix-cloudflare-pages-config.mjs logs <deployment-id>");
+    }
+    const logs = await cfApi(
+      `/accounts/${ACCOUNT_ID}/pages/projects/${PROJECT_NAME}/deployments/${deploymentId}/history/logs`
+    );
+    for (const line of logs.data ?? []) {
+      console.log(line);
+    }
+    return;
+  }
+
   if (mode === "fix-build") {
     console.log("\n=== Updating build configuration ===");
     const updated = await cfApi(`/accounts/${ACCOUNT_ID}/pages/projects/${PROJECT_NAME}`, {
