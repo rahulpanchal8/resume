@@ -145,7 +145,7 @@ export default function PrivateCircleNetworksPage() {
             <span className="text-xs uppercase tracking-widest font-semibold text-muted-foreground/80">
               Fintech • Networking Platform • SaaS
             </span>
-            <h1 className="text-[2.5rem] font-bold tracking-tight text-foreground leading-tight">
+            <h1 className="case-study-hero-title font-bold tracking-tight text-foreground leading-tight">
               Investor & Founder Networking Platform
             </h1>
             <p className="text-[16px] sm:text-xl font-medium text-muted-foreground">

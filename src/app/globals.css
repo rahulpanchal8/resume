@@ -257,4 +257,14 @@
   .case-study-hero-gap {
     gap: calc(var(--spacing) * 2);
   }
+
+  .case-study-hero-title {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 768px) {
+    .case-study-hero-title {
+      font-size: 2.5rem;
+    }
+  }
 }
