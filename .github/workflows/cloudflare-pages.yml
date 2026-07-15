@@ -42,5 +42,5 @@ jobs:
         run: |
           test -d out
           test -f out/index.html
-          rg -q "_next/static" out/index.html
-          ! rg -q "css/style.css" out/index.html
+          grep -q "_next/static" out/index.html
+          ! grep -q "css/style.css" out/index.html
