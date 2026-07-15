@@ -1,8 +1,8 @@
+# Disabled: production deploys via Cloudflare Pages Git integration (rahulpanchal.pages.dev).
+# This workflow previously uploaded the raw repo root to GitHub Pages, which served stale static files.
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -24,13 +24,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@10 --activate
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build static site
+        run: pnpm build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: out
 
       - name: Deploy to GitHub Pages
         id: deployment

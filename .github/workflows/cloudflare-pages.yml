@@ -1,21 +1,22 @@
-name: Deploy to Cloudflare Pages
+name: Verify Production Build
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  deployments: write
-  id-token: write
+
+concurrency:
+  group: verify-build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  verify:
     runs-on: ubuntu-latest
-    environment:
-      name: Production
-      url: https://rahulpanchal.pages.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,10 +38,9 @@ jobs:
       - name: Build static site
         run: pnpm build
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy out --project-name=rahulpanchal --branch=main
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify Next.js export output
+        run: |
+          test -d out
+          test -f out/index.html
+          rg -q "_next/static" out/index.html
+          ! rg -q "css/style.css" out/index.html
