@@ -46,6 +46,8 @@ interface Props {
   }[];
   className?: string;
   priority?: boolean;
+  showTags?: boolean;
+  descriptionClassName?: string;
 }
 
 export function ProjectCard({
@@ -59,6 +61,8 @@ export function ProjectCard({
   links,
   className,
   priority,
+  showTags = true,
+  descriptionClassName,
 }: Props) {
   const isInternal = href?.startsWith("/");
 
@@ -132,10 +136,15 @@ export function ProjectCard({
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        <div
+          className={cn(
+            "flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert text-xs",
+            descriptionClassName
+          )}
+        >
           <Markdown>{description}</Markdown>
         </div>
-        {tags && tags.length > 0 && (
+        {showTags && tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">
             {tags.map((tag) => (
               <Badge

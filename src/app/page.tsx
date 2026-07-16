@@ -87,7 +87,7 @@ export default function Page() {
                 Claude.
               </p>
               <p className="mt-4">
-                Experienced in <strong>user research, UX strategy, wireframing, prototyping and high-fidelity UI design</strong>. Strong at translating complex business problems into simple, scalable product solutions through close collaboration with product, engineering and business teams. Familiar with front-end technologies and <strong>AI-powered workflows</strong> to improve design feasibility and accelerate product development.
+                Experienced in <strong>user research, UX strategy, wireframing, prototyping and high-fidelity UI design</strong>. Transform complex business problems into scalable product experiences by collaborating with cross-functional teams. Use front-end understanding and <strong>AI-powered workflows</strong> to enhance design feasibility and speed up development.
               </p>
             </div>
           </BlurFade>

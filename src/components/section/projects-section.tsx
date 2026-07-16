@@ -52,6 +52,8 @@ export default function ProjectsSection() {
                                 video={project.video}
                                 links={project.links}
                                 priority={id < 2}
+                                showTags={false}
+                                descriptionClassName="text-sm"
                             />
                         </BlurFade>
                     ))}

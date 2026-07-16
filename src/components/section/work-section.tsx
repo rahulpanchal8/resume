@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Markdown from "react-markdown";
 
@@ -31,7 +31,7 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function formatMobileDate(start: string, end?: string) {
+function formatWorkDate(start: string, end?: string) {
   const mapDate = (dateStr: string) => {
     if (!dateStr || dateStr.toLowerCase() === "present") return "Present";
     const parts = dateStr.trim().split(/\s+/);
@@ -46,7 +46,7 @@ function formatMobileDate(start: string, end?: string) {
 
 export default function WorkSection() {
   return (
-    <Accordion type="single" collapsible defaultValue="PrivateCircle" className="w-full grid gap-6">
+    <Accordion type="single" collapsible className="w-full grid gap-6">
       {DATA.work.map((work) => (
         <AccordionItem
           key={work.company}
@@ -61,23 +61,13 @@ export default function WorkSection() {
                   {/* Job Title (16px) with toggle icon beside it */}
                   <div className="font-semibold text-base text-foreground flex items-center gap-2">
                     {work.title}
-                    <span className="relative inline-flex items-center w-3.5 h-3.5">
-                      <ChevronRight
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-300 ease-out",
-                          "translate-x-0 opacity-0",
-                          "group-hover:translate-x-1 group-hover:opacity-100",
-                          "group-data-[state=open]:opacity-0 group-data-[state=open]:translate-x-0"
-                        )}
-                      />
-                      <ChevronDown
-                        className={cn(
-                          "absolute h-3.5 w-3.5 shrink-0 text-muted-foreground stroke-2 transition-all duration-200",
-                          "opacity-0 rotate-0",
-                          "group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180"
-                        )}
-                      />
-                    </span>
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 shrink-0 text-muted-foreground/70 stroke-2 transition-all duration-200",
+                        "group-hover:text-muted-foreground",
+                        "group-data-[state=open]:rotate-180 group-data-[state=open]:text-muted-foreground"
+                      )}
+                    />
                   </div>
                   {/* Company Name + Location (14px) */}
                   <div className="font-sans text-sm text-muted-foreground">
@@ -87,14 +77,7 @@ export default function WorkSection() {
               </div>
               {/* Duration (14px) */}
               <div className="flex items-center gap-1 text-sm tabular-nums text-muted-foreground text-right flex-none">
-                {/* Desktop Date Format */}
-                <span className="hidden sm:inline">
-                  {work.start} - {work.end ?? "Present"}
-                </span>
-                {/* Mobile Date Format */}
-                <span className="inline sm:hidden">
-                  {formatMobileDate(work.start, work.end)}
-                </span>
+                <span>{formatWorkDate(work.start, work.end)}</span>
               </div>
             </div>
           </AccordionTrigger>
