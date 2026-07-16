@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { ChallengesSolutionsItem } from "@/components/challenges-solutions-item";
 import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
@@ -286,71 +287,26 @@ export default function PrivateCircleNetworksPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
           <div className="flex flex-col gap-8 mt-2">
-            
-            {/* Item 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users needed better ways to discover relevant founders and investors.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Designed structured profiles, search, and discovery workflows.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Building meaningful connections required context.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Added profile intelligence and relevant information to improve connection quality.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Networking activities happened across multiple channels.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created centralized connection, meeting, and sharing workflows.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Different user types required different experiences.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Designed scalable profiles and workflows for founders, investors, and ecosystem participants.
-                </p>
-              </div>
-            </div>
-
+            <ChallengesSolutionsItem
+              number="01"
+              challenge="Users needed better ways to discover relevant founders and investors."
+              solution="Designed structured profiles, search, and discovery workflows."
+            />
+            <ChallengesSolutionsItem
+              number="02"
+              challenge="Building meaningful connections required context."
+              solution="Added profile intelligence and relevant information to improve connection quality."
+            />
+            <ChallengesSolutionsItem
+              number="03"
+              challenge="Networking activities happened across multiple channels."
+              solution="Created centralized connection, meeting, and sharing workflows."
+            />
+            <ChallengesSolutionsItem
+              number="04"
+              challenge="Different user types required different experiences."
+              solution="Designed scalable profiles and workflows for founders, investors, and ecosystem participants."
+            />
           </div>
         </div>
       </BlurFade>
@@ -371,7 +327,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/before1.webp" alt="Before: Fragmented profile discovery listings" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Fragmented network search where users manually combed through static lists.
                 </p>
               </div>
@@ -383,7 +339,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final2.webp" alt="After: Structured directory suggestions layout" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Structured directory dashboard with smart suggestion cards and direct Connect options.
                 </p>
               </div>
@@ -399,7 +355,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/Before2.webp" alt="Before: Disjointed communication channels workflow" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Inconvenient external messaging to setup first meetings or check credentials.
                 </p>
               </div>
@@ -411,7 +367,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final3.webp" alt="After: Centralized, intelligence-based connection flows" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Integrated profile intelligence and in-app connection request workflows.
                 </p>
               </div>
@@ -427,7 +383,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/before1.webp" alt="Before: Generic keyword search" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Generic keyword matching which produced irrelevant matches.
                 </p>
               </div>
@@ -439,7 +395,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final2.webp" alt="After: High-context filters" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> High-context matching filters tailored specifically for investor/founder parameters.
                 </p>
               </div>
@@ -455,7 +411,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/Before2.webp" alt="Before: Incoherent relationship tracking" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Incoherent relationship tracking scattered across spreadsheets.
                 </p>
               </div>
@@ -467,7 +423,7 @@ export default function PrivateCircleNetworksPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final3.webp" alt="After: Integrated tracking timeline" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Clean relationship tracking timeline integrated directly on the user's home dashboard.
                 </p>
               </div>
@@ -539,7 +495,7 @@ export default function PrivateCircleNetworksPage() {
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
                 </p>
               </div>

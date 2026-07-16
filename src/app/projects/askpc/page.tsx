@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { ChallengesSolutionsItem } from "@/components/challenges-solutions-item";
 import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
@@ -303,71 +304,26 @@ export default function AskPCCaseStudyPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
           <div className="flex flex-col gap-8 mt-2">
-            
-            {/* Item 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users needed faster access to complex private market information.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Designed a conversational AI workflow that allows users to ask questions naturally and receive structured insights.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Private market data exists across multiple fragmented sources.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created a unified research experience combining company intelligence, financial information, investor data, and market insights.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Traditional research requires multiple searches and manual analysis.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Designed AI-powered workflows for summaries, comparisons, financial analysis, and quick discovery.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users need confidence and trust while interacting with AI-generated insights.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created clear response structures, organized information hierarchy, and transparent data presentation.
-                </p>
-              </div>
-            </div>
-
+            <ChallengesSolutionsItem
+              number="01"
+              challenge="Users needed faster access to complex private market information."
+              solution="Designed a conversational AI workflow that allows users to ask questions naturally and receive structured insights."
+            />
+            <ChallengesSolutionsItem
+              number="02"
+              challenge="Private market data exists across multiple fragmented sources."
+              solution="Created a unified research experience combining company intelligence, financial information, investor data, and market insights."
+            />
+            <ChallengesSolutionsItem
+              number="03"
+              challenge="Traditional research requires multiple searches and manual analysis."
+              solution="Designed AI-powered workflows for summaries, comparisons, financial analysis, and quick discovery."
+            />
+            <ChallengesSolutionsItem
+              number="04"
+              challenge="Users need confidence and trust while interacting with AI-generated insights."
+              solution="Created clear response structures, organized information hierarchy, and transparent data presentation."
+            />
           </div>
         </div>
       </BlurFade>
@@ -387,7 +343,7 @@ export default function AskPCCaseStudyPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/askpc-Before1.jpeg" alt="Before: Time-consuming manual search research workflow across multiple sources." className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Time-consuming manual search research workflow across multiple sources.
                 </p>
               </div>
@@ -399,7 +355,7 @@ export default function AskPCCaseStudyPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/askpc-After1.png" alt="After: AI-powered conversational private market intelligence." className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> AI-powered conversational private market intelligence.
                 </p>
               </div>
@@ -454,7 +410,7 @@ export default function AskPCCaseStudyPage() {
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
                 </p>
               </div>

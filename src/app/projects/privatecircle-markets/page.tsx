@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { ChallengesSolutionsItem } from "@/components/challenges-solutions-item";
 import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
@@ -286,71 +287,26 @@ export default function PrivateCircleMarketsPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
           <div className="flex flex-col gap-8 mt-2">
-            
-            {/* Item 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Initially, only a mobile version was planned for the product experience.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created a complete desktop experience and redesigned the mobile version to maintain consistency across platforms with unified user flows and interactions.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  The product initially focused only on fundraising and investing workflows for HNIs, with plans to expand to other user profiles.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Expanded the platform experience to support multiple user types including VCs, PEs, Wealth Managers, Investment Bankers, Portfolio Managers and Deal Scouts. Created dedicated profiles and workflows for each user type, including internal transactions and meeting journeys.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Previously, meetings, data sharing, and transaction-related activities were happening outside the platform.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Introduced in-platform workflows including meeting management between connections, pitch deck uploads, data/file sharing and fund commitment functionality to bring the complete investment journey into one platform.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users needed an easier way to share profiles and deals beyond the platform.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Integrated profile and deal-sharing functionality within the platform and enabled sharing across external services such as WhatsApp to improve discoverability and collaboration.
-                </p>
-              </div>
-            </div>
-
+            <ChallengesSolutionsItem
+              number="01"
+              challenge="Initially, only a mobile version was planned for the product experience."
+              solution="Created a complete desktop experience and redesigned the mobile version to maintain consistency across platforms with unified user flows and interactions."
+            />
+            <ChallengesSolutionsItem
+              number="02"
+              challenge="The product initially focused only on fundraising and investing workflows for HNIs, with plans to expand to other user profiles."
+              solution="Expanded the platform experience to support multiple user types including VCs, PEs, Wealth Managers, Investment Bankers, Portfolio Managers and Deal Scouts. Created dedicated profiles and workflows for each user type, including internal transactions and meeting journeys."
+            />
+            <ChallengesSolutionsItem
+              number="03"
+              challenge="Previously, meetings, data sharing, and transaction-related activities were happening outside the platform."
+              solution="Introduced in-platform workflows including meeting management between connections, pitch deck uploads, data/file sharing and fund commitment functionality to bring the complete investment journey into one platform."
+            />
+            <ChallengesSolutionsItem
+              number="04"
+              challenge="Users needed an easier way to share profiles and deals beyond the platform."
+              solution="Integrated profile and deal-sharing functionality within the platform and enabled sharing across external services such as WhatsApp to improve discoverability and collaboration."
+            />
           </div>
         </div>
       </BlurFade>
@@ -371,7 +327,7 @@ export default function PrivateCircleMarketsPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/before1.webp" alt="Static company lists" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Flat text rows showing static company listings. Users had to manually click into details to see matched parameters.
                 </p>
               </div>
@@ -383,7 +339,7 @@ export default function PrivateCircleMarketsPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final2.webp" alt="Unified investor matches layout" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Unified layout with a popover showing criteria matching and direct Connect CTAs in one click.
                 </p>
               </div>
@@ -399,7 +355,7 @@ export default function PrivateCircleMarketsPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-rose-500 text-[9px] font-bold text-white uppercase rounded-md z-10">Before</span>
                   <img src="/assets/images/Before2.webp" alt="Complex investor search forms" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>Before:</strong> Bulky search inputs requiring precise query matches, leading to high friction and cognitive load.
                 </p>
               </div>
@@ -411,7 +367,7 @@ export default function PrivateCircleMarketsPage() {
                   <span className="absolute top-2 left-2 px-2 py-0.5 bg-emerald-500 text-[9px] font-bold text-white uppercase rounded-md z-10">After</span>
                   <img src="/assets/images/Final3.webp" alt="Card Discovery Layout" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed px-1 mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed px-1 mt-1">
                   <strong>After:</strong> Horizontal scroll lanes grouping categories (Super lists, AI-suggestions) and clear, structured cards.
                 </p>
               </div>
@@ -470,7 +426,7 @@ export default function PrivateCircleMarketsPage() {
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
                 </p>
               </div>

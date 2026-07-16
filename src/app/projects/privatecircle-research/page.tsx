@@ -12,6 +12,7 @@ import {
   ZoomOut
 } from "lucide-react";
 import BlurFade from "@/components/magicui/blur-fade";
+import { ChallengesSolutionsItem } from "@/components/challenges-solutions-item";
 import { RolesResponsibilitiesPills } from "@/components/roles-responsibilities-pills";
 import Image from "next/image";
 
@@ -286,71 +287,26 @@ export default function PrivateCircleResearchPage() {
         <div className="flex flex-col gap-2 pt-2">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Challenges & Solutions</h2>
           <div className="flex flex-col gap-8 mt-2">
-            
-            {/* Item 1 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 01</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users mostly downloaded reports instead of exploring company information online.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Redesigned company profiles into richer online experiences with improved content hierarchy and discoverability.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 2 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 02</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Large amounts of company data were difficult to scan and manage from the backend.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Created structured sections with improved information hierarchy and simplified content discovery.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 3 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 03</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  Users were not exploring other valuable platform features.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Improved user journeys and platform experience, increasing feature adoption, engagement and re-subscription rates.
-                </p>
-              </div>
-            </div>
-
-            {/* Item 4 */}
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-rose-500 uppercase tracking-wider">Challenge 04</span>
-                <p className="text-sm font-semibold text-foreground leading-relaxed">
-                  The platform mainly focused on company financial data, limiting usage to investors researching companies.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Solution</span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Expanded the platform with HNIs, Funds, and Family Office profiles, including investments, portfolios, returns, sectors and team insights.
-                </p>
-              </div>
-            </div>
-
+            <ChallengesSolutionsItem
+              number="01"
+              challenge="Users mostly downloaded reports instead of exploring company information online."
+              solution="Redesigned company profiles into richer online experiences with improved content hierarchy and discoverability."
+            />
+            <ChallengesSolutionsItem
+              number="02"
+              challenge="Large amounts of company data were difficult to scan and manage from the backend."
+              solution="Created structured sections with improved information hierarchy and simplified content discovery."
+            />
+            <ChallengesSolutionsItem
+              number="03"
+              challenge="Users were not exploring other valuable platform features."
+              solution="Improved user journeys and platform experience, increasing feature adoption, engagement and re-subscription rates."
+            />
+            <ChallengesSolutionsItem
+              number="04"
+              challenge="The platform mainly focused on company financial data, limiting usage to investors researching companies."
+              solution="Expanded the platform with HNIs, Funds, and Family Office profiles, including investments, portfolios, returns, sectors and team insights."
+            />
           </div>
         </div>
       </BlurFade>
@@ -405,7 +361,7 @@ export default function PrivateCircleResearchPage() {
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed px-1">
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed px-1">
                   <strong>{img.alt.split(":")[0]}:</strong> {img.alt}
                 </p>
               </div>
